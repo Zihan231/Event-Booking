@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventify</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <span class="logo">Eventify</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a class="Blacktxt" href="#home">Home</a></li>
+          <li><a href="#about">Events</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div id="LogSing">
+        <a class="Blacktxt" href="#">Login</a>
+        <a href="#" id="sgnUp">Sign Up</a>
+      </div>
+    </header>
+    <main>
+      <section id="hero">
+        <div class="hero-container">
+          <div id="hero-text">
+            <h1>Discover Extraordinary Events Near You</h1>
+          </div>
+          <p id="hero-description">
+            From concerts to workshops, find and book tickets for the best
+            events happening around you.
+          </p>
+          <div>
+            <a href="#Explore" id="Explore" class="hero-buttons-exp"
+              >Explore Events</a
+            >
+            <a href="#how it works" id="HowitWork" class="hero-buttons-exp"
+              >How It Works</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="SrcBar">
+        <div id="srcBar-container">
+          <div>
+            <input
+              type="text"
+              placeholder="Search for events"
+              id="search-input" class="srcbar-element"
+            />
+          </div>
+            <div>
+              <select id="Location" class="srcbar-element">
+                <option value="Dhaka">Dhaka</option>
+                <option value="Barisal">Barisal</option>
+                <option value="Chitagong">Chitagong</option>
+                <option value="Khulna">Khulna</option>
+              </select>
+            </div>
+
+            <div>
+              <input class="srcbar-element"
+                type="date"
+                id="date"
+                name="date"
+                min="2023-01-01"
+                max="2025-12-31"
+              />
+            </div>
+            <div>
+              <button class="srcbar-element" id="search-button">Search</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

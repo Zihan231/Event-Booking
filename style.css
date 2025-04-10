@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.logo {
+  font-size: 1.5em;
+  font-family: "Brush Script MT", cursive;
+  color: #4f46e5;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+header {
+  background-color: rgb(255, 255, 255);
+  height: 72px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: sticky;
+  width: 100%;
+  top: 0;
+}
+nav li {
+  list-style-type: none;
+  display: inline;
+  font-family: sans-serif;
+  margin-right: 5px;
+}
+a {
+  text-decoration: none;
+  color: #6e6d74;
+  padding: 10px;
+  font-size: 17.5px;
+}
+header a:hover {
+  color: #4f46e5;
+  transition: all 0.1s ease-in-out;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.Blacktxt {
+  color: black;
+}
+#sgnUp {
+  background-color: #4f46e5;
+  color: white;
+  padding: 8px 16px;
+  margin-left: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: sans-serif;
+  height: 15px;
+  display: flex;
+  align-items: center;
+}
+#LogSing {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: sans-serif;
+}
+#sgnUp:hover {
+  background-color: rgba(79, 70, 229, 0.9);
+  transition: background-color 0.1s ease;
+}
+#hero {
+  height: 600px;
+  width: 100%;
+  background-image: url("Img/Hero_Img.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 3rem;
+}
+.hero-container {
+  text-align: left;
+  position: relative;
+  right: 200px;
+  height: 300px;
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 30px;
+}
+#hero-text {
+  font-size: 2.5rem;
+  font-family: sans-serif;
+  color: white;
+  text-align: left;
+  margin-bottom: 20px;
+}
+#hero-description {
+  font-size: 1.5rem;
+  color: white;
+  text-align: left;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.hero-buttons-exp {
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-size: 19px;
+  font-family: sans-serif;
+  height: 20px;
+  width: 140px;
+  margin: 0 10px 0 0px;
+}
+#Explore {
+  background-color: #4f46e5;
+  color: white;
+}
+#HowitWork {
+  background-color: #e8e8eb;
+  color: rgb(25, 24, 24);
+}
+#Explore:hover {
+  background-color: rgba(88, 80, 230, 0.9);
+  transition: background-color 0.1s ease;
+}
+#HowitWork:hover {
+  background-color: rgba(208, 207, 216, 0.9);
+  transition: background-color 0.1s ease;
+}
+
+#SrcBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 96px;
+  width: 1300px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  margin: 0 auto;
+  margin-top: -40px;
+}
+section div {
+  display: inline-block;
+}
+#srcBar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+#search-input {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: solid 2px #ccc;
+  padding-left: 10px;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+.srcbar-element {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: solid 2px #ccc;
+  padding-left: 10px;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+#search-button {
+  background-color: #4f46e5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: sans-serif;
+  border: none;
+  cursor: pointer;
+}
+#search-button:hover {
+  background-color: rgba(79, 70, 229, 0.9);
+  transition: background-color 0.1s ease;
+}
