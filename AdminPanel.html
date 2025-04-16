@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="Style_AdminPanel.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div>
+        <span class="logo">Eventify</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a class="Blacktxt" href="#home">Home</a></li>
+          <li><a class="Blacktxt" href="#about">Profile</a></li>
+          <li><a class="Blacktxt" href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div id="LogSing">
+        <a class="Blacktxt" href="#">Login</a>
+        <a class="Blacktxt" href="#" id="sgnUp">Logout</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="LeftSideBar">
+        <div id="FeatureButtons-container">
+          <div>
+            <a href="#">Add New Event</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="DispalyInfo">
+        <fieldset>
+          <legend>Add Event</legend>
+          <form action="#" method="" enctype="multipart/form-data">
+            <table>
+              <tr>
+                <td><label for="EntName">Event Name</label></td>
+                <td><input type="text" name="event_name" id="EntName" /></td>
+              </tr>
+              <tr>
+                <td><label for="EntDate">Event Date</label></td>
+                <td><input type="date" name="event_date" id="EntDate" /></td>
+              </tr>
+              <tr>
+                <td><label for="EntTime">Event Time</label></td>
+                <td><input type="time" name="event_time" id="EntTime" /></td>
+              </tr>
+              <tr>
+                <td><label for="EntLocation">Event Location</label></td>
+                <td>
+                  <input type="text" name="event_location" id="EntLocation" />
+                </td>
+              </tr>
+              <tr>
+                <td><label for="EntDescription">Event Description</label></td>
+                <td>
+                  <textarea
+                    name="event_description"
+                    id="EntDescription"
+                    cols="30"
+                    rows="5"
+                  ></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="EntImage">Event Image</label></td>
+                <td>
+                  <input
+                    type="file"
+                    name="event_image"
+                    id="EntImage"
+                    accept="image/*"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label for="EntType">Event Type</label></td>
+                <td>
+                  <select name="event_type" id="EntType">
+                    <option value="">--Select Type--</option>
+                    <option value="Music">Music</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Theatre">Theatre</option>
+                    <option value="Education">Education</option>
+                    <option value="Food & Drinks">Food & Drinks</option>
+                    <option value="Networking">Networking</option>
+                    <option value="Art & Crafts">Art & Crafts</option>
+                    <option value="Health & Wellness">Health & Wellness</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="EntPrice">Event Price</label></td>
+                <td>
+                  <input
+                    type="number"
+                    name="event_price"
+                    id="EntPrice"
+                    min="0"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label for="EntOrganizer">Event Organizer</label></td>
+                <td>
+                  <input type="text" name="event_organizer" id="EntOrganizer" />
+                </td>
+              </tr>
+              <tr>
+                <td><label for="EntContact">Event Contact</label></td>
+                <td>
+                  <input type="text" name="event_contact" id="EntContact" />
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <input type="submit" value="Add Event" />
+                  <p
+                    id="errorMsg"
+                    style="color: red; font-weight: bold; margin-top: 10px"
+                  ></p>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </fieldset>
+      </section>
+    </main>
+    <script src="AddEvent.js"></script>
+  </body>
+</html>
