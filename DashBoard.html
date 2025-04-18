@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="Style_DashBoard.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!--Header Section-->
+    <header>
+      <div id="LogoContainer">
+        <span class="logo">Eventify</span>
+        <span class="GrayTxt" id="AdminTxt">Admin</span>
+      </div>
+
+      <div id="ProfileContainer">
+        <a href="#" id="ProfileLink"
+          >Profile <span><i class="ri-user-3-line"></i></span
+        ></a>
+      </div>
+    </header>
+    <!--Header Section End-->
+
+    <!--Main Section-->
+    <main>
+      <section id="asideSection">
+        <aside>
+          <nav class="asideNav">
+            <ul>
+              <li>
+                <span><i class="ri-dashboard-line"></i></span>
+                <a href="#">Dashboard</a>
+              </li>
+              <li>
+                <span><i class="ri-calendar-event-line"></i></span
+                ><a href="#">Add Events</a>
+              </li>
+              <li>
+                <span><i class="ri-user-3-line"></i></span>
+                <a href="#">Users</a>
+              </li>
+              <li>
+                <span> <i class="ri-settings-2-line"></i> </span>
+                <a href="#">Settings</a>
+              </li>
+              <li id="logout">
+                <span><i class="ri-logout-circle-r-line"></i></span>
+                <a href="#">Logout</a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </section>
+      <!-- Main Content Area -->
+      <section id="mainContent">
+        <!-- Dashboard starts -->
+        <div class="contentHeader">
+          <h1>Dashboard Overview</h1>
+          <p>Welcome back! Here's what's happening with your events.</p>
+        </div>
+        <!-- Dashboard cards starts -->
+        <div class="DashboardCards">
+          <!-- Card 1 Total Tickets Sold-->
+          <div class="card">
+            <div class="cardLogo_Percent">
+              <span id="Tickets_icon_Bg" class="card_icon_BG"
+                ><i class="ri-ticket-line"></i
+              ></span>
+              <span class="Dashboard_cards_Percent" id="soldTicketPercent"
+                >+12.5%
+              </span>
+            </div>
+            <h3>1,250</h3>
+            <p>Total Tickets Sold</p>
+          </div>
+          <!-- Card 2 Active Events -->
+          <div class="card">
+            <div class="cardLogo_Percent">
+              <span id="Active_Event_BG" class="card_icon_BG"
+                ><i class="ri-calendar-event-line"></i
+              ></span>
+              <span id="Active_event_percent" class="Dashboard_cards_Percent"
+                >+12.5%
+              </span>
+            </div>
+            <h3>150</h3>
+            <p>Active Events</p>
+          </div>
+
+          <!-- Card 3 Revenue -->
+          <div class="card">
+            <div class="cardLogo_Percent">
+              <span id="Revenue_icon_BG" class="card_icon_BG"
+                ><i class="ri-money-dollar-circle-line"></i
+              ></span>
+              <span id="Revenue_percent" class="Dashboard_cards_Percent"
+                >+12.5%
+              </span>
+            </div>
+            <h3>$58,965</h3>
+            <p>Total Revenue</p>
+          </div>
+
+          <!-- Card 4 Total User -->
+          <div class="card">
+            <div class="cardLogo_Percent">
+              <span id="Total_User_icon_BG" class="card_icon_BG"
+                ><i class="ri-user-line"></i
+              ></span>
+              <span id="Total_user_percent" class="Dashboard_cards_Percent"
+                >+12.5%
+              </span>
+            </div>
+            <h3>15,500</h3>
+            <p>Total User</p>
+          </div>
+        </div>
+        <!-- Dashboard Cards End -->
+
+        <!-- Revenue stats & Sales Trend Starts -->
+        <div id="RevenueStats_SalesTrend_Container">
+          <!-- Revenue Stats Start -->
+          <div id="RevenueStatsContainer" class="RevenueStats_SalesTrendsCards">
+            <div id="RevenueStatsContainer_header">
+              <h3><i class="ri-bar-chart-line"></i> Revenue Stats</h3>
+              <span id="RevenueStatsContainer_header_links_Container">
+                <span class="RevenueStatsContainer_header_links"
+                  ><a href="#">Week</a></span
+                >
+                <span class="RevenueStatsContainer_header_links"
+                  ><a href="#">Year</a></span
+                >
+                <span class="RevenueStatsContainer_header_links"
+                  ><a href="#">Month</a></span
+                >
+              </span>
+            </div>
+
+            <div>
+              <img src="Img/Trends.jpg" alt="" id="RevenueStatsContainer_img" />
+            </div>
+          </div>
+          <!-- Revenue Stats Ends -->
+
+          <!-- Sales Trends Start -->
+          <div id="Sale_Trends_Container" class="RevenueStats_SalesTrendsCards">
+            <div id="RevenueStatsContainer_header">
+              <h3><i class="ri-line-chart-line"></i> Sales Trends</h3>
+              <span id="RevenueStatsContainer_header_links_Container">
+                <span class="RevenueStatsContainer_header_links"
+                  ><a href="#">Week</a></span
+                >
+                <span class="RevenueStatsContainer_header_links"
+                  ><a href="#">Year</a></span
+                >
+                <span class="RevenueStatsContainer_header_links"
+                  ><a href="#">Month</a></span
+                >
+              </span>
+            </div>
+
+            <div>
+              <img
+                src="Img/Sale_Trends.webp"
+                alt=""
+                id="RevenueStatsContainer_img"
+              />
+            </div>
+          </div>
+          <!-- Sales Trends Ends -->
+        </div>
+        <!-- Revenue stats & Sales Trend Starts -->
+      </section>
+    </main>
+  </body>
+</html>
