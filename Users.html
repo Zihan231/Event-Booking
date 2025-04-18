@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Style_Users.css" />
+  </head>
+  <body>
+    <!--Header Section-->
+    <header>
+      <div id="LogoContainer">
+        <span class="logo">Eventify</span>
+        <span class="GrayTxt" id="AdminTxt">Admin</span>
+      </div>
+
+      <div id="ProfileContainer">
+        <a href="Admin_Profile.html" id="ProfileLink"
+          >Profile <span><i class="ri-user-3-line"></i></span
+        ></a>
+      </div>
+    </header>
+    <!--Header Section End-->
+
+    <!--Side Bar-->
+    <main>
+      <section id="asideSection">
+        <aside>
+          <nav class="asideNav">
+            <ul>
+              <li>
+                <span><i class="ri-dashboard-line"></i></span>
+                <a href="DashBoard.html">Dashboard</a>
+              </li>
+              <li>
+                <span><i class="ri-calendar-event-line"></i></span
+                ><a href="Add_Event.html">Add Events</a>
+              </li>
+              <li id="Selected_Page">
+                <span><i class="ri-user-3-line"></i></span>
+                <a href="Users.html">Users</a>
+              </li>
+              <li>
+                <span> <i class="ri-settings-2-line"></i> </span>
+                <a href="#">Settings</a>
+              </li>
+              <li id="logout">
+                <span><i class="ri-logout-circle-r-line"></i></span>
+                <a href="index.html">Logout</a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+      </section>
+      <!-- Side Bar Ends -->
+
+      <!-- Main Content Area Stats -->
+      <section id="mainContent">
+        <div id="ManageUserHeader">
+          <h1>Manage All Users</h1>
+          <p>
+            Here you can manage all the registered users of Eventify. You can
+            view their details and also search for specific users.
+          </p>
+        </div>
+
+        <div id="Search_bar_container">
+          <input type="text" id="Search_bar" placeholder="Search Users" />
+          <button>Search <i class="ri-search-line"></i></button>
+        </div>
+        <div id="RecentUser">
+          <div id="RecentUserHeader">
+            <h1>Recently Registered Users</h1>
+            <span>
+              <label for="genderFilter">Filter by Gender: </label>
+              <select id="genderFilter">
+                <option value="">All</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </span>
+          </div>
+
+          <table id="RecentUserTable" border="1">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Gender</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Zihan</td>
+                <td>Zihan@gmail.com</td>
+                <td>+91 1234567890</td>
+                <td>Male</td>
+              </tr>
+              <tr>
+                <td>Ayesha</td>
+                <td>ayesha123@gmail.com</td>
+                <td>+91 9876543210</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>Rahul</td>
+                <td>rahul.kumar@email.com</td>
+                <td>+91 9988776655</td>
+                <td>Male</td>
+              </tr>
+              <tr>
+                <td>Sara</td>
+                <td>sara.ali@domain.com</td>
+                <td>+91 9123456789</td>
+                <td>Female</td>
+              </tr>
+              <tr>
+                <td>Imran</td>
+                <td>imran007@gmail.com</td>
+                <td>+91 8899776655</td>
+                <td>Male</td>
+              </tr>
+              <tr>
+                <td>Nisha</td>
+                <td>nisha.rani@webmail.com</td>
+                <td>+91 7766554433</td>
+                <td>Female</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
