@@ -144,10 +144,10 @@ nav {
 
 #SrcBar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 96px;
-  width: 1400px;
+  width: 1200px;
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
   margin: 0 auto;
@@ -163,11 +163,11 @@ nav {
 #srcBar-container {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 100%;
 }
 #search-input {
-  width: 300px;
+  width: 500px;
   height: 40px;
   border-radius: 5px;
   border: solid 2px #ccc;
@@ -194,6 +194,7 @@ nav {
   border: none;
   cursor: pointer;
 }
+
 #search-button:hover {
   background-color: rgba(79, 70, 229, 0.9);
   transition: background-color 0.1s ease;
@@ -654,7 +655,7 @@ nav {
   margin-bottom: 10px;
 }
 
-#Newsletter-Section p {
+.Newsletter-Description {
   color: #d7d8dc;
   font-size: 17px;
   margin-bottom: 30px;
@@ -693,7 +694,6 @@ nav {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 #newsletter-privacy p {
-  color: #d7d8dc;
   font-size: 14px;
 }
 
@@ -775,4 +775,13 @@ nav {
   padding-top: 20px;
   font-size: 14px;
   color: #6b7280;
+}
+
+/* Error MSG */
+#EmailError {
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
+  font-weight: 600;
 }

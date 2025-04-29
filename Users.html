@@ -63,16 +63,26 @@
       <section id="mainContent">
         <div id="ManageUserHeader">
           <h1>Manage All Users</h1>
-          <p>
+          <p id="ManageUserHeaderTxt">
             Here you can manage all the registered users of Eventify. You can
             view their details and also search for specific users.
           </p>
         </div>
 
-        <div id="Search_bar_container">
-          <input type="text" id="Search_bar" placeholder="Search Users" />
-          <button>Search <i class="ri-search-line"></i></button>
+        <div>
+          <form action="" onsubmit="return isValid()">
+            <div id="Search_bar_container">
+              <input
+                type="text"
+                id="Search_bar"
+                placeholder="Search Users by ID or User Name"
+              />
+              <button>Search <i class="ri-search-line"></i></button>
+            </div>
+            <p id="Search_bar_error" class="error_message"></p>
+          </form>
         </div>
+
         <div id="RecentUser">
           <div id="RecentUserHeader">
             <h1>Recently Registered Users</h1>
@@ -89,6 +99,7 @@
           <table id="RecentUserTable" border="1">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>Username</th>
                 <th>Email</th>
                 <th>Phone</th>
@@ -97,36 +108,42 @@
             </thead>
             <tbody>
               <tr>
+                <td>007</td>
                 <td>Zihan</td>
                 <td>Zihan@gmail.com</td>
                 <td>+91 1234567890</td>
                 <td>Male</td>
               </tr>
               <tr>
+                <td>007</td>
                 <td>Ayesha</td>
                 <td>ayesha123@gmail.com</td>
                 <td>+91 9876543210</td>
                 <td>Female</td>
               </tr>
               <tr>
+                <td>071</td>
                 <td>Rahul</td>
                 <td>rahul.kumar@email.com</td>
                 <td>+91 9988776655</td>
                 <td>Male</td>
               </tr>
               <tr>
+                <td>107</td>
                 <td>Sara</td>
                 <td>sara.ali@domain.com</td>
                 <td>+91 9123456789</td>
                 <td>Female</td>
               </tr>
               <tr>
+                <td>257</td>
                 <td>Imran</td>
                 <td>imran007@gmail.com</td>
                 <td>+91 8899776655</td>
                 <td>Male</td>
               </tr>
               <tr>
+                <td>684</td>
                 <td>Nisha</td>
                 <td>nisha.rani@webmail.com</td>
                 <td>+91 7766554433</td>
@@ -137,5 +154,6 @@
         </div>
       </section>
     </main>
+    <script src="AddUsers.js"></script>
   </body>
 </html>

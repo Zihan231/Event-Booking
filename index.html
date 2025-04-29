@@ -52,38 +52,21 @@
       <!-- Search Bar Section -->
       <section id="SrcBar">
         <div id="srcBar-container" class="srcbar-Div">
-          <div class="srcbar-Div">
-            <input
-              type="text"
-              placeholder="Search for events"
-              id="search-input"
-              class="srcbar-element"
-            />
-          </div>
+          <form action="" onsubmit="return isValidSearch()">
+            <div class="srcbar-Div">
+              <input
+                type="text"
+                placeholder="Search for events"
+                id="search-input"
+                class="srcbar-element"
+              />
+            </div>
 
-          <div class="srcbar-Div">
-            <select id="Location" class="srcbar-element">
-              <option value="Dhaka">Dhaka</option>
-              <option value="Barisal">Barisal</option>
-              <option value="Chitagong">Chitagong</option>
-              <option value="Khulna">Khulna</option>
-            </select>
-          </div>
-
-          <div class="srcbar-Div">
-            <input
-              class="srcbar-element"
-              type="date"
-              id="date"
-              name="date"
-              min="2023-01-01"
-              max="2025-12-31"
-            />
-          </div>
-
-          <div class="srcbar-Div">
-            <button class="srcbar-element" id="search-button">Search</button>
-          </div>
+            <div class="srcbar-Div">
+              <button class="srcbar-element" id="search-button">Search</button>
+            </div>
+          </form>
+          <p id="errorMessage" class="error-message"></p>
         </div>
       </section>
 
@@ -402,26 +385,29 @@
       <section id="Newsletter-Section">
         <div id="Newsletter-Header">
           <h2>Stay Updated with Eventify</h2>
-          <p>
+          <p class="Newsletter-Description">
             Subscribe to our newsletter for the latest events and exclusive
             offers.
           </p>
         </div>
         <div class="Newsletter-Container">
           <div>
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              id="newsletter-input"
-            />
-            <button id="newsletter-button">Subscribe</button>
+            <form action="" onsubmit="return isValidEmail()">
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                id="newsletter-input"
+              />
+              <button id="newsletter-button">Subscribe</button>
+            </form>
           </div>
 
           <div id="newsletter-privacy">
-            <p>
+             <p class="Newsletter-Description">
               By subscribing, you agree to our Privacy Policy and consent to
               receive updates from us.
             </p>
+            <p id="EmailError" class="error-message"></p>
           </div>
         </div>
       </section>
@@ -467,5 +453,6 @@
         </div>
       </footer>
     </main>
+    <script src="LandingPage.js"></script>
   </body>
 </html>

@@ -108,7 +108,7 @@ main {
   background-color: #fffefbeb;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.347);
 }
-#mainContent p {
+#ManageUserHeaderTxt {
   color: #fefefe;
 }
 #ManageUserHeader {
@@ -157,7 +157,7 @@ main {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
-} 
+}
 
 /* Table Styles */
 #RecentUserHeader {
@@ -192,4 +192,11 @@ main {
 
 #RecentUserTable tr:hover {
   background-color: #f1f1f1;
+}
+/* Error MSG */
+#Search_bar_error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
 }

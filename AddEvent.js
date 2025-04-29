@@ -1,64 +1,44 @@
-document.querySelector("form").onsubmit = function (e) {
-  if (!Validation()) {
-    e.preventDefault(); // stop form submission
-  }
-};
+function AddEvent_Validation() {
+  const EventName = document.getElementById("eventName").value;
+  const EventDate = document.getElementById("eventDate").value;
+  const EventTime = document.getElementById("eventTime").value;
+  const EventLocation = document.getElementById("eventLocation").value;
+  const EventDescription = document.getElementById("eventDescription").value;
+  const EventThumbnail = document.getElementById("eventImage").value;
+  const EventCategory = document.getElementById("eventCategory").value;
+  const Price = document.getElementById("eventPrice").value;
+  const capacity = document.getElementById("eventCapacity").value;
+  const EventVenue = document.getElementById("eventVenue").value;
 
-function Validation() {
-  const name = document.getElementById("EntName").value.trim();
-  const date = document.getElementById("EntDate").value;
-  const time = document.getElementById("EntTime").value;
-  const location = document.getElementById("EntLocation").value.trim();
-  const description = document.getElementById("EntDescription").value.trim();
-  const image = document.getElementById("EntImage").value;
-  const type = document.getElementById("EntType").value;
-  const price = document.getElementById("EntPrice").value;
-  const organizer = document.getElementById("EntOrganizer").value.trim();
-  const contact = document.getElementById("EntContact").value.trim();
+  let errorMsg = "";
 
-  const errorMsg = document.getElementById("errorMsg");
-
-  if (!name) {
-    errorMsg.textContent = "Please enter the event name.";
-    return false;
-  }
-  if (!date) {
-    errorMsg.textContent = "Please select the event date.";
-    return false;
-  }
-  if (!time) {
-    errorMsg.textContent = "Please select the event time.";
-    return false;
-  }
-  if (!location) {
-    errorMsg.textContent = "Please enter the event location.";
-    return false;
-  }
-  if (!description) {
-    errorMsg.textContent = "Please enter the event description.";
-    return false;
-  }
-  if (!image) {
-    errorMsg.textContent = "Please upload an event image.";
-    return false;
-  }
-  if (!type) {
-    errorMsg.textContent = "Please select the event type.";
-    return false;
-  }
-  if (price === "" || isNaN(price) || Number(price) < 0) {
-    errorMsg.textContent = "Please enter a valid event price (0 or higher).";
-    return false;
-  }
-  if (!organizer) {
-    errorMsg.textContent = "Please enter the event organizer.";
-    return false;
-  }
-  if (!contact || contact.length < 6) {
-    errorMsg.textContent = "Please enter a valid event contact.";
-    return false;
+  if (EventName === "") {
+    errorMsg = "Event name is required";
+  } else if (EventDate === "") {
+    errorMsg = "Event date is required";
+  } else if (EventTime === "") {
+    errorMsg = "Event time is required";
+  } else if (EventLocation === "") {
+    errorMsg = "Event location is required";
+  } else if (EventDescription === "") {
+    errorMsg = "Event description is required";
+  } else if (EventCategory === "") {
+    errorMsg = "Please select an event category";
+  } else if (EventThumbnail === "") {
+    errorMsg = "Event thumbnail is required";
+  } else if (Price === "" || Price < 0) {
+    errorMsg = "Event price must be a non-negative number";
+  } else if (capacity === "" || capacity < 1) {
+    errorMsg = "Event capacity must be at least 1";
+  } else if (EventVenue === "") {
+    errorMsg = "Venue details are required";
   }
 
-  errorMsg.textContent = ""; // Clear if everything is valid
-  return true;
+  if (errorMsg !== "") {
+    //alert(errorMsg);
+    document.getElementById("errorMessage").innerText = errorMsg;
+    return false; // prevent form submission
+  }
+
+  return true; // all good, allow submission
 }
