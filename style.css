@@ -5,6 +5,7 @@
 html {
   scroll-behavior: smooth;
 }
+/* Navigation Starts */
 .logo {
   font-size: 1.5em;
   font-family: "Brush Script MT", cursive;
@@ -78,6 +79,7 @@ nav {
   background-color: rgba(79, 70, 229, 0.9);
   transition: background-color 0.1s ease;
 }
+/* Navigation Ends */
 #hero {
   height: 600px;
   width: 100%;
@@ -473,6 +475,7 @@ nav {
   background-color: #dfddff;
 }
 
+/* how It works Section Starts */
 #HowitWork-Section {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
@@ -779,7 +782,7 @@ nav {
   font-size: 14px;
   color: #6b7280;
 }
-
+/* Footer Ends */
 /* Error MSG */
 #EmailError {
   color: rgb(0, 0, 0);
