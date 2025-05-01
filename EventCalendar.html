@@ -18,9 +18,9 @@
       </div>
       <nav>
         <ul>
-          <li><a class="Blacktxt" href="index.html">Home</a></li>
-          <li><a href="#about">Events</a></li>
-          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a class="ActivePage" href="#about">Events</a></li>
+          <li><a href="contactUs.html">Contact Us</a></li>
         </ul>
       </nav>
       <div id="LogSing">
@@ -36,18 +36,34 @@
         <h1>All Events</h1>
         <p>Explore a variety of events happening near you.</p>
       </div>
+      <!-- Search bar -->
+      <div id="SrcBar_filters">
+        <div id="SrcBar">
+          <form action="" onsubmit="return isValidSearch()">
+            <div id="srcBar-container" class="srcbar-Div">
+              <input
+                type="text"
+                placeholder="Search for events"
+                id="search-input"
+              />
+              <button id="search-button">Search</button>
+            </div>
+            <p id="errorMessage" class="error-message"></p>
+          </form>
+        </div>
 
-      <div id="filters">
-        <label for="FilterEvents">Filter:</label>
-        <select name="Filter" id="FilterEvents">
-          <option value="All">All Events</option>
-          <option value="LowToHigh">Price Low to High</option>
-          <option value="HighToLow">Price High to Low</option>
-          <option value="Recent">Most Recent</option>
-          <option value="Week">This Week</option>
-          <option value="Month">This Month</option>
-          <option value="Year">This Year</option>
-        </select>
+        <div id="Filter">
+          <label for="FilterEvents">Filter:</label>
+          <select name="Filter" id="FilterEvents">
+            <option value="All">All Events</option>
+            <option value="LowToHigh">Price Low to High</option>
+            <option value="HighToLow">Price High to Low</option>
+            <option value="Recent">Most Recent</option>
+            <option value="Week">This Week</option>
+            <option value="Month">This Month</option>
+            <option value="Year">This Year</option>
+          </select>
+        </div>
       </div>
 
       <div id="EventCardContainer">
@@ -72,7 +88,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Central Park
             </p>
-            <a href="#">Book Now</a>
+            <a href="EventDetails.html">Book Now</a>
           </div>
         </div>
         <!-- Event 2 -->
@@ -99,7 +115,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Central Park
             </p>
-            <a href="#">Book Now</a>
+            <a href="EventDetails.html">Book Now</a>
           </div>
         </div>
 
@@ -124,7 +140,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Central Park
             </p>
-            <a href="#">Book Now</a>
+            <a href="EventDetails.html">Book Now</a>
           </div>
         </div>
         <!-- Evnet 4 -->
@@ -148,7 +164,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Central Park
             </p>
-            <a href="#">Book Now</a>
+            <a href="EventDetails.html">Book Now</a>
           </div>
         </div>
         <!-- Event 5 -->
@@ -172,7 +188,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Central Park
             </p>
-            <a href="#">Book Now</a>
+            <a href="EventDetails.html">Book Now</a>
           </div>
         </div>
         <!-- Event 6 -->
@@ -196,7 +212,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Central Park
             </p>
-            <a href="#">Book Now</a>
+            <a href="EventDetails.html">Book Now</a>
           </div>
         </div>
         <!-- Event 7 -->
@@ -220,7 +236,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Central Park
             </p>
-            <a href="#">Book Now</a>
+            <a href="EventDetails.html">Book Now</a>
           </div>
         </div>
         <!-- Event 8 -->
@@ -244,7 +260,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Central Park
             </p>
-            <a href="#">Book Now</a>
+            <a href="EventDetails.html">Book Now</a>
           </div>
         </div>
         <!-- Event 9 -->
@@ -268,7 +284,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Central Park
             </p>
-            <a href="#">Book Now</a>
+            <a href="EventDetails.html">Book Now</a>
           </div>
         </div>
         <!-- Event 10 -->
@@ -292,7 +308,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Central Park
             </p>
-            <a href="#">Book Now</a>
+            <a href="EventDetails.html">Book Now</a>
           </div>
         </div>
         <!-- Event 11 -->
@@ -316,7 +332,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Central Park
             </p>
-            <a href="#">Book Now</a>
+            <a href="EventDetails.html">Book Now</a>
           </div>
         </div>
         <!-- Event 12 -->
@@ -340,7 +356,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Central Park
             </p>
-            <a href="#">Book Now</a>
+            <a href="EventDetails.html">Book Now</a>
           </div>
         </div>
         <!--1st Page's Events ends Here -->
@@ -399,6 +415,6 @@
         <p>&copy; 2025 Eventify. All rights reserved.</p>
       </div>
     </footer>
-    <script src="LandingPage.js"></script>
+    <script src="EventCalendar.js"></script>
   </body>
 </html>

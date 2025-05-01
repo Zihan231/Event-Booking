@@ -1,9 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 html {
   scroll-behavior: smooth;
@@ -29,6 +26,7 @@ header {
   width: 100%;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 nav li {
   list-style-type: none;
@@ -59,6 +57,9 @@ nav {
 }
 .Blacktxt {
   color: black;
+}
+.ActivePage {
+  color: #4f46e5;
 }
 #sgnUp {
   background-color: #4f46e5;
@@ -164,23 +165,67 @@ nav {
 }
 /* Footer Ends */
 
+/* Search Bar Starts */
+#SrcBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #4f46e5;
+  font-size: 16px;
+}
+#srcBar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 5px;
+}
+#search-button {
+  background-color: #4f46e5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+#search-button:hover {
+  background-color: rgba(79, 70, 229, 0.9);
+  transition: background-color 0.1s ease;
+}
+#errorMessage {
+  color: red;
+}
+/* Search bar ends */
+
+/* Filter Section Starts */
+#SrcBar_filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  padding: 10px;
+}
+/* Filter Section Ends */
+
 /* Main Section Starts */
 #Main-Section {
   margin: 10px 40px;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 #AllEventsHeader {
   text-align: center;
 }
 
-#filters {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
-  padding: 10px;
-}
 #EventCardContainer {
   display: flex;
   flex-direction: row;

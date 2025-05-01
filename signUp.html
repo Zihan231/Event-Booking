@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Registration</h2>
+      <p>Sign up now and get full access to our Event</p>
+      <br />
+
+      <form class="signup-form">
+        <div class="name-fields">
+          <input type="text" placeholder="First name" id="firstName" />
+          <input type="text" placeholder="Last name" id="lastName" />
+        </div>
+
+        <input type="email" placeholder="Email address" id="email" />
+
+        <div class="password-field">
+          <input type="password" placeholder="Password" id="password" />
+          <span class="toggle-eye" onclick="togglePassword('password')"
+            >👁️</span
+          >
+        </div>
+        <div id="passwordError" class="error"></div>
+
+        <div class="password-field">
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            id="confirmPassword"
+          />
+          <span class="toggle-eye" onclick="togglePassword('confirmPassword')"
+            >👁️</span
+          >
+        </div>
+        <div id="confirmPasswordError" class="error"></div>
+
+        <a
+          href="emailVarifation.html"
+          class="signup-btn"
+          onclick="return validationVerification()"
+          >Sign up</a
+        >
+
+        <div class="divider">Or, Sign up with</div>
+
+        <div class="social-buttons">
+          <a href="#" class="social google"
+            ><i class="fab fa-google"></i><span>Google</span></a
+          >
+          <a href="#" class="social facebook"
+            ><i class="fab fa-facebook-f"></i><span>Facebook</span></a
+          >
+          <a href="#" class="social apple"
+            ><i class="fab fa-apple"></i><span>Apple</span></a
+          >
+        </div>
+
+        <p class="terms">
+          By clicking "Sign up", you agree to EventBookings
+          <a href="#">Terms & Conditions</a> and have read the
+          <a href="#">Privacy Policy</a>.
+        </p>
+
+        <p class="login">
+          Already have an account? <a href="login.html">Log In</a>
+        </p>
+      </form>
+    </div>
+
+    <script src="signUp.js"></script>
+  </body>
+</html>
