@@ -16,13 +16,21 @@
       <p>Sign up now and get full access to our Event</p>
       <br />
 
-      <form class="signup-form">
+      <form
+        class="signup-form"
+        id="signupForm"
+        onsubmit="return formValidation()"
+      >
         <div class="name-fields">
           <input type="text" placeholder="First name" id="firstName" />
+          <div id="firstNameError" class="error"></div>
+
           <input type="text" placeholder="Last name" id="lastName" />
+          <div id="lastNameError" class="error"></div>
         </div>
 
         <input type="email" placeholder="Email address" id="email" />
+        <div id="emailError" class="error"></div>
 
         <div class="password-field">
           <input type="password" placeholder="Password" id="password" />
@@ -71,9 +79,7 @@
           <a href="#">Privacy Policy</a>.
         </p>
 
-        <p class="login">
-          Already have an account? <a href="login.html">Log In</a>
-        </p>
+        <p class="login">Already have an account? <a href="#">Log In</a></p>
       </form>
     </div>
 
