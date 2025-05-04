@@ -1,0 +1,80 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f4f4;
+    padding: 40px;
+    margin: 0;
+  }
+  
+  .ticket-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  
+  .ticket {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 250px;
+    transition: transform 0.2s;
+  }
+  
+  .ticket:hover {
+    transform: translateY(-5px);
+  }
+  
+  .ticket h3 {
+    margin-top: 0;
+    font-size: 22px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 8px;
+  }
+  
+  .price {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #2a9d8f;
+  }
+  
+  ul.amenities {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul.amenities li {
+    margin-bottom: 6px;
+  }
+  
+  .upgrade {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .upgrade label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+  }
+  
+  button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background-color: #2a9d8f;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background-color: #21867a;
+  }
+  
