@@ -20,3 +20,15 @@ function isValidEmail() {
     return true;
   }
 }
+document.getElementById("BookNowBtn_1").addEventListener("click", function () {
+  window.location.href = "./View/EventDetails.html";
+});
+document.getElementById("BookNowBtn_2").addEventListener("click", function () {
+  window.location.href = "./View/EventDetails.html";
+});
+document.getElementById("BookNowBtn_3").addEventListener("click", function () {
+  window.location.href = "./View/EventDetails.html";
+});
+document.getElementById("BookNowBtn_4").addEventListener("click", function () {
+  window.location.href = "./View/EventDetails.html";
+});

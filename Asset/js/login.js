@@ -25,7 +25,7 @@ function validateLogin() {
     return false;
   }
 
-  window.location.href = "DashBoard.html";
+  window.location.href = "../View/EventDetails.html";
   return false;
 }
 
