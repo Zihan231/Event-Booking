@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="Style_DashBoard.css" />
+    <link rel="stylesheet" href="../Asset/CSS/Style_DashBoard.css" />
+    <!-- <link rel="stylesheet" href="../Asset/CSS/Style_Users.css" /> -->
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -28,6 +29,7 @@
 
     <!--Main Section-->
     <main>
+      <!-- Side Bar Starts -->
       <section id="asideSection">
         <aside>
           <nav class="asideNav">
@@ -56,6 +58,8 @@
           </nav>
         </aside>
       </section>
+      <!-- Side bar Ends -->
+
       <!-- Main Content Area -->
       <section id="mainContent">
         <!-- Dashboard starts -->
@@ -142,7 +146,11 @@
             </div>
 
             <div>
-              <img src="Img/Trends.jpg" alt="" id="RevenueStatsContainer_img" />
+              <img
+                src="../Asset/Image/Trends.jpg"
+                alt=""
+                id="RevenueStatsContainer_img"
+              />
             </div>
           </div>
           <!-- Revenue Stats Ends -->
@@ -166,7 +174,7 @@
 
             <div>
               <img
-                src="Img/Sale_Trends.webp"
+                src="../Asset/Image/Sale_Trends.webp"
                 alt=""
                 id="RevenueStatsContainer_img"
               />
@@ -175,7 +183,121 @@
           <!-- Sales Trends Ends -->
         </div>
         <!-- Revenue stats & Sales Trend Starts -->
+
+        <!-- Recent User Starts -->
+        <div id="RecentUserContainer">
+          <div id="ManageUserHeader">
+            <h1>Manage Users</h1>
+            <p id="ManageUserHeaderTxt">
+              Manage the registered users of Eventify. You can view their
+              details and also search for specific users.
+            </p>
+          </div>
+          <!-- Search & Filter Starts -->
+          <div>
+            <form action="" onsubmit="return isValid()">
+              <div id="Search_bar_container">
+                <input
+                  type="text"
+                  id="Search_bar"
+                  placeholder="Search Users by ID or User Name"
+                />
+                <button>Search <i class="ri-search-line"></i></button>
+              </div>
+              <p id="Search_bar_error" class="error_message"></p>
+            </form>
+          </div>
+
+          <div id="RecentUser">
+            <div id="RecentUserHeader">
+              <h1>Recently Registered Users</h1>
+              <span>
+                <label for="genderFilter">Filter by Gender: </label>
+                <select id="genderFilter">
+                  <option value="">All</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </span>
+            </div>
+            <!-- Search & FIlter Ends -->
+
+            <!-- Recent User Table Starts -->
+            <table id="RecentUserTable" border="1">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Gender</th>
+                  <th>Update</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>007</td>
+                  <td>Zihan</td>
+                  <td>Zihan@gmail.com</td>
+                  <td>+91 1234567890</td>
+                  <td>Male</td>
+                  <td><a href="#edit-007">Edit</a></td>
+                </tr>
+                <tr>
+                  <td>007</td>
+                  <td>Ayesha</td>
+                  <td>ayesha123@gmail.com</td>
+                  <td>+91 9876543210</td>
+                  <td>Female</td>
+                  <td>
+                    <a href="#edit-007-ayesha">Edit</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>071</td>
+                  <td>Rahul</td>
+                  <td>rahul.kumar@email.com</td>
+                  <td>+91 9988776655</td>
+                  <td>Male</td>
+                  <td><a href="#edit-071">Edit</a></td>
+                </tr>
+                <tr>
+                  <td>107</td>
+                  <td>Sara</td>
+                  <td>sara.ali@domain.com</td>
+                  <td>+91 9123456789</td>
+                  <td>Female</td>
+                  <td><a href="#edit-107">Edit</a></td>
+                </tr>
+                <tr>
+                  <td>257</td>
+                  <td>Imran</td>
+                  <td>imran007@gmail.com</td>
+                  <td>+91 8899776655</td>
+                  <td>Male</td>
+                  <td><a href="#edit-257">Edit</a></td>
+                </tr>
+                <tr>
+                  <td>684</td>
+                  <td>Nisha</td>
+                  <td>nisha.rani@webmail.com</td>
+                  <td>+91 7766554433</td>
+                  <td>Female</td>
+                  <td><a href="#edit-684">Edit</a></td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- Recent User Table Ends -->
+            <div id="See_All_User_Btn_Container">
+              <a href="Users.html"
+                ><button id="See_All_User_Btn">See All Users</button></a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Recent User Ends -->
       </section>
     </main>
+    <script src="../Asset/js/AddUsers.js"></script>
   </body>
 </html>

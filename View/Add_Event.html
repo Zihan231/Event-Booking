@@ -9,7 +9,7 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="Style_AddEvent.css" />
+    <link rel="stylesheet" href="../Asset/CSS/Style_AddEvent.css" />
   </head>
   <body>
     <!--Header Section-->
@@ -20,7 +20,7 @@
       </div>
 
       <div id="ProfileContainer">
-        <a href="Admin_Profile.html" id="ProfileLink"
+        <a href="ProfileManagement.html" id="ProfileLink"
           >Profile <span><i class="ri-user-3-line"></i></span
         ></a>
       </div>
@@ -70,7 +70,12 @@
 
         <!-- form Start -->
         <div id="AddEventFormContainer">
-          <form action="add_Event.php" method="post" enctype="multipart/form-data">
+          <form
+            action=""
+            method="post"
+            enctype="multipart/form-data"
+            onclick="return AddEvent_Validation()"
+          >
             <div class="formGroup">
               <div>
                 <span>
@@ -199,6 +204,6 @@
       </section>
     </main>
 
-    <script src="AddEvent.js"></script>
+    <script src="../Asset/js/AddEvent.js"></script>
   </body>
 </html>

@@ -247,7 +247,8 @@ nav {
 }
 .eventCards img {
   width: 100%;
-  min-height: 220px;
+
+  height: 220px;
   object-fit: cover;
   border-radius: 5px;
 }

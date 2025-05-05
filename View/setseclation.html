@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Seat Booking</title>
+    <link rel="stylesheet" href="../Asset/CSS/setseclation.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <h2>Select Your Seat</h2>
+        <div id="seat-map" class="seat-map">
+          <!-- Rows -->
+          <div class="row">
+            <div id="A1" class="seat vip">A1</div>
+            <div id="A2" class="seat vip">A2</div>
+            <div class="gap"></div>
+            <div id="A3" class="seat vip">A3</div>
+            <div id="A4" class="seat vip">A4</div>
+          </div>
+
+          <div class="row">
+            <div id="B1" class="seat standard">B1</div>
+            <div id="B2" class="seat standard">B2</div>
+            <div class="gap"></div>
+            <div id="B3" class="seat standard">B3</div>
+            <div id="B4" class="seat standard">B4</div>
+          </div>
+
+          <div class="row">
+            <div id="C1" class="seat standard">C1</div>
+            <div id="C2" class="seat standard">C2</div>
+            <div class="gap"></div>
+            <div id="C3" class="seat standard">C3</div>
+            <div id="C4" class="seat standard">C4</div>
+          </div>
+
+          <div class="row">
+            <div id="D1" class="seat normal">D1</div>
+            <div id="D2" class="seat normal">D2</div>
+            <div class="gap"></div>
+            <div id="D3" class="seat normal">D3</div>
+            <div id="D4" class="seat normal">D4</div>
+          </div>
+
+          <div class="row">
+            <div id="E1" class="seat normal">E1</div>
+            <div id="E2" class="seat normal">E2</div>
+            <div class="gap"></div>
+            <div id="E3" class="seat normal">E3</div>
+            <div id="E4" class="seat normal">E4</div>
+          </div>
+
+          <div class="row">
+            <div id="F1" class="seat normal">F1</div>
+            <div id="F2" class="seat normal">F2</div>
+            <div class="gap"></div>
+            <div id="F3" class="seat normal">F3</div>
+            <div id="F4" class="seat normal">F4</div>
+          </div>
+
+          <div class="row">
+            <div id="G1" class="seat standard">G1</div>
+            <div id="G2" class="seat standard">G2</div>
+            <div id="G3" class="seat standard">G3</div>
+            <div id="G4" class="seat standard">G4</div>
+            <div id="G5" class="seat standard">G5</div>
+          </div>
+        </div>
+
+        <button id="bookBtn" class="book-btn" onclick="confirmBooking()">
+          Confirm Booking
+        </button>
+      </div>
+
+      <div class="right">
+        <div id="seat-status" class="seat-status">
+          <h3>Selected Seats:</h3>
+          <ul id="selected-seats-list"></ul>
+          <h3>Booked Seats:</h3>
+          <ul id="booked-seats-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="../Asset/js/setseclation.js"></script>
+  </body>
+</html>
