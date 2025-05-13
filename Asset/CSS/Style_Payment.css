@@ -167,13 +167,18 @@ nav {
 
 /* Main Payment Section */
 main.payment-section {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 60px auto;
-  padding: 40px;
+  padding: 0px;
   background-color: #ffffff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   font-family: sans-serif;
+}
+.container {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 main.payment-section h2 {
@@ -221,6 +226,74 @@ main.payment-section h2 {
   border: none;
   border-top: 1px solid #ccc;
 }
+/* Cuopon Section Starts */
+/* Coupon Section Starts */
+.coupon-section {
+  background-color: #ffffff;
+  padding: 25px;
+  margin-top: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  font-family: sans-serif;
+}
+
+.coupon-section label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.coupon-input-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.coupon-section input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  min-width: 180px;
+}
+
+.coupon-section button {
+  background-color: #4f46e5;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.coupon-section button:hover {
+  background-color: #4338ca;
+}
+
+.coupon-message {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4f46e5;
+  margin-top: 10px;
+  display: none;
+}
+
+.updated-total {
+  margin-top: 15px;
+  font-size: 17px;
+  color: #1f2937;
+  font-weight: 600;
+}
+/* Coupon Section Ends */
+
+
 /* Payment Type Dropdown */
 .payment-type {
   margin-bottom: 30px;

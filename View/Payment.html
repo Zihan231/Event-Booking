@@ -53,6 +53,28 @@
           </ul>
         </div>
 
+        <!-- Coupon Code Section (inside .payment-summary container, after Total) -->
+        <div class="coupon-section">
+          <label for="couponCode">Have a coupon?(Optional)</label>
+
+          <div class="coupon-input-group">
+            <input
+              type="text"
+              id="couponCode"
+              placeholder="Enter coupon code"
+            />
+            <button type="button" id="applyCouponBtn">Apply</button>
+          </div>
+
+          <p id="couponMessage" class="coupon-message">Coupon feedback</p>
+
+          <p class="updated-total" style="display: none">
+            <strong>Updated Total:</strong> $<span id="updatedTotal"
+              >200.00</span
+            >
+          </p>
+        </div>
+
         <!-- Payment Type Selection -->
         <div class="payment-type">
           <h3>Choose Payment Type</h3>
