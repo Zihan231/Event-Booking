@@ -8,10 +8,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="../Asset/CSS/signup.css" />
+    <link rel="stylesheet" href="../Asset/CSS/signup 2.css" />
   </head>
   <body>
     <div class="container">
+      <i
+        class="fas fa-arrow-left back-btn"
+        onclick="window.location.href='index.html'"
+      ></i>
       <h2>Registration</h2>
       <p>Sign up now and get full access to our Event</p>
       <br />
@@ -19,7 +23,7 @@
       <form
         class="signup-form"
         id="signupForm"
-        onsubmit="return formValidation()"
+        onsubmit="return validationVerification()"
       >
         <div class="name-fields">
           <input type="text" placeholder="First name" id="firstName" />
@@ -53,25 +57,11 @@
         <div id="confirmPasswordError" class="error"></div>
 
         <a
-          href="emailVarifation.html"
+          href="../View/emailVarifation 1.html"
           class="signup-btn"
           onclick="return validationVerification()"
           >Sign up</a
         >
-
-        <div class="divider">Or, Sign up with</div>
-
-        <div class="social-buttons">
-          <a href="#" class="social google"
-            ><i class="fab fa-google"></i><span>Google</span></a
-          >
-          <a href="#" class="social facebook"
-            ><i class="fab fa-facebook-f"></i><span>Facebook</span></a
-          >
-          <a href="#" class="social apple"
-            ><i class="fab fa-apple"></i><span>Apple</span></a
-          >
-        </div>
 
         <p class="terms">
           By clicking "Sign up", you agree to EventBookings
@@ -80,11 +70,11 @@
         </p>
 
         <p class="login">
-          Already have an account? <a href="login.html">Log In</a>
+          Already have an account? <a href="./login 1.html">Log In</a>
         </p>
       </form>
     </div>
 
-    <script src="../Asset/js/signUp.js"></script>
+    <script src="../Asset/js/signUp 2.js"></script>
   </body>
 </html>

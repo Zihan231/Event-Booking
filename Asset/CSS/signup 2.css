@@ -21,6 +21,16 @@ body {
   max-width: 450px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  font-size: 22px;
+  color: #999;
+  cursor: pointer;
 }
 
 h2 {
@@ -65,7 +75,7 @@ input[type="password"] {
 
 input:focus {
   outline: none;
-  border-color: #00c853;
+  border-color: #4f46e5;
 }
 
 .password-field {
@@ -95,70 +105,7 @@ input:focus {
 }
 
 .signup-btn:hover {
-  background-color: #00b249;
-}
-
-.divider {
-  text-align: center;
-  margin: 10px 0;
-  font-size: 14px;
-  color: #777;
-  position: relative;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  height: 1px;
-  background-color: #ddd;
-  position: absolute;
-  top: 50%;
-  width: 40%;
-}
-
-.divider::before {
-  left: 0;
-}
-
-.divider::after {
-  right: 0;
-}
-
-.social-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-@media (min-width: 500px) {
-  .social-buttons {
-    flex-direction: row;
-  }
-}
-
-.social {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: white;
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 14px;
-  transition: background-color 0.2s ease;
-  flex: 1;
-}
-
-.social:hover {
-  background-color: #f0f0f0;
-}
-
-.social i {
-  font-size: 18px;
+  background-color: #4f46e5;
 }
 
 .terms {
@@ -184,4 +131,10 @@ input:focus {
   color: #4f46e5;
   font-weight: bold;
   text-decoration: none;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }
