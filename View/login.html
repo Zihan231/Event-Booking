@@ -18,14 +18,14 @@
       ></i>
       <h2>LOGIN PAGE</h2>
 
-      <form class="login-form" id="loginForm" onsubmit="return validateLogin()">
+      <form class="login-form" id="loginForm" onsubmit="return validateLogin()"method="POST" action="../Controller/loginController.php" >
         <div>
-          <input type="email" placeholder="Email address" id="email" />
+          <input type="email" placeholder="Email address" id="email" name="email" />
           <div id="emailError" class="error"></div>
         </div>
 
         <div class="password-field">
-          <input type="password" placeholder="Password" id="password" />
+          <input type="password" placeholder="Password" id="password" name="password"/>
           <span class="toggle-eye" onclick="togglePassword()">👁️</span>
         </div>
         <div id="passwordError" class="error"></div>
@@ -43,12 +43,7 @@
           <a href="#">Forgot password?</a>
         </div>
 
-        <a
-          href="./DashBoard.html"
-          class="login-btn"
-          onclick="return validateLogin()"
-          >Log In</a
-        >
+       <button type="submit" class="login-btn">login</button>
 
         <p class="signup-link">
           Don't have an account? <a href="./signUp 2.html">Sign up</a>
