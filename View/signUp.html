@@ -22,7 +22,7 @@
 
       <form
         class="signup-form"
-        id="signupForm"
+        id="signupForm"method="POST" action="emailVarifation 1.html"
         onsubmit="return validationVerification()"
       >
         <div class="name-fields">
@@ -56,12 +56,7 @@
         </div>
         <div id="confirmPasswordError" class="error"></div>
 
-        <a
-          href="../View/emailVarifation 1.html"
-          class="signup-btn"
-          onclick="return validationVerification()"
-          >Sign up</a
-        >
+        <button class="signup-btn" type="submit">Sign up</button>
 
         <p class="terms">
           By clicking "Sign up", you agree to EventBookings
@@ -70,7 +65,7 @@
         </p>
 
         <p class="login">
-          Already have an account? <a href="./login 1.html">Log In</a>
+          Already have an account? <a href="./login.html">Log In</a>
         </p>
       </form>
     </div>

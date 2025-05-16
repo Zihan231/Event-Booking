@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+    header('location: login.html');
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +18,7 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../Asset/CSS/Style_UpdateUserInfo.Css" />
+    <link rel="stylesheet" href="../Asset/CSS/Style_TakeAction.css" />
   </head>
   <body>
     <!--Header Section-->
@@ -20,7 +29,7 @@
       </div>
 
       <div id="ProfileContainer">
-        <a href="ProfileManagement.html" id="ProfileLink"
+        <a href="ProfileManagement.php" id="ProfileLink"
           >Profile <span><i class="ri-user-3-line"></i></span
         ></a>
       </div>
@@ -35,15 +44,15 @@
             <ul>
               <li>
                 <span><i class="ri-dashboard-line"></i></span>
-                <a href="DashBoard.html">Dashboard</a>
+                <a href="DashBoard.php">Dashboard</a>
               </li>
               <li>
                 <span><i class="ri-calendar-event-line"></i></span
-                ><a href="Add_Event.html">Add Events</a>
+                ><a href="Add_Event.php">Add Events</a>
               </li>
               <li id="Selected_Page">
                 <span><i class="ri-user-3-line"></i></span>
-                <a href="Users.html">Users</a>
+                <a href="Users.php">Users</a>
               </li>
               <li>
                 <span> <i class="ri-settings-2-line"></i> </span>
@@ -68,7 +77,7 @@
             view their details and also search for specific users.
           </p>
         </div>
-
+        <!-- Search Bar Container Starts -->
         <div>
           <form action="" onsubmit="return isValid()">
             <div id="Search_bar_container">
@@ -82,6 +91,8 @@
             <p id="Search_bar_error" class="error_message"></p>
           </form>
         </div>
+        <!-- Search Bar Container Starts -->
+
         <div id="UpdateformContainer">
           <!-- User Info Section -->
           <div class="user-info-card">
@@ -104,59 +115,77 @@
             </div>
           </div>
 
-          <!-- Update Form -->
-          <form class="update-profile-form" onsubmit="return isValidInput()">
-            <h3>Edit Profile</h3>
-
-            <div class="form-group">
-              <label for="name">First Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Enter First name"
-              />
-              <div class="error" id="nameError"></div>
-            </div>
-            <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                placeholder="Enter Last name"
-              />
-              <div class="error" id="lastNameError"></div>
+          <!-- Action Grid Section -->
+          <div class="action-grid">
+            <!-- Ban User -->
+            <div class="action-card">
+              <h4>Ban User</h4>
+              <p>Immediately ban this user from accessing the platform.</p>
+              <button class="action-btn ban" onclick="banUser()">
+                Ban User
+              </button>
             </div>
 
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter email"
-              />
-              <div class="error" id="emailError"></div>
+            <!-- Suspend User -->
+            <div class="action-card">
+              <h4>Suspend User</h4>
+              <p>Suspend account for a set period of time.</p>
+              <select id="suspendDuration">
+                <option value="3">3 days</option>
+                <option value="7">7 days</option>
+                <option value="30">30 days</option>
+                <option value="90">90 days</option>
+              </select>
+              <button class="action-btn suspend" onclick="suspendUser()">
+                Suspend
+              </button>
             </div>
 
-            <div class="form-group">
-              <label for="password">New Password (optional) </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Enter new password"
-              />
-              <div class="error" id="passwordError"></div>
+            <!-- Delete Permanently -->
+            <div class="action-card">
+              <h4>Delete Permanently</h4>
+              <p>
+                Warning: This will remove the account and all data permanently.
+              </p>
+              <button class="action-btn delete" onclick="deleteUser()">
+                Delete
+              </button>
             </div>
 
-            <button type="submit" class="update-btn">Update Profile</button>
-            <p id="ErrorMsg_Update_Form"></p>
-          </form>
+            <!-- Change Role -->
+            <div class="action-card">
+              <h4>Change Role</h4>
+              <p>Upgrade or downgrade the user's role.</p>
+              <select id="changeRole">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
+              <button class="action-btn suspend" onclick="changeUserRole()">
+                Change Role
+              </button>
+            </div>
+
+            <!-- Send Warning -->
+            <div class="action-card">
+              <h4>Send Warning</h4>
+              <p>Send an official warning message to the user.</p>
+              <button class="action-btn ban" onclick="sendWarning()">
+                Send Warning
+              </button>
+            </div>
+
+            <!-- Lock Account -->
+            <div class="action-card">
+              <h4>Lock Account</h4>
+              <p>Lock the account until further verification is done.</p>
+              <button class="action-btn suspend" onclick="lockAccount()">
+                Lock Account
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </main>
-    <script src="../Asset/js/UpdateUserInfo.js"></script>
+    <script src="../Asset/js/TakeAction.js"></script>
   </body>
 </html>

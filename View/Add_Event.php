@@ -1,3 +1,12 @@
+<?php
+// include ("../Controller/loginController.php");
+session_start();
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+    header('location: login.html');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +29,7 @@
       </div>
 
       <div id="ProfileContainer">
-        <a href="ProfileManagement.html" id="ProfileLink"
+        <a href="ProfileManagement.php" id="ProfileLink"
           >Profile <span><i class="ri-user-3-line"></i></span
         ></a>
       </div>
@@ -35,7 +44,7 @@
             <ul>
               <li>
                 <span><i class="ri-dashboard-line"></i></span>
-                <a href="DashBoard.html">Dashboard</a>
+                <a href="DashBoard.php">Dashboard</a>
               </li>
               <li id="Selected_Page">
                 <span><i class="ri-calendar-event-line"></i></span
@@ -43,7 +52,7 @@
               </li>
               <li>
                 <span><i class="ri-user-3-line"></i></span>
-                <a href="Users.html">Users</a>
+                <a href="Users.php">Users</a>
               </li>
               <li>
                 <span> <i class="ri-settings-2-line"></i> </span>

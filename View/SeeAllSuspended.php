@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+    header('location: login.html');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +28,7 @@
       </div>
 
       <div id="ProfileContainer">
-        <a href="ProfileManagement.html" id="ProfileLink"
+        <a href="ProfileManagement.php" id="ProfileLink"
           >Profile <span><i class="ri-user-3-line"></i></span
         ></a>
       </div>
@@ -35,15 +43,15 @@
             <ul>
               <li>
                 <span><i class="ri-dashboard-line"></i></span>
-                <a href="DashBoard.html">Dashboard</a>
+                <a href="DashBoard.php">Dashboard</a>
               </li>
               <li>
                 <span><i class="ri-calendar-event-line"></i></span
-                ><a href="Add_Event.html">Add Events</a>
+                ><a href="Add_Event.php">Add Events</a>
               </li>
               <li id="Selected_Page">
                 <span><i class="ri-user-3-line"></i></span>
-                <a href="Users.html">Users</a>
+                <a href="Users.php">Users</a>
               </li>
               <li>
                 <span> <i class="ri-settings-2-line"></i> </span>
@@ -73,17 +81,17 @@
           <div class="user-stats-card">
             <h3 id="TotalUser">Total Users</h3>
             <p id="lockedCount">5</p>
-            <a href="./Users.html" class="see-all-link">See All</a>
+            <a href="./Users.php" class="see-all-link">See All</a>
           </div>
           <div class="user-stats-card">
             <h3 id="Banned">Banned Users</h3>
             <p id="bannedCount">12</p>
-            <a href="./SeeAllBanned.html" class="see-all-link">See All</a>
+            <a href="./SeeAllBanned.php" class="see-all-link">See All</a>
           </div>
           <div class="user-stats-card">
             <h3 id="Suspended">Suspended Users</h3>
             <p id="suspendedCount">8</p>
-            <a href="./SeeAllSuspended.html" class="see-all-link">See All</a>
+            <a href="./SeeAllSuspended.php" class="see-all-link">See All</a>
           </div>
         </div>
 

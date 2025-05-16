@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+    header('location: login.html');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +17,7 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../Asset/CSS/Style_Users.css" />
+    <link rel="stylesheet" href="../Asset/CSS/Style_SeeAllBannedUser.css" />
   </head>
   <body>
     <!--Header Section-->
@@ -20,7 +28,7 @@
       </div>
 
       <div id="ProfileContainer">
-        <a href="ProfileManagement.html" id="ProfileLink"
+        <a href="ProfileManagement.php" id="ProfileLink"
           >Profile <span><i class="ri-user-3-line"></i></span
         ></a>
       </div>
@@ -35,15 +43,15 @@
             <ul>
               <li>
                 <span><i class="ri-dashboard-line"></i></span>
-                <a href="DashBoard.html">Dashboard</a>
+                <a href="DashBoard.php">Dashboard</a>
               </li>
               <li>
                 <span><i class="ri-calendar-event-line"></i></span
-                ><a href="Add_Event.html">Add Events</a>
+                ><a href="Add_Event.php">Add Events</a>
               </li>
               <li id="Selected_Page">
                 <span><i class="ri-user-3-line"></i></span>
-                <a href="Users.html">Users</a>
+                <a href="Users.php">Users</a>
               </li>
               <li>
                 <span> <i class="ri-settings-2-line"></i> </span>
@@ -73,17 +81,17 @@
           <div class="user-stats-card">
             <h3 id="TotalUser">Total Users</h3>
             <p id="lockedCount">5</p>
-            <a href="#RecentUserTable" class="see-all-link">See All</a>
+            <a href="./Users.php" class="see-all-link">See All</a>
           </div>
           <div class="user-stats-card">
             <h3 id="Banned">Banned Users</h3>
             <p id="bannedCount">12</p>
-            <a href="./SeeAllBanned.html" class="see-all-link">See All</a>
+            <a href="./SeeAllBanned.php" class="see-all-link">See All</a>
           </div>
           <div class="user-stats-card">
             <h3 id="Suspended">Suspended Users</h3>
             <p id="suspendedCount">8</p>
-            <a href="./SeeAllSuspended.html" class="see-all-link">See All</a>
+            <a href="./SeeAllSuspended.php" class="see-all-link">See All</a>
           </div>
         </div>
 
@@ -103,7 +111,7 @@
 
         <div id="RecentUser">
           <div id="RecentUserHeader">
-            <h1>All Registered Users</h1>
+            <h1>All Banned Users</h1>
             <span>
               <label for="genderFilter">Filter by Gender: </label>
               <select id="genderFilter">
@@ -122,7 +130,6 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Gender</th>
-                <th>Update</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -133,8 +140,7 @@
                 <td>Zihan@gmail.com</td>
                 <td>+91 1234567890</td>
                 <td>Male</td>
-                <td><a href="./Update_User_info.html">Edit</a></td>
-                <td><a class="Action" href="./TakeAction.html">Action</a></td>
+                <td><button class="unban-button">Unban</button></td>
               </tr>
               <tr>
                 <td>007</td>
@@ -142,10 +148,7 @@
                 <td>ayesha123@gmail.com</td>
                 <td>+91 9876543210</td>
                 <td>Female</td>
-                <td>
-                  <a href="./Update_User_info.html">Edit</a>
-                </td>
-                <td><a class="Action" href="./TakeAction.html">Action</a></td>
+                <td><button class="unban-button">Unban</button></td>
               </tr>
               <tr>
                 <td>071</td>
@@ -153,8 +156,7 @@
                 <td>rahul.kumar@email.com</td>
                 <td>+91 9988776655</td>
                 <td>Male</td>
-                <td><a href="./Update_User_info.html">Edit</a></td>
-                <td><a class="Action" href="./TakeAction.html">Action</a></td>
+                <td><button class="unban-button">Unban</button></td>
               </tr>
               <tr>
                 <td>107</td>
@@ -162,8 +164,7 @@
                 <td>sara.ali@domain.com</td>
                 <td>+91 9123456789</td>
                 <td>Female</td>
-                <td><a href="./Update_User_info.html">Edit</a></td>
-                <td><a class="Action" href="./TakeAction.html">Action</a></td>
+                <td><button class="unban-button">Unban</button></td>
               </tr>
               <tr>
                 <td>257</td>
@@ -171,8 +172,7 @@
                 <td>imran007@gmail.com</td>
                 <td>+91 8899776655</td>
                 <td>Male</td>
-                <td><a href="./Update_User_info.html">Edit</a></td>
-                <td><a class="Action" href="./TakeAction.html">Action</a></td>
+                <td><button class="unban-button">Unban</button></td>
               </tr>
               <tr>
                 <td>684</td>
@@ -180,14 +180,13 @@
                 <td>nisha.rani@webmail.com</td>
                 <td>+91 7766554433</td>
                 <td>Female</td>
-                <td><a href="./Update_User_info.html">Edit</a></td>
-                <td><a class="Action" href="./TakeAction.html">Action</a></td>
+                <td><button class="unban-button">Unban</button></td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
     </main>
-    <script src="../Asset/js/AddUsers.js"></script>
+    <script src="../Asset/js/AllBannedUser.js"></script>
   </body>
 </html>

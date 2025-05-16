@@ -1,6 +1,11 @@
-<!-- <?php
+
+<?php
 session_start();
-?> -->
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+    header('location: login.html');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,13 +28,13 @@ session_start();
       <nav>
         <ul>
           <li><a  href="../index.html">Home</a></li>
-          <li><a class="ActivePage" href="../View/EventCalendar.html">Events</a></li>
-          <li><a href="../View/contactUs 1.html">Contact Us</a></li>
+          <li><a class="ActivePage" href="../View/EventCalendar.php">Events</a></li>
+          <li><a href="../View/contactUs.html">Contact Us</a></li>
         </ul>
       </nav>
       <div id="LogSing">
-        <a class="Blacktxt" href="./login 1.html">Login</a>
-        <a href="./signUp 2.html" id="sgnUp">Sign Up</a>
+        <a class="Blacktxt" href="./login.html">Login</a>
+        <a href="./signUp.html" id="sgnUp">Sign Up</a>
       </div>
     </header>
     <!-- Header Ends -->
@@ -87,7 +92,7 @@ session_start();
                             id="AddToCartBtn" href="">Add to Cart</a>
                     </div> -->
             <div id="CartAndBookNow_Btn_Container">
-              <a id="BookNowBTN" href="ticketType.html">Book Now</a>
+              <a id="BookNowBTN" href="ticketType.php">Book Now</a>
             </div>
           </div>
         </div>
@@ -106,13 +111,13 @@ session_start();
           <div class="footer-column">
             <h4>Company</h4>
             <ul>
-              <li><a href="./contactUs 1.html">Contact</a></li>
+              <li><a href="./contactUs.html">Contact</a></li>
             </ul>
           </div>
           <div class="footer-column">
             <h4>Support</h4>
             <ul>
-              <li><a href="./Refund.html">Refund Policy</a></li>
+              <li><a href="./Refund.php">Refund Policy</a></li>
             </ul>
           </div>
           <div class="footer-column">

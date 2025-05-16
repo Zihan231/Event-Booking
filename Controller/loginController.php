@@ -7,10 +7,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = trim($_POST['password']);
 
     if ($email == "" || $password == "") {
-        $_SESSION["status"] = true;
+     
         header('Location: ../View/login.html');
+        
     } else if ($email == $password) {
-        header('Location: ../View/DashBoard.html');
+           $_SESSION["status"] = true;
+        header('Location: ../View/DashBoard.php');
+        
     } else {
         echo "Invalid user..!";
     }

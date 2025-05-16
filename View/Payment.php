@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+    header('location: login.html');
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,13 +24,13 @@
       <nav>
         <ul>
           <li><a class="ActivePage" href="../index.html">Home</a></li>
-          <li><a href="./EventCalendar.html">Events</a></li>
-          <li><a href="./View/contactUs 1.html">Contact Us</a></li>
+          <li><a href="./EventCalendar.php">Events</a></li>
+          <li><a href="./View/contactUs.html">Contact Us</a></li>
         </ul>
       </nav>
       <div id="LogSing">
-        <a class="Blacktxt" href="./View/login 1.html">Login</a>
-        <a href="./View/signUp 2.html" id="sgnUp">Sign Up</a>
+        <a class="Blacktxt" href="./View/login.html">Login</a>
+        <a href="./View/signUp.html" id="sgnUp">Sign Up</a>
       </div>
     </header>
     <!-- Header Ends -->
@@ -144,13 +153,13 @@
           <div class="footer-column">
             <h4>Company</h4>
             <ul>
-              <li><a href="./View/contactUs 1.html">Contact</a></li>
+              <li><a href="./View/contactUs.html">Contact</a></li>
             </ul>
           </div>
           <div class="footer-column">
             <h4>Support</h4>
             <ul>
-              <li><a href="./View/Refund.html">Refund Policy</a></li>
+              <li><a href="./View/Refund.php">Refund Policy</a></li>
             </ul>
           </div>
           <div class="footer-column">

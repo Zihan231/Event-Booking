@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+    header('location: login.html');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +44,7 @@
               <li>Event Materials</li>
             </ul>
             <br />
-            <button><a href="./setseclation.html">Select Standard</a></button>
+            <button><a href="./setseclation.php">Select Standard</a></button>
           </div>
           <div class="ticket-card">
             <h3>VIP</h3>
@@ -47,7 +55,7 @@
               <li>Exclusive Workshops</li>
               <li>Event Materials</li>
             </ul>
-            <button><a href="./setseclation.html">Select VIP</a></button>
+            <button><a href="./setseclation.php">Select VIP</a></button>
           </div>
           <div class="ticket-card">
             <h3>Group (5+)</h3>
@@ -58,7 +66,7 @@
               <li>Group Discount</li>
               <li>Event Materials</li>
             </ul>
-            <button><a href="./setseclation.html">Select Group</a></button>
+            <button><a href="./setseclation.php">Select Group</a></button>
           </div>
         </div>
       </div>

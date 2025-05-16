@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+    header('location: login.html');
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,13 +28,13 @@
       <nav>
         <ul>
           <li><a href="../index.html ">Home</a></li>
-          <li><a class="ActivePage" href="./EventCalendar.html">Events</a></li>
-          <li><a href="./contactUs 1.html">Contact Us</a></li>
+          <li><a class="ActivePage" href="./EventCalendar.php">Events</a></li>
+          <li><a href="./contactUs.html">Contact Us</a></li>
         </ul>
       </nav>
       <div id="LogSing">
         <a class="Blacktxt" href="./login 1.html">Login</a>
-        <a href="./signUp 2.html" id="sgnUp">Sign Up</a>
+        <a href="./signUp.html" id="sgnUp">Sign Up</a>
       </div>
     </header>
     <!-- Header Ends -->
@@ -89,7 +98,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Sunset Arena
             </p>
-            <a href="EventDetails.html">Book Now</a>
+            <a href="EventDetails.php">Book Now</a>
           </div>
         </div>
 
@@ -116,7 +125,7 @@
               <span><i class="ri-map-pin-line"></i></span>Location: National
               Stadium
             </p>
-            <a href="./WaitingList.html">Book Now</a>
+            <a href="./WaitingList.php">Book Now</a>
           </div>
         </div>
 
@@ -140,7 +149,7 @@
               <span><i class="ri-map-pin-line"></i></span>Location: City
               Convention Hall
             </p>
-            <a href="EventDetails.html">Book Now</a>
+            <a href="EventDetails.php">Book Now</a>
           </div>
         </div>
 
@@ -164,7 +173,7 @@
               <span><i class="ri-map-pin-line"></i></span>Location: Riverside
               Walk
             </p>
-            <a href="EventDetails.html">Book Now</a>
+            <a href="EventDetails.php">Book Now</a>
           </div>
         </div>
 
@@ -191,7 +200,7 @@
               <span><i class="ri-map-pin-line"></i></span>Location: Art Street
               Market
             </p>
-            <a href="EventDetails.html">Book Now</a>
+            <a href="EventDetails.php">Book Now</a>
           </div>
         </div>
 
@@ -215,7 +224,7 @@
               <span><i class="ri-map-pin-line"></i></span>Location: Grand
               Theatre
             </p>
-            <a href="EventDetails.html">Book Now</a>
+            <a href="EventDetails.php">Book Now</a>
           </div>
         </div>
 
@@ -239,7 +248,7 @@
               <span><i class="ri-map-pin-line"></i></span>Location: Tech Hub
               Center
             </p>
-            <a href="EventDetails.html">Book Now</a>
+            <a href="EventDetails.php">Book Now</a>
           </div>
         </div>
 
@@ -262,7 +271,7 @@
             <p>
               <span><i class="ri-map-pin-line"></i></span>Location: Sky Dome
             </p>
-            <a href="EventDetails.html">Book Now</a>
+            <a href="EventDetails.php">Book Now</a>
           </div>
         </div>
 
@@ -286,7 +295,7 @@
               <span><i class="ri-map-pin-line"></i></span>Location: Community
               Center
             </p>
-            <a href="EventDetails.html">Book Now</a>
+            <a href="EventDetails.php">Book Now</a>
           </div>
         </div>
 
@@ -310,7 +319,7 @@
               <span><i class="ri-map-pin-line"></i></span>Location: Hillside
               Winery
             </p>
-            <a href="EventDetails.html">Book Now</a>
+            <a href="EventDetails.php">Book Now</a>
           </div>
         </div>
 
@@ -334,7 +343,7 @@
               <span><i class="ri-map-pin-line"></i></span>Location: Digital
               Learning Center
             </p>
-            <a href="EventDetails.html">Book Now</a>
+            <a href="EventDetails.php">Book Now</a>
           </div>
         </div>
 
@@ -361,7 +370,7 @@
               <span><i class="ri-map-pin-line"></i></span>Location: Victory
               Stadium
             </p>
-            <a href="EventDetails.html">Book Now</a>
+            <a href="EventDetails.php">Book Now</a>
           </div>
         </div>
 
@@ -395,13 +404,13 @@
           <div class="footer-column">
             <h4>Company</h4>
             <ul>
-              <li><a href="./contactUs 1.html">Contact</a></li>
+              <li><a href="./contactUs.html">Contact</a></li>
             </ul>
           </div>
           <div class="footer-column">
             <h4>Support</h4>
             <ul>
-              <li><a href="./Refund.html">Refund Policy</a></li>
+              <li><a href="./Refund.php">Refund Policy</a></li>
             </ul>
           </div>
           <div class="footer-column">
