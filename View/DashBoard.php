@@ -1,5 +1,4 @@
 <?php
-// include ("../Controller/loginController.php");
 session_start();
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
     header('location: login.html');
@@ -31,7 +30,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
 
       <div id="ProfileContainer">
         <a href="ProfileManagement.php" id="ProfileLink"
-          >Profile <span><i class="ri-user-3-line"></i></span
+          >profile <span><i class="ri-user-3-line"></i></span
         ></a>
       </div>
     </header>
@@ -62,7 +61,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               </li>
               <li id="logout">
                 <span><i class="ri-logout-circle-r-line"></i></span>
-                <a href="../index.html">Logout</a>
+                <a href="../Controller/logoutController.php">Logout</a>
               </li>
             </ul>
           </nav>
