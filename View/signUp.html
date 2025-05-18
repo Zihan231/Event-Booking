@@ -22,22 +22,22 @@
 
       <form
         class="signup-form"
-        id="signupForm"method="POST" action="emailVarifation 1.html"
+        id="signupForm" method="POST" action="../Controller/signUpController.php"
         onsubmit="return validationVerification()"
       >
         <div class="name-fields">
-          <input type="text" placeholder="First name" id="firstName" />
+          <input type="text" placeholder="First name" id="firstName" name="firstName"/>
           <div id="firstNameError" class="error"></div>
 
-          <input type="text" placeholder="Last name" id="lastName" />
+          <input type="text" placeholder="Last name" id="lastName" name="lastName"/>
           <div id="lastNameError" class="error"></div>
         </div>
 
-        <input type="email" placeholder="Email address" id="email" />
+        <input type="email" placeholder="Email address" id="email" name="email"/>
         <div id="emailError" class="error"></div>
 
         <div class="password-field">
-          <input type="password" placeholder="Password" id="password" />
+          <input type="password" placeholder="Password" id="password" name="password" />
           <span class="toggle-eye" onclick="togglePassword('password')"
             >👁️</span
           >
@@ -48,7 +48,7 @@
           <input
             type="password"
             placeholder="Confirm Password"
-            id="confirmPassword"
+            id="confirmPassword" name="confirmPassword"
           />
           <span class="toggle-eye" onclick="togglePassword('confirmPassword')"
             >👁️</span
