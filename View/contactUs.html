@@ -14,7 +14,7 @@
     <div class="contact-container" id="form-container">
       <i
         class="fas fa-arrow-left back-icon"
-        onclick="window.location.href='../index.html' "
+        onclick="window.location.href='../index.html'"
       ></i>
       <h2>Contact Us</h2>
       <p>
@@ -22,22 +22,27 @@
         to you as soon as possible.
       </p>
       <div id="error" class="error" style="display: none"></div>
-      <form class="contact-form" id="contact-form">
+      <form class="contact-form" id="contact-form" method="post" onsubmit="return validationContact()">
         <div class="input-group">
-          <input type="text" name="name" placeholder="Full Name" />
+          <input type="text" name="name" placeholder="Full Name" id="fullname"/>
+          <div id="fullNameError" class="error"></div>
         </div>
         <div class="input-group">
-          <input type="email" name="email" placeholder="Email Address" />
+          <input type="email" name="email" placeholder="Email Address" id="email" />
+          <div id="emailError" class="error"></div>
         </div>
         <div class="input-group">
-          <input type="text" name="subject" placeholder="Subject" />
+          <input type="text" name="subject" placeholder="Subject" id="subject"/>
+          <div id="subjectError" class="error"></div>
         </div>
         <div class="input-group">
           <textarea
             name="message"
+            id="message"
             rows="5"
             placeholder="Your Message"
           ></textarea>
+          <div id="messageError" class="error"></div> <!-- Added error div for message -->
         </div>
         <button type="submit" class="submit-btn">Send Message</button>
       </form>

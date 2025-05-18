@@ -48,7 +48,9 @@
     }
 
     function validateLogin() {
-      const isValid = emailValidation() && passwordValidation() && roleValidation();
+      const isValid = emailValidation() &&
+       passwordValidation() && 
+       roleValidation();
       return isValid;
     }
 

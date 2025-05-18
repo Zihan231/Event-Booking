@@ -78,7 +78,10 @@
     }
 
     function validationVerification() {
-      const isValid = fNameValidation() && lNameValidation() && emailValidation() && passwordValidation();
+      const isValid = fNameValidation() &&
+        lNameValidation() && 
+       emailValidation() && 
+       passwordValidation();
       return isValid;
     }
 

@@ -1,46 +1,64 @@
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const errorDiv = document.getElementById('error');
-  const name = document.querySelector('input[name="name"]').value.trim();
-  const email = document.querySelector('input[name="email"]').value.trim();
-  const subject = document.querySelector('input[name="subject"]').value.trim();
-  const message = document.querySelector('textarea[name="message"]').value.trim();
+function fNameValidation() {
+    const fullName = document.getElementById('fullname').value.trim();
+    const fullNameError = document.getElementById('fullNameError');
+    if (fullName === '') {
+        fullNameError.innerHTML = 'Full name is required';
+        fullNameError.style.color = 'red';
+        return false;
+    } else {
+        fullNameError.innerHTML = '';
+        return true;
+    }
+}
 
- 
-  errorDiv.textContent = '';
-  errorDiv.style.display = 'none';
+function emailValidation() {
+    const email = document.getElementById('email').value.trim();
+    const emailError = document.getElementById('emailError');
+    if (email === '') {
+        emailError.innerHTML = 'Email is required';
+        emailError.style.color = 'red';
+        return false;
+    } else if (!(email.includes('@') && email.includes('.'))) {
+        emailError.innerHTML = 'Invalid email';
+        emailError.style.color = 'red';
+        return false;
+    } else {
+        emailError.innerHTML = '';
+        return true;
+    }
+}
 
-  if (!name) {
-    errorDiv.textContent = 'Full Name is required.';
-    errorDiv.style.display = 'block';
-    return;
-  }
+function subjectValidation() {
+    const subject = document.getElementById('subject').value.trim();
+    const subjectError = document.getElementById('subjectError');
+    if (subject === '') {
+        subjectError.innerHTML = 'Subject is required';
+        subjectError.style.color = 'red';
+        return false;
+    } else {
+        subjectError.innerHTML = '';
+        return true;
+    }
+}
 
-  if (!email) {
-    errorDiv.textContent = 'Email Address is required.';
-    errorDiv.style.display = 'block';
-    return;
-  }
+function messageValidation() {
+    const message = document.getElementById('message').value.trim();
+    const messageError = document.getElementById('messageError'); 
+    if (message === '') {
+        messageError.innerHTML = 'Message is required';
+        messageError.style.color = 'red';
+        return false;
+    } else {
+        messageError.innerHTML = '';
+        return true;
+    }
+}
 
-  const atIndex = email.indexOf('@');
-  const dotIndex = email.lastIndexOf('.');
-  if (atIndex < 1 || dotIndex < atIndex + 2 || dotIndex >= email.length - 1) {
-    errorDiv.textContent = 'Please enter a valid email address.';
-    errorDiv.style.display = 'block';
-    return;
-  }
-
-  if (!subject) {
-    errorDiv.textContent = 'Subject is required.';
-    errorDiv.style.display = 'block';
-    return;
-  }
-
-  if (!message) {
-    errorDiv.textContent = 'Your Message is required.';
-    errorDiv.style.display = 'block';
-    return;
-  }
-
-  console.log('Form validated successfully:', { name, email, subject, message });
-});
+function validationContact() {
+    const isValid =
+        fNameValidation() &&
+        emailValidation() &&
+        subjectValidation() &&
+        messageValidation();
+    return isValid;
+}
