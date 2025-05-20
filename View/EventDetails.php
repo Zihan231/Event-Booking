@@ -74,7 +74,7 @@ $row = mysqli_fetch_array($result);
           </div>
           <!-- <div id="CartAndBookNow_Btn_Container"> <a
                             id="BookNowBTN" href="ticketType.html">Book Now</a> <a id="BookNowBTN"
-                            href="login.html?redirect=EventDetails.php">Book Now</a> <a
+                            href="login.php?redirect=EventDetails.php">Book Now</a> <a
                             id="AddToCartBtn" href="">Add to Cart</a>
                     </div> -->
           <div id="CartAndBookNow_Btn_Container">

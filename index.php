@@ -38,7 +38,7 @@ $result = mysqli_query($conn, $Sql);
                                         echo "none";
                                       } ?>;">
       <a class="Blacktxt" href="./View/login.php">Login</a>
-      <a href="./View/signUp.html" id="sgnUp">Sign Up</a>
+      <a href="./View/signUp.php" id="sgnUp">Sign Up</a>
     </div>
     <div style="display: <?php if (!isset($_SESSION["status"])) {
                             echo "none";
