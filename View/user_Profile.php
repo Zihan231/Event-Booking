@@ -1,4 +1,8 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $currentPage = basename($_SERVER['SCRIPT_NAME']); // This gets the current page name
 ?>
 
@@ -23,9 +27,13 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']); // This gets the current page 
       <li><a class="<?= $currentPage == 'contactUs.php' ? 'ActivePage' : '' ?>" href="./contactUs.php">Contact Us</a></li>
     </ul>
   </nav>
-  <div id="LogSing">
-    <a class="Blacktxt <?= $currentPage == 'login.php' ? 'ActivePage' : '' ?>" href="./login.php">Login</a>
-    <a class="<?= $currentPage == 'signUp.php' ? 'ActivePage' : '' ?>" href="./signUp.php" id="sgnUp">Sign Up</a>
+  <div id="LogSing" style="display: <?php if (isset($_SESSION["status"])){ echo "none"; } ?>;">
+    <a class="Blacktxt <?= $currentPage == 'login.html' ? 'ActivePage' : '' ?>" href="./login.html">Login</a>
+    <a class="<?= $currentPage == 'signUp.html' ? 'ActivePage' : '' ?>" href="./signUp.html" id="sgnUp">Sign Up</a>
+  </div>
+  <div style="display: <?php if (!isset($_SESSION["status"])){ echo "none"; } ?>;">
+    <span><a class="<?= $currentPage == 'user_Profile.php' ? 'ActivePage' : '' ?>" href="./user_Profile.php">Profile</a></span>
+    <span><a href="../Controller/logoutController.php">Logout</a></span>
   </div>
 </header>
     <!-- header in end -->

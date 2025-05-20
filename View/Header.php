@@ -25,7 +25,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     <a class="<?= $currentPage == 'signUp.html' ? 'ActivePage' : '' ?>" href="./signUp.html" id="sgnUp">Sign Up</a>
   </div>
   <div style="display: <?php if (!isset($_SESSION["status"])){ echo "none"; } ?>;">
-    <span><a href="#">Profile</a></span>
+    <span><a href="./user_Profile.php">Profile</a></span>
     <span><a href="../Controller/logoutController.php">Logout</a></span>
   </div>
 </header>
