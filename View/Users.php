@@ -60,11 +60,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               </li>
               <li id="logout">
                 <span><i class="ri-logout-circle-r-line"></i></span>
-<<<<<<< HEAD
                 <a href="../Controller/logoutController.php">Logout</a>
-=======
-                <a href="../index.php">Logout</a>
->>>>>>> 98998809df8d74c54336cb156444c976ebbf61f3
               </li>
             </ul>
           </nav>
