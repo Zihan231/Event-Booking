@@ -66,7 +66,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']); // This gets the current page 
           </div>
 
           <!-- Update Form -->
-          <form class="update-profile-form" onsubmit="return isValidInput()">
+          <form class="update-profile-form" method="POST" onsubmit="return validation()">
             <h3>Edit Profile</h3>
 
             <div class="form-group">
@@ -118,7 +118,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']); // This gets the current page 
         </div>
       </section>
     </main>
-    <!-- <script src="../Asset/js/UpdateUserInfo.js"></script> -->
+    <script src="../Asset/js/user_Profile.js"></script>
       <!-- Footer Section -->
   <footer id="Footer-Section">
     <div class="footer-container">
