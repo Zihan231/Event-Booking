@@ -20,10 +20,10 @@ function validationPassword(){
     $password=$_POST['password'];
     $confirmPassword=$_POST['confirmPassword'];
     if($password ===""||$confirmPassword===""){
-        header('location: ../View/signUp.html');
+        header('location: ../View/signUp.php');
     }
     else if($password == $confirmPassword){
-        header('location: ../View/emailVarifation 1.html');
+        header('location: ../View/emailVarifation.php');
     }
     else{
         echo "invalid user..!";

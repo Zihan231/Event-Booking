@@ -36,6 +36,6 @@ if (isset($_POST["AddEvent"]) && $_SESSION['status'] == true) {
         }
     }
 } else {
-    header('location: ../view/login.html');
+    header('location: ../view/login.php');
     exit();
 }
