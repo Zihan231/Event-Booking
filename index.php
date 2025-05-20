@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 include("./Model//DataBase.php");
 $Sql = "SELECT * FROM events ORDER BY E_ID DESC LIMIT 4;";
 $result = mysqli_query($conn, $Sql);
@@ -31,9 +34,17 @@ $result = mysqli_query($conn, $Sql);
         <li><a href="./View/contactUs.html">Contact Us</a></li>
       </ul>
     </nav>
-    <div id="LogSing">
+    <div id="LogSing" style="display: <?php if (isset($_SESSION["status"])) {
+                                        echo "none";
+                                      } ?>;">
       <a class="Blacktxt" href="./View/login.html">Login</a>
       <a href="./View/signUp.html" id="sgnUp">Sign Up</a>
+    </div>
+    <div style="display: <?php if (!isset($_SESSION["status"])) {
+                            echo "none";
+                          } ?>;">
+      <span><a href="#">Profile</a></span>
+      <span><a href="./Controller/logoutController.php">Logout</a></span>
     </div>
   </header>
   <!-- header Ends -->

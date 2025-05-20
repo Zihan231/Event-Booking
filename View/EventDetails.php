@@ -72,9 +72,9 @@ $row = mysqli_fetch_array($result);
             <i class="ri-star-fill"></i>
             <i class="ri-star-half-fill"></i>
           </div>
-          <!-- <div id="CartAndBookNow_Btn_Container"> <?php if (isset($_SESSION['user_id'])): ?> <a
-                            id="BookNowBTN" href="ticketType.html">Book Now</a> <?php else: ?> <a id="BookNowBTN"
-                            href="login.html?redirect=EventDetails.php">Book Now</a> <?php endif; ?> <a
+          <!-- <div id="CartAndBookNow_Btn_Container"> <a
+                            id="BookNowBTN" href="ticketType.html">Book Now</a> <a id="BookNowBTN"
+                            href="login.html?redirect=EventDetails.php">Book Now</a> <a
                             id="AddToCartBtn" href="">Add to Cart</a>
                     </div> -->
           <div id="CartAndBookNow_Btn_Container">

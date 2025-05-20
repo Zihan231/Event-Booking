@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
   header('location: login.html');
   exit();
@@ -14,13 +16,17 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Payment</title>
+  <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
   <link rel="stylesheet" href="../Asset/CSS/Style_Payment.css" />
 </head>
 
 <body>
   <!-- Header Starts -->
   <?php
-  include("./View/Header.php");
+  include("../View/Header.php");
   ?>
   <!-- Header Ends -->
 
