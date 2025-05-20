@@ -6,7 +6,6 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -67,7 +66,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
         </aside>
       </section>
       <!-- Side Bar Ends -->
-
+             
       <!-- Main Content Area Stats -->
       <section id="mainContent">
         <div id="ManageUserHeader">
@@ -92,6 +91,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
           </form>
         </div>
         <div id="UpdateformContainer">
+
           <!-- User Info Section -->
           <div class="user-info-card">
             <h2>User Information</h2>
