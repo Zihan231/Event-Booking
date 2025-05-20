@@ -456,10 +456,10 @@ nav {
   color: #6e6d74;
   font-weight: 600;
 }
-.Featured-button {
+.Featured-button  {
   background-color: white;
   color: #4f46e5; /* Purple text */
-  padding: 12px 24px;
+  padding: 12px 18px;
   border: 2px solid #4f46e5;
   border-radius: 8px;
   font-size: 16px;
@@ -467,11 +467,12 @@ nav {
   font-weight: 600;
   cursor: pointer;
   margin-top: 16px;
-  height: 40px;
+  height: 20px;
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 }
 
 .Featured-button:hover {
@@ -480,14 +481,46 @@ nav {
   box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
 }
 
-#sports-tag {
-  color: #f97316;
-  background-color: #fef1e7;
-}
 #Music-tag {
-  color: #4f46e5;
+  color: #4f46e5; /* Indigo */
   background-color: #dfddff;
 }
+
+#sports-tag {
+  color: #f97316; /* Orange */
+  background-color: #fef1e7;
+}
+
+#theatre-tag {
+  color: #9333ea; /* Purple */
+  background-color: #f3e8ff;
+}
+
+#education-tag {
+  color: #15803d; /* Dark Green */
+  background-color: #dcfce7;
+}
+
+#food-tag {
+  color: #db2777; /* Rose */
+  background-color: #ffe4f2;
+}
+
+#networking-tag {
+  color: #0ea5e9; /* Sky Blue */
+  background-color: #e0f7ff;
+}
+
+#art-tag {
+  color: #b45309; /* Amber */
+  background-color: #fff7e6;
+}
+
+#health-tag {
+  color: #10b981; /* Teal/Green */
+  background-color: #e6f7f2;
+}
+
 
 /* how It works Section Starts */
 #HowitWork-Section {

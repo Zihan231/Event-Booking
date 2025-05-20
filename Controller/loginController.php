@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
     } else if ($email == $password) {
            $_SESSION["status"] = true;
+           $_SESSION["email"]= $email;
         header('Location: ../View/DashBoard.php');
         
     } else {

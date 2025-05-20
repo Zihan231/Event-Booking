@@ -1,67 +1,54 @@
 <?php
-session_start();
-if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
-    header('location: login.html');
-    exit();
-}
-?>
+include("../Model/DataBase.php");
 
+$sql = "SELECT COUNT(*) AS total FROM events";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$totalEvents = $row['total'];
+
+$eventsPerPage = 12;
+$totalPages = ceil($totalEvents / $eventsPerPage);
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+$offset = ($page - 1) * $eventsPerPage;
+
+$sql = "SELECT * FROM events LIMIT $eventsPerPage OFFSET $offset"; //if Offset=12 so 12 rows will be skiped and Limit = 12 so only 12 rows will be shown
+$result = mysqli_query($conn, $sql);
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eventify</title>
-    <link rel="stylesheet" href="../Asset/CSS/Style_EventCalender.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- Header Starts -->
-    <header>
-      <div>
-        <span class="logo">Eventify</span>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="../index.html ">Home</a></li>
-          <li><a class="ActivePage" href="./EventCalendar.php">Events</a></li>
-          <li><a href="./contactUs.html">Contact Us</a></li>
-        </ul>
-      </nav>
-      <div id="LogSing">
-        <a class="Blacktxt" href="./login 1.html">Login</a>
-        <a href="./signUp.html" id="sgnUp">Sign Up</a>
-      </div>
-    </header>
-    <!-- Header Ends -->
 
-    <!-- Main Starts -->
-    <main id="Main-Section">
-      <div id="AllEventsHeader">
-        <h1>All Events</h1>
-        <p>Explore a variety of events happening near you.</p>
-      </div>
-      <!-- Search bar -->
-      <div id="SrcBar_filters">
-        <div id="SrcBar">
-          <form action="" onsubmit="return isValidSearch()">
-            <div id="srcBar-container" class="srcbar-Div">
-              <input
-                type="text"
-                placeholder="Search for events"
-                id="search-input"
-              />
-              <button id="search-button">Search</button>
-            </div>
-            <p id="errorMessage" class="error-message"></p>
-          </form>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventify</title>
+  <link rel="stylesheet" href="../Asset/CSS/Style_EventCalender.css?v11.0" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet" />
+</head>
 
-        <div id="Filter">
+<body>
+  <!-- Header Starts -->
+  <?php
+  $_SESSION["Active"] = "ActivePage";
+  include("../View/Header.php");
+  ?>
+  <!-- Header Ends -->
+
+  <!-- Main Starts -->
+  <main id="Main-Section">
+    <div id="AllEventsHeader">
+      <h1>All Events</h1>
+      <p>Explore a variety of events happening near you.</p>
+    </div>
+    <!-- Search bar -->
+    <div id="SrcBar_filters">
+      <div id="SrcBar">
+        <form method="GET">
           <label for="FilterEvents">Filter:</label>
           <select name="Filter" id="FilterEvents">
             <option value="All">All Events</option>
@@ -72,362 +59,103 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
             <option value="Month">This Month</option>
             <option value="Year">This Year</option>
           </select>
-        </div>
+        </form>
       </div>
-
-      <div id="EventCardContainer">
-        <!-- Event 1 -->
-        <div class="eventCards">
-          <img
-            src="../Asset/Image/Featured_Img_1.jpg"
-            alt="Music Festival Image"
-          />
-          <div class="EventDescription">
-            <div id="EventTagContainer">
-              <span class="EventTag" id="music-tag">Music</span>
-              <span class="price">49$</span>
-            </div>
-            <h2>Jazz Night Live</h2>
-            <p>Enjoy smooth jazz with top local artists!</p>
-            <p>
-              <span><i class="ri-calendar-line"></i></span>Date: 18th Nov 2025
-            </p>
-            <p>
-              <span><i class="ri-time-line"></i></span>6:30pm
-            </p>
-            <p>
-              <span><i class="ri-map-pin-line"></i></span>Location: Sunset Arena
-            </p>
-            <a href="EventDetails.php">Book Now</a>
-          </div>
-        </div>
-
-        <!-- Event 2 -->
-        <div class="eventCards">
-          <img
-            src="../Asset/Image/uefa-champions-league-stadium-0rqhq348gkv25lxg.jpg"
-            alt="Music Festival Image"
-          />
-          <div class="EventDescription">
-            <div id="EventTagContainer">
-              <span class="EventTag" id="sports-tag">Sports</span>
-              <span class="price">89$</span>
-            </div>
-            <h2>World Cup Qualifier</h2>
-            <p>Watch top teams clash for a place in the finals.</p>
-            <p>
-              <span><i class="ri-calendar-line"></i></span>Date: 10th Oct 2025
-            </p>
-            <p>
-              <span><i class="ri-time-line"></i></span>7:00pm
-            </p>
-            <p>
-              <span><i class="ri-map-pin-line"></i></span>Location: National
-              Stadium
-            </p>
-            <a href="./WaitingList.php">Book Now</a>
-          </div>
-        </div>
-
-        <!-- Event 3 -->
-        <div class="eventCards">
-          <img src="../Asset/Image/Education.jpg" alt="Education Image" />
-          <div class="EventDescription">
-            <div id="EventTagContainer">
-              <span class="EventTag" id="Education-tag">Education</span>
-              <span class="price">20$</span>
-            </div>
-            <h2>STEM Career Expo</h2>
-            <p>Explore future tech careers and network with pros.</p>
-            <p>
-              <span><i class="ri-calendar-line"></i></span>Date: 3rd Sep 2025
-            </p>
-            <p>
-              <span><i class="ri-time-line"></i></span>11:00am
-            </p>
-            <p>
-              <span><i class="ri-map-pin-line"></i></span>Location: City
-              Convention Hall
-            </p>
-            <a href="EventDetails.php">Book Now</a>
-          </div>
-        </div>
-
-        <!-- Event 4 -->
-        <div class="eventCards">
-          <img src="../Asset/Image/FoodDrinks.jpg" alt="Music Festival Image" />
-          <div class="EventDescription">
-            <div id="EventTagContainer">
-              <span class="EventTag" id="foodDrinks-tag">Food & Drinks</span>
-              <span class="price">35$</span>
-            </div>
-            <h2>Street Food Carnival</h2>
-            <p>Indulge in flavors from around the world.</p>
-            <p>
-              <span><i class="ri-calendar-line"></i></span>Date: 1st Dec 2025
-            </p>
-            <p>
-              <span><i class="ri-time-line"></i></span>5:00pm
-            </p>
-            <p>
-              <span><i class="ri-map-pin-line"></i></span>Location: Riverside
-              Walk
-            </p>
-            <a href="EventDetails.php">Book Now</a>
-          </div>
-        </div>
-
-        <!-- Event 5 -->
-        <div class="eventCards">
-          <img
-            src="../Asset/Image/Arts and crafts.jpg"
-            alt="Music Festival Image"
-          />
-          <div class="EventDescription">
-            <div id="EventTagContainer">
-              <span class="EventTag" id="art-tag">Art & crafts</span>
-              <span class="price">15$</span>
-            </div>
-            <h2>Handmade Art Bazaar</h2>
-            <p>Discover unique crafts and handmade gifts.</p>
-            <p>
-              <span><i class="ri-calendar-line"></i></span>Date: 8th Dec 2025
-            </p>
-            <p>
-              <span><i class="ri-time-line"></i></span>10:00am
-            </p>
-            <p>
-              <span><i class="ri-map-pin-line"></i></span>Location: Art Street
-              Market
-            </p>
-            <a href="EventDetails.php">Book Now</a>
-          </div>
-        </div>
-
-        <!-- Event 6 -->
-        <div class="eventCards">
-          <img src="../Asset/Image/Theatre 2.jpg" alt="Music Festival Image" />
-          <div class="EventDescription">
-            <div id="EventTagContainer">
-              <span class="EventTag" id="Theater-tag">Theater</span>
-              <span class="price">40$</span>
-            </div>
-            <h2>Romeo & Juliet</h2>
-            <p>A modern twist on Shakespeare’s classic play.</p>
-            <p>
-              <span><i class="ri-calendar-line"></i></span>Date: 14th Nov 2025
-            </p>
-            <p>
-              <span><i class="ri-time-line"></i></span>8:00pm
-            </p>
-            <p>
-              <span><i class="ri-map-pin-line"></i></span>Location: Grand
-              Theatre
-            </p>
-            <a href="EventDetails.php">Book Now</a>
-          </div>
-        </div>
-
-        <!-- Event 7 -->
-        <div class="eventCards">
-          <img src="../Asset/Image/Business.jpg" alt="Music Festival Image" />
-          <div class="EventDescription">
-            <div id="EventTagContainer">
-              <span class="EventTag" id="Networking-tag">Networking</span>
-              <span class="price">25$</span>
-            </div>
-            <h2>Startup Meet 2025</h2>
-            <p>Connect with investors and entrepreneurs.</p>
-            <p>
-              <span><i class="ri-calendar-line"></i></span>Date: 22nd Nov 2025
-            </p>
-            <p>
-              <span><i class="ri-time-line"></i></span>3:00pm
-            </p>
-            <p>
-              <span><i class="ri-map-pin-line"></i></span>Location: Tech Hub
-              Center
-            </p>
-            <a href="EventDetails.php">Book Now</a>
-          </div>
-        </div>
-
-        <!-- Event 8 -->
-        <div class="eventCards">
-          <img src="../Asset/Image/Concert.jpg" alt="Music Festival Image" />
-          <div class="EventDescription">
-            <div id="EventTagContainer">
-              <span class="EventTag" id="music-tag">Music</span>
-              <span class="price">69$</span>
-            </div>
-            <h2>Indie Rock Bash</h2>
-            <p>Rock out to your favorite indie bands live!</p>
-            <p>
-              <span><i class="ri-calendar-line"></i></span>Date: 17th Dec 2025
-            </p>
-            <p>
-              <span><i class="ri-time-line"></i></span>9:00pm
-            </p>
-            <p>
-              <span><i class="ri-map-pin-line"></i></span>Location: Sky Dome
-            </p>
-            <a href="EventDetails.php">Book Now</a>
-          </div>
-        </div>
-
-        <!-- Event 9 -->
-        <div class="eventCards">
-          <img src="../Asset/Image/Health.jpg" alt="Music Festival Image" />
-          <div class="EventDescription">
-            <div id="EventTagContainer">
-              <span class="EventTag" id="Health-tag">Health</span>
-              <span class="price">10$</span>
-            </div>
-            <h2>Wellness Fair 2025</h2>
-            <p>Learn how to live a healthier lifestyle.</p>
-            <p>
-              <span><i class="ri-calendar-line"></i></span>Date: 30th Oct 2025
-            </p>
-            <p>
-              <span><i class="ri-time-line"></i></span>1:00pm
-            </p>
-            <p>
-              <span><i class="ri-map-pin-line"></i></span>Location: Community
-              Center
-            </p>
-            <a href="EventDetails.php">Book Now</a>
-          </div>
-        </div>
-
-        <!-- Event 10 -->
-        <div class="eventCards">
-          <img src="../Asset/Image/FoodDrinks.jpg" alt="Music Festival Image" />
-          <div class="EventDescription">
-            <div id="EventTagContainer">
-              <span class="EventTag" id="foodDrinks-tag">foods & Drinks</span>
-              <span class="price">30$</span>
-            </div>
-            <h2>Wine & Cheese Night</h2>
-            <p>Taste the finest wines and gourmet cheeses.</p>
-            <p>
-              <span><i class="ri-calendar-line"></i></span>Date: 6th Dec 2025
-            </p>
-            <p>
-              <span><i class="ri-time-line"></i></span>7:30pm
-            </p>
-            <p>
-              <span><i class="ri-map-pin-line"></i></span>Location: Hillside
-              Winery
-            </p>
-            <a href="EventDetails.php">Book Now</a>
-          </div>
-        </div>
-
-        <!-- Event 11 -->
-        <div class="eventCards">
-          <img src="../Asset/Image/Education.jpg" alt="Music Festival Image" />
-          <div class="EventDescription">
-            <div id="EventTagContainer">
-              <span class="EventTag" id="Education-tag">Education</span>
-              <span class="price">22$</span>
-            </div>
-            <h2>AI in Future Learning</h2>
-            <p>Discover how AI is shaping the classrooms of tomorrow.</p>
-            <p>
-              <span><i class="ri-calendar-line"></i></span>Date: 12th Nov 2025
-            </p>
-            <p>
-              <span><i class="ri-time-line"></i></span>2:00pm
-            </p>
-            <p>
-              <span><i class="ri-map-pin-line"></i></span>Location: Digital
-              Learning Center
-            </p>
-            <a href="EventDetails.php">Book Now</a>
-          </div>
-        </div>
-
-        <!-- Event 12 -->
-        <div class="eventCards">
-          <img
-            src="../Asset/Image/uefa-champions-league-stadium-0rqhq348gkv25lxg.jpg"
-            alt="Music Festival Image"
-          />
-          <div class="EventDescription">
-            <div id="EventTagContainer">
-              <span class="EventTag" id="sports-tag">Sports</span>
-              <span class="price">95$</span>
-            </div>
-            <h2>Night of Champions</h2>
-            <p>Experience the thrill of championship glory.</p>
-            <p>
-              <span><i class="ri-calendar-line"></i></span>Date: 29th Nov 2025
-            </p>
-            <p>
-              <span><i class="ri-time-line"></i></span>8:45pm
-            </p>
-            <p>
-              <span><i class="ri-map-pin-line"></i></span>Location: Victory
-              Stadium
-            </p>
-            <a href="EventDetails.php">Book Now</a>
-          </div>
-        </div>
-
-        <!--1st Page's Events ends Here -->
+      <div id="Filter">
+        <label for="FilterEvents">Filter:</label>
+        <select name="Filter" id="FilterEvents">
+          <option value="All">All Events</option>
+          <option value="LowToHigh">Price Low to High</option>
+          <option value="HighToLow">Price High to Low</option>
+          <option value="Recent">Most Recent</option>
+          <option value="Week">This Week</option>
+          <option value="Month">This Month</option>
+          <option value="Year">This Year</option>
+        </select>
       </div>
-      <div id="PaginationContainer">
-        <div class="pagination">
-          <a href="#">&laquo;</a>
-          <a href="#" class="active">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#">5</a>
-          <a href="#">&raquo;</a>
-        </div>
-      </div>
-      <!-- Event Container Ends -->
-    </main>
+    </div>
 
-    <!-- main Ends -->
-    <!-- Footer Section -->
+    <!-- Events stars -->
+    <div id="EventCardContainer">
 
-    <!-- Footer Section -->
-    <footer id="Footer-Section">
-      <div class="footer-container">
-        <div class="footer-brand">
-          <h3>Eventify</h3>
-          <p>Your gateway to unforgettable events and experiences.</p>
-        </div>
-        <div class="footer-links">
-          <div class="footer-column">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="./contactUs.html">Contact</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Support</h4>
-            <ul>
-              <li><a href="./Refund.php">Refund Policy</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Follow Us</h4>
-            <div class="social-icons">
-              <a href="#"><i class="ri-facebook-fill"></i></a>
-              <a href="#"><i class="ri-twitter-x-line"></i></a>
-              <a href="#"><i class="ri-instagram-line"></i></a>
-              <a href="#"><i class="ri-youtube-line"></i></a>
+      <?php
+      if (mysqli_num_rows($result) == 0) {
+        echo "No Events Found.";
+      } else {
+        while ($row = mysqli_fetch_assoc($result)) {
+      ?>
+
+          <!-- Events -->
+          <div class="eventCards">
+            <img src="../Asset/Image/<?php echo $row['Thumbnail']; ?>" alt="Event Thumbnail">
+
+            <div class="EventDescription">
+              <div id="EventTagContainer">
+                <span class="EventTag" id="music-tag"><?php echo $row["E_Category"]; ?></span>
+                <span class="price"><?php echo $row["E.Price"]; ?>$</span>
+              </div>
+              <h2><?php echo $row["E_Name"]; ?></h2>
+              <p><?php echo $row["short_description"]; ?></p>
+              <p>
+                <span><i class="ri-calendar-line"></i></span>Date: <?php echo $row["E_Date"]; ?>
+              </p>
+              <p>
+                <span><i class="ri-time-line"></i></span> <?php echo date("h:i A", strtotime($row["E_Time"])); ?>
+
+              </p>
+              <p>
+                <span><i class="ri-map-pin-line"></i></span><?php echo $row["E_Location"] ?>
+              </p>
+              <a href="EventDetails.php?id=<?php echo $row["E_ID"]; ?>">View Details</a>
             </div>
           </div>
-        </div>
+      <?php
+        }
+      }
+      ?>
+
+
+
+
+
+
+      <!--1st Page's Events ends Here -->
+    </div>
+    <div id="PaginationContainer">
+      <div class="pagination">
+        <!-- Previous Page Arrow -->
+        <?php if ($page > 1): ?>
+          <a href="?page=<?php echo $page - 1; ?>">&laquo;</a>
+        <?php else: ?>
+          <a href="#" style="pointer-events: none; color: gray;">&laquo;</a>
+        <?php endif; ?>
+
+        <!-- Page Numbers -->
+        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+          <a href="?page=<?php echo $i; ?>" <?php if ($i == $page) echo 'class="active"'; ?>>
+            <?php echo $i; ?>
+          </a>
+        <?php endfor; ?>
+
+        <!-- Next Page Arrow -->
+        <?php if ($page < $totalPages): ?>
+          <a href="?page=<?php echo $page + 1; ?>">&raquo;</a>
+        <?php else: ?>
+          <a href="#" style="pointer-events: none; color: gray;">&raquo;</a>
+        <?php endif; ?>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Eventify. All rights reserved.</p>
-      </div>
-    </footer>
-    <script src="../Asset/js/EventCalendar.js"></script>
-  </body>
+    </div>
+
+    <!-- Event Container Ends -->
+  </main>
+
+  <!-- main Ends -->
+
+  <?php
+  include("../View/Footer.php");
+  ?>
+
+  <script src="../Asset/js/EventCalendar.js"></script>
+</body>
+
 </html>
