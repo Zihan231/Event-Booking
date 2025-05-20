@@ -265,7 +265,12 @@ main {
   font-size: 18px;
   flex-shrink: 0;
 }
-
+#EventContentDetails li a{
+  text-decoration: none;
+  color:#4f46e5;
+  font-weight: 600;
+  font-size: 18px;
+}
 #Stars {
   margin-top: 25px;
   margin-bottom: 30px;

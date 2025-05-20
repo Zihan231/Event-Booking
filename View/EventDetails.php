@@ -12,7 +12,7 @@ $row = mysqli_fetch_array($result);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eventify</title>
-  <link rel="stylesheet" href="../Asset/CSS/Style_EventDetails.css" />
+  <link rel="stylesheet" href="../Asset/CSS/Style_EventDetails.css?v50.0" />
   <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet" />
@@ -63,6 +63,9 @@ $row = mysqli_fetch_array($result);
               from
               <strong>&nbsp;$<?php echo $row["E.Price"]; ?></strong>
             </li>
+            <li>
+              <strong><i class="ri-ancient-gate-line"></i></strong><a id="VenueDetails" href="./veanu.html">See Venue Details.</a></strong>
+            </li>
           </ul>
           <div id="Stars">
             <span>Reviews:</span>
@@ -72,6 +75,7 @@ $row = mysqli_fetch_array($result);
             <i class="ri-star-fill"></i>
             <i class="ri-star-half-fill"></i>
           </div>
+          
           <!-- <div id="CartAndBookNow_Btn_Container"> <a
                             id="BookNowBTN" href="ticketType.html">Book Now</a> <a id="BookNowBTN"
                             href="login.php?redirect=EventDetails.php">Book Now</a> <a
