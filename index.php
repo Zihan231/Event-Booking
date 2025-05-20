@@ -31,7 +31,7 @@ $result = mysqli_query($conn, $Sql);
       <ul>
         <li><a class="ActivePage" href="./index.php">Home</a></li>
         <li><a href="./View/EventCalendar.php">Events</a></li>
-        <li><a href="./View/contactUs.html">Contact Us</a></li>
+        <li><a href="./View/contactUs.php">Contact Us</a></li>
       </ul>
     </nav>
     <div id="LogSing" style="display: <?php if (isset($_SESSION["status"])) {
@@ -404,7 +404,7 @@ $result = mysqli_query($conn, $Sql);
         <div class="footer-column">
           <h4>Company</h4>
           <ul>
-            <li><a href="./View/contactUs.html">Contact</a></li>
+            <li><a href="./View/contactUs.php">Contact</a></li>
           </ul>
         </div>
         <div class="footer-column">

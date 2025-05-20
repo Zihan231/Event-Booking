@@ -22,7 +22,7 @@
 
       <form
         class="signup-form"
-        id="signupForm" method="POST" action="./emailVarifation 1.html"
+        id="signupForm" method="POST" action="./emailVarifation.php"
         onsubmit="return validationVerification()"
       >
         <div class="name-fields">
@@ -65,7 +65,7 @@
         </p>
 
         <p class="login">
-          Already have an account? <a href="./login.html">Log In</a>
+          Already have an account? <a href="./login.php">Log In</a>
         </p>
       </form>
     </div>

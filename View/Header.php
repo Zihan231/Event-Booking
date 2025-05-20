@@ -14,7 +14,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     <ul>
       <li><a class="<?= $currentPage == 'index.php' ? 'ActivePage' : '' ?>" href="../index.php">Home</a></li>
       <li><a class="<?= $currentPage == 'EventCalendar.php' ? 'ActivePage' : '' ?>" href="./EventCalendar.php">Events</a></li>
-      <li><a class="<?= $currentPage == 'contactUs.html' ? 'ActivePage' : '' ?>" href="./contactUs.html">Contact Us</a></li>
+      <li><a class="<?= $currentPage == 'contactUs.php' ? 'ActivePage' : '' ?>" href="./contactUs.php">Contact Us</a></li>
     </ul>
   </nav>
   
