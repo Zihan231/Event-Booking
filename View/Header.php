@@ -14,7 +14,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']); // This gets the current page 
     </ul>
   </nav>
   <div id="LogSing">
-    <a class="Blacktxt <?= $currentPage == 'login.html' ? 'ActivePage' : '' ?>" href="./View/login.html">Login</a>
-    <a class="<?= $currentPage == 'signUp.html' ? 'ActivePage' : '' ?>" href="./View/signUp.html" id="sgnUp">Sign Up</a>
+    <a class="Blacktxt <?= $currentPage == 'login.html' ? 'ActivePage' : '' ?>" href="./login.html">Login</a>
+    <a class="<?= $currentPage == 'signUp.html' ? 'ActivePage' : '' ?>" href="./signUp.html" id="sgnUp">Sign Up</a>
   </div>
 </header>

@@ -57,7 +57,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               </li>
               <li>
                 <span> <i class="ri-settings-2-line"></i> </span>
-                <a href="#">Settings</a>
+                <a href="./System.php">System</a>
               </li>
               <li id="logout">
                 <span><i class="ri-logout-circle-r-line"></i></span>

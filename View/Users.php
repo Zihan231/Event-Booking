@@ -142,7 +142,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
                 <td>Zihan@gmail.com</td>
                 <td>+91 1234567890</td>
                 <td>Male</td>
-                <td><a href="./Update_User_info.html">Edit</a></td>
+                <td><a href="./Update_User_info.php">Edit</a></td>
                 <td><a class="Action" href="./TakeAction.php">Action</a></td>
               </tr>
               <tr>
@@ -152,7 +152,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
                 <td>+91 9876543210</td>
                 <td>Female</td>
                 <td>
-                  <a href="./Update_User_info.html">Edit</a>
+                  <a href="./Update_User_info.php">Edit</a>
                 </td>
                 <td><a class="Action" href="./TakeAction.php">Action</a></td>
               </tr>

@@ -1,0 +1,268 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+/*Header Section*/
+.logo {
+  font-size: 1.8em;
+  font-family: "Brush Script MT", cursive;
+  color: #4f46e5;
+  margin-right: 15px;
+}
+
+header {
+  background-color: #fff;
+  height: 72px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+header a {
+  text-decoration: none;
+  color: #6e6d74;
+  padding: 10px;
+  font-size: 17.5px;
+  transition: color 0.3s ease;
+}
+
+header a:hover {
+  color: #4f46e5;
+}
+#ProfileContainer a span {
+  margin-left: 10px;
+}
+.ri-user-3-line {
+  font-size: 23px;
+}
+.GrayTxt {
+  color: #909091;
+  font-size: 16px;
+}
+/* Header Section End */
+
+/* Nav  Start*/
+aside {
+  position: fixed;
+}
+li {
+  list-style: none;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+li {
+  padding: 10px 0px;
+}
+li span {
+  color: #909091;
+}
+ul a {
+  font-weight: 500;
+  text-decoration: none;
+  color: #8b8988;
+  padding: 10px;
+  font-size: 17.5px;
+  transition: color 0.3s ease;
+}
+
+li:hover a,
+li:hover span {
+  color: #4f46e5;
+}
+#Selected_Page a,
+#Selected_Page span {
+  color: #4f46e5;
+}
+/* nav End */
+
+/* Main Section Start */
+main {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  column-gap: 30px;
+}
+#asideSection {
+  padding: 20px 40px;
+}
+#mainContent {
+  margin-right: 50px;
+  padding: 20px 30px;
+  background-color: #fffefbeb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.347);
+}
+#mainContent p {
+  color: #6e6d74;
+}
+
+/* *********************** */
+/* Main content grid container */
+#mainContent h1 {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #000000; /* A professional indigo shade */
+  background-color: #4f46e5;
+  padding: 20px 0;
+  margin-bottom: 40px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1.2px;
+  user-select: none;
+}
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-rows: auto auto;
+  gap: 30px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 15px;
+}
+
+/* The two forms will occupy first row */
+.promoVenueGroup {
+  display: contents; /* let children participate in grid */
+}
+
+/* Systemcards styling */
+.Systemcards {
+  background-color: #f1f1f1;
+  padding: 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.15);
+  box-sizing: border-box;
+}
+.Systemcards:hover {
+  box-shadow: 0 8px 16px rgba(79, 70, 229, 0.3);
+  transform: translateY(-4px);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.Systemcards h2 {
+  color: #000000;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* Form styling */
+.Systemcards form {
+  display: flex;
+  flex-direction: column;
+}
+
+.Systemcards label {
+  font-weight: 600;
+  color: #4f46e5;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.Systemcards input[type="text"],
+.Systemcards input[type="date"],
+.Systemcards input[type="number"] {
+  padding: 10px 12px;
+  border: 1.8px solid #dddddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 18px;
+  transition: border-color 0.3s ease;
+}
+
+.Systemcards input[type="text"]:focus,
+.Systemcards input[type="date"]:focus,
+.Systemcards input[type="number"]:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 6px rgba(79, 70, 229, 0.4);
+}
+
+.Systemcards button {
+  background-color: #4f46e5;
+  color: white;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+  min-width: 140px;
+}
+
+.Systemcards button:hover {
+  background-color: #3730a3;
+}
+
+/* Waiting List Table styling */
+#WaitinglisHeader {
+  margin-bottom: 15px;
+}
+
+#WaitinglisHeader h2 {
+  color: #4f46e5;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+#RecentUserTable {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#RecentUserTable th,
+#RecentUserTable td {
+  padding: 14px 16px;
+  text-align: left;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+#RecentUserTable th {
+  background-color: #4f46e5;
+  color: white;
+  font-weight: 700;
+}
+
+#RecentUserTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#RecentUserTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .cardsContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 25px;
+    padding: 15px;
+  }
+  .Systemcards button {
+    width: 100%;
+    min-width: unset;
+    align-self: stretch;
+  }
+}

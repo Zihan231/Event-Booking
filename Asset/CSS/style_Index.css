@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  max-width: 1000;
 }
 html {
   scroll-behavior: smooth;
@@ -693,7 +694,6 @@ nav {
 /*NewsLetter Section*/
 #Newsletter-Section {
   background-color: #4f46e5;
-  width: 100%;
   padding: 60px 20px;
   text-align: center;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,

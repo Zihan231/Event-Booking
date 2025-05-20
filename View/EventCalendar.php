@@ -48,19 +48,18 @@ $result = mysqli_query($conn, $sql);
     <!-- Search bar -->
     <div id="SrcBar_filters">
       <div id="SrcBar">
-        <form method="GET">
-          <label for="FilterEvents">Filter:</label>
-          <select name="Filter" id="FilterEvents">
-            <option value="All">All Events</option>
-            <option value="LowToHigh">Price Low to High</option>
-            <option value="HighToLow">Price High to Low</option>
-            <option value="Recent">Most Recent</option>
-            <option value="Week">This Week</option>
-            <option value="Month">This Month</option>
-            <option value="Year">This Year</option>
-          </select>
-        </form>
-      </div>
+                <form action="" onsubmit="return isValidSearch()">
+                    <div id="srcBar-container" class="srcbar-Div">
+                        <input
+                            type="text"
+                            placeholder="Search for events"
+                            id="search-input" />
+                        <button id="search-button">Search</button>
+                    </div>
+                    <p id="errorMessage" class="error-message"></p>
+                </form>
+            </div>
+            
       <div id="Filter">
         <label for="FilterEvents">Filter:</label>
         <select name="Filter" id="FilterEvents">
@@ -121,6 +120,8 @@ $result = mysqli_query($conn, $sql);
 
       <!--1st Page's Events ends Here -->
     </div>
+
+    <!-- Pagination -->
     <div id="PaginationContainer">
       <div class="pagination">
         <!-- Previous Page Arrow -->

@@ -12,7 +12,7 @@ $result = mysqli_query($conn, $Sql);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eventify</title>
-  <link rel="stylesheet" href="./Asset/CSS/style_Index.css?v16.0" />
+  <link rel="stylesheet" href="./Asset/CSS/style_Index.css?v18.0" />
   <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet" />
