@@ -55,8 +55,12 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               </li>
               <li>
                 <span> <i class="ri-settings-2-line"></i> </span>
-                <a href="#">Settings</a>
+                <a href="./System.php">System</a>
               </li>
+              <li>
+              <span> <i class="ri-file-list-3-fill"></i> </span>
+              <a href="./attendee-list.html">Attende List</a>
+            </li>
               <li id="logout">
                 <span><i class="ri-logout-circle-r-line"></i></span>
                 <a href="../index.php">Logout</a>
