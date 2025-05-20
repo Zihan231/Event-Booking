@@ -14,6 +14,6 @@ if (isset($_SESSION["status"]) && $_SESSION["status"] == true && isset($_POST["U
     }
     
 } else {
-    header('location: ../view/login.html');
+    header('location: ../view/login.php');
     exit();
 }

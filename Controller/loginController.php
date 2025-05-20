@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $role = $_POST['role'] ?? '';
 
     if ($email == '' || $password == '') {
-        header('Location: ../View/login.html');
+        header('Location: ../View/login.php');
         exit;
     }
 
