@@ -118,7 +118,7 @@ main {
   text-align: center;
   font-size: 2.8rem;
   font-weight: 800;
-  color: #000000; /* A professional indigo shade */
+  color: #000000; 
   background-color: #4f46e5;
   padding: 20px 0;
   margin-bottom: 40px;
@@ -136,9 +136,8 @@ main {
   padding: 20px 15px;
 }
 
-/* The two forms will occupy first row */
 .promoVenueGroup {
-  display: contents; /* let children participate in grid */
+  display: contents; 
 }
 
 /* Systemcards styling */
@@ -160,6 +159,7 @@ main {
   font-weight: 700;
   margin-bottom: 20px;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 /* Form styling */
@@ -210,7 +210,59 @@ main {
 
 .Systemcards button:hover {
   background-color: #3730a3;
+}/* Search bar */
+#SrcFilContainer {
+  display: block;
+  min-width: 100%;
 }
+
+#Search_bar_container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+
+#Search_bar {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#Search_bar:focus {
+  border-color: #4f46e5;
+}
+
+#Search_bar_container button {
+  background-color: #4f46e5;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#Search_bar_container button:hover {
+  background-color: #3730a3;
+}
+
+/* Error message */
+form #Search_bar_error {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+/* Src bar ends */
 
 /* Waiting List Table styling */
 #WaitinglisHeader {
@@ -218,9 +270,10 @@ main {
 }
 
 #WaitinglisHeader h2 {
-  color: #4f46e5;
+  color: #000000;
   font-weight: 700;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 #RecentUserTable {

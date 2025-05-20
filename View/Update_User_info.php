@@ -113,8 +113,8 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
             </div>
           </div>
 
-          <!-- Update Form -->
-          <form class="update-profile-form" onsubmit="return isValidInput()">
+          <!-- Update Form --> 
+          <form action="../Controller/UpdateUserController.php" method="POST" class="update-profile-form" onsubmit="return isValidInput()"> 
             <h3>Edit Profile</h3>
 
             <div class="form-group">
@@ -122,7 +122,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               <input
                 type="text"
                 id="name"
-                name="name"
+                name="firstname"
                 placeholder="Enter First name"
               />
               <div class="error" id="nameError"></div>
@@ -160,7 +160,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               <div class="error" id="passwordError"></div>
             </div>
 
-            <button type="submit" class="update-btn">Update Profile</button>
+            <button type="submit" class="update-btn" name="UpdateBtn">Update Profile</button>
             <p id="ErrorMsg_Update_Form"></p>
           </form>
         </div>

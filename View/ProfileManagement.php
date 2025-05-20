@@ -3,6 +3,8 @@ session_start();
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
     header('location: login.php');
     exit();
+}else{
+  $userEmail= $_SESSION["email"];
 }
 ?>
 
@@ -34,7 +36,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
       <div id="view" class="section active">
         <h2>View Profile</h2>
         <p><strong>Name:</strong> John Doe</p>
-        <p><strong>Email:</strong> john@example.com</p>
+        <p><strong>Email:</strong> <?php echo $userEmail; ?></p>
         <p>
           <strong>About:</strong> Lorem ipsum dolor sit amet, consectetur
           adipiscing elit.

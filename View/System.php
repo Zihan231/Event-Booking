@@ -12,7 +12,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../Asset/CSS/Style_System.css?" />
+    <link rel="stylesheet" href="../Asset/CSS/Style_System.css?v10.0" />
     <!-- <link rel="stylesheet" href="../Asset/CSS/Style_Users.css" /> -->
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
@@ -38,12 +38,12 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
 
     <!--Main Section-->
     <main>
-      <!-- Side Bar Starts -->
+     <!-- Side Bar Starts -->
       <section id="asideSection">
         <aside>
           <nav class="asideNav">
             <ul>
-              <li>
+              <li >
                 <span><i class="ri-dashboard-line"></i></span>
                 <a href="./DashBoard.php">Dashboard</a>
               </li>
@@ -76,55 +76,68 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
           <!-- Promocodes -->
           <div class="Systemcards">
             <h2>Add Promocodes</h2>
-            <form id="promoForm">
+            <form
+              id="promoForm"
+              onsubmit="return PromoForm_Validation()"
+              method="POST"
+            >
               <label for="promoCode">Promo Code:</label>
-              <input type="text" id="promoCode" name="promoCode" required />
+              <input type="text" id="promoCode" name="promoCode" />
 
               <label for="expireDate">Expire Date:</label>
-              <input type="date" id="expireDate" name="expireDate" required />
+              <input type="date" id="expireDate" name="expireDate" />
 
               <label for="discount">Discount (%):</label>
-              <input
-                type="number"
-                id="discount"
-                name="discount"
-                min="0"
-                max="100"
-                required
-              />
+              <input type="number" id="discount" name="discount" />
 
               <button type="submit">Add Promo</button>
             </form>
+            <div id="errorMessage" style="color: red; margin-top: 10px"></div>
           </div>
 
           <!-- Venue -->
           <div class="Systemcards">
             <h2>Add Venue</h2>
-            <form id="venueForm">
+            <form
+              id="venueForm"
+              onsubmit="return VenueForm_Validation()"
+              method="POST"
+            >
               <label for="venueName">Venue Name:</label>
-              <input type="text" id="venueName" name="venueName" required />
-
+              <input type="text" id="venueName" name="venueName" />
               <label for="capacity">Capacity:</label>
-              <input
-                type="number"
-                id="capacity"
-                name="capacity"
-                min="1"
-                required
-              />
+              <input type="number" id="capacity" name="capacity" />
 
               <label for="location">Location:</label>
-              <input type="text" id="location" name="location" required />
+              <input type="text" id="location" name="location" />
 
               <button type="submit">Add Venue</button>
             </form>
+            <div
+              id="venueErrorMessage"
+              style="color: red; margin-top: 10px"
+            ></div>
           </div>
-
+          
           <!-- Waiting List Table -->
           <div class="Systemcards" style="grid-column: 1 / -1">
             <div id="WaitinglisHeader">
               <h2>Waiting List</h2>
             </div>
+            <!-- Search & Filter Starts -->
+          <div id="SrcFilContainer">
+            <form method="POST" onsubmit="return isValid()">
+              <div id="Search_bar_container">
+                <input
+                  type="text"
+                  id="Search_bar"
+                  placeholder="Search Users by ID or User Name"
+                />
+                <button>Search <i class="ri-search-line"></i></button>
+              </div>
+              <p id="Search_bar_error" class="error_message"></p>
+            </form>
+          </div>
             <table id="RecentUserTable">
               <thead>
                 <tr>
@@ -156,6 +169,6 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
         </div>
       </section>
     </main>
-    <script src="../Asset/js/AddUsers.js"></script>
+    <script src="../Asset/js/System.js"></script>
   </body>
 </html>

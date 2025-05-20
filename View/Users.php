@@ -18,7 +18,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../Asset/CSS/Style_Users.css" />
+    <link rel="stylesheet" href="../Asset/CSS/Style_Users.css?v50.0" />
   </head>
   <body>
     <!--Header Section-->
@@ -42,31 +42,35 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
         <aside>
           <nav class="asideNav">
             <ul>
-              <li>
+              <li >
                 <span><i class="ri-dashboard-line"></i></span>
-                <a href="DashBoard.php">Dashboard</a>
+                <a href="./DashBoard.php">Dashboard</a>
               </li>
               <li>
                 <span><i class="ri-calendar-event-line"></i></span
-                ><a href="Add_Event.php">Add Events</a>
+                ><a href="./Add_Event.php">Add Events</a>
               </li>
               <li id="Selected_Page">
                 <span><i class="ri-user-3-line"></i></span>
-                <a href="Users.php">Users</a>
+                <a href="./Users.php">Users</a>
               </li>
               <li>
                 <span> <i class="ri-settings-2-line"></i> </span>
-                <a href="#">Settings</a>
+                <a href="./System.php">System</a>
               </li>
               <li id="logout">
                 <span><i class="ri-logout-circle-r-line"></i></span>
+<<<<<<< HEAD
+                <a href="../Controller/logoutController.php">Logout</a>
+=======
                 <a href="../index.php">Logout</a>
+>>>>>>> 98998809df8d74c54336cb156444c976ebbf61f3
               </li>
             </ul>
           </nav>
         </aside>
       </section>
-      <!-- Side Bar Ends -->
+      <!-- Side bar Ends -->
 
       <!-- Main Content Area Stats -->
       <section id="mainContent">

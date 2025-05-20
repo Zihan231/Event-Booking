@@ -37,8 +37,8 @@ function AddEvent_Validation() {
   if (errorMsg !== "") {
     //alert(errorMsg);
     document.getElementById("errorMessage").innerText = errorMsg;
-    return false; // prevent form submission
+    return false; 
   }
 
-  return true; // all good, allow submission
+  return true; 
 }
