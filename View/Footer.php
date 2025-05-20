@@ -9,7 +9,7 @@
         <div class="footer-column">
           <h4>Company</h4>
           <ul>
-            <li><a href="./contactUs.html">Contact</a></li>
+            <li><a href="./contactUs.php">Contact</a></li>
           </ul>
         </div>
         <div class="footer-column">

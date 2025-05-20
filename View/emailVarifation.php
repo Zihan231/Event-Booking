@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="../Asset/CSS/emailVarifation 1.css" />
   </head>
   <body>
-    <form class="emailVarifation" id="otpForm" action="login.html" onsubmit="return validateOTP()">
+    <form class="emailVarifation" id="otpForm" action="login.php" onsubmit="return validateOTP()">
       <div class="verify-container">
         <i
           class="fas fa-arrow-left back-btn"
-          onclick="window.location.href='signup.html'"
+          onclick="window.location.href='signup.php'"
         ></i>
 
         <img
@@ -43,7 +43,7 @@
 
         <p class="change-email">
           Want to Change Your Email Address?
-          <a href="../View/signUp.html">Change Here</a>
+          <a href="../View/signUp.php">Change Here</a>
         </p>
 
         <button class="verify-btn" type="submit">Verify Email</button>

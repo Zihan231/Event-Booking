@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
-  header('location: login.html');
+  header('location: login.php');
   exit();
 }
 ?>
@@ -137,7 +137,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
         <div class="footer-column">
           <h4>Company</h4>
           <ul>
-            <li><a href="./View/contactUs.html">Contact</a></li>
+            <li><a href="./View/contactUs.php">Contact</a></li>
           </ul>
         </div>
         <div class="footer-column">
