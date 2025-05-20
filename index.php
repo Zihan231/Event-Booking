@@ -37,13 +37,13 @@ $result = mysqli_query($conn, $Sql);
     <div id="LogSing" style="display: <?php if (isset($_SESSION["status"])) {
                                         echo "none";
                                       } ?>;">
-      <a class="Blacktxt" href="./View/login.html">Login</a>
+      <a class="Blacktxt" href="./View/login.php">Login</a>
       <a href="./View/signUp.html" id="sgnUp">Sign Up</a>
     </div>
     <div style="display: <?php if (!isset($_SESSION["status"])) {
                             echo "none";
                           } ?>;">
-      <span><a href="#">Profile</a></span>
+      <span><a href="./View/user_Profile.php">Profile</a></span>
       <span><a href="./Controller/logoutController.php">Logout</a></span>
     </div>
   </header>
