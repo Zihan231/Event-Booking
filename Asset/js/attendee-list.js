@@ -1,11 +1,17 @@
 
-function showTab(tabId) {
-    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-    document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
-    document.getElementById(tabId).classList.add('active');
-}
+        // Filter functionality for the table
+        const filterSelect = document.querySelector('.filter');
+        const rows = document.querySelectorAll('table tr:not(:first-child)');
 
-function goBack() {
-    window.history.back();
-}
+        filterSelect.addEventListener('change', (e) => {
+            const filterValue = e.target.value;
+            rows.forEach(row => {
+                const checkInStatus = row.querySelector('.status').textContent.toLowerCase();
+                if (filterValue === 'all' || checkInStatus.includes(filterValue)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    

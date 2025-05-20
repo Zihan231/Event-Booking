@@ -3,136 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendee Management System</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Attendee List</title>
     <link rel="stylesheet" href="../Asset/CSS/attendee-list.css">
+   
 </head>
 <body>
     <div class="container">
-        <button class="back-button" onclick="goBack()" aria-label="Go back">
-            <i class="fas fa-arrow-left"></i>
-        </button>
-        <h1>Attendee Management System</h1>
-        <div class="tabs">
-            <div class="tab active" onclick="showTab('dashboard')">Registration Dashboard</div>
-            <div class="tab" onclick="showTab('badges')">Name Badge Generator</div>
-            <div class="tab" onclick="showTab('dietary')">Dietary Needs</div>
+        <div class="header">
+            <div class="header-left">
+                <a href="DashBoard.php" aria-label="Go back to homepage">
+                    <svg class="back-icon" viewBox="0 0 24 24">
+                        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <h2>Attendees List</h2>
+            </div>
+            <div>
+                <input type="text" class="search-bar" placeholder="Search">
+                <select class="filter">
+                    <option value="all">All Data</option>
+                    <option value="checked">Checked In</option>
+                    <option value="not-checked">Not Checked</option>
+                </select>
+            </div>
         </div>
-
-        <div id="dashboard" class="tab-content active">
-            <h2>Registration Dashboard</h2>
-            <div class="dashboard-stats">
-                <div class="stat-card">
-                    <h3>250</h3>
-                    <p>Total Attendees</p>
-                </div>
-                <div class="stat-card">
-                    <h3>180</h3>
-                    <p>Checked In</p>
-                </div>
-                <div class="stat-card">
-                    <h3>20</h3>
-                    <p>Special Requirements</p>
-                </div>
-            </div>
-            <button>Export Attendee CSV</button>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Email Address</th>
-                        <th>Company/Organization</th>
-                        <th>Registration Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>John Doe</td>
-                        <td>john.doe@example.com</td>
-                        <td>Tech Innovations Inc.</td>
-                        <td>2025-05-01</td>
-                        <td>Checked In</td>
-                    </tr>
-                    <tr>
-                        <td>Jane Smith</td>
-                        <td>jane.smith@example.com</td>
-                        <td>Global Solutions</td>
-                        <td>2025-05-02</td>
-                        <td>Registered</td>
-                    </tr>
-                </tbody>
-            </table>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Check In</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td><img src="https://images.pexels.com/photos/4584461/pexels-photo-4584461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Profile" class="profile-img">Amelia</td>
+                <td>Amelia123@email.com</td>
+                <td><span class="status checked-in">Checked In</span></td>
+                <td><span class="status confirmed">Confirmed</span></td>
+            </tr>
+            <tr>
+                <td><img src="https://images.pexels.com/photos/4420634/pexels-photo-4420634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Profile" class="profile-img">Raisha jarin</td>
+                <td>Raisha87@email.com</td>
+                <td><span class="status checked-in">Checked In</span></td>
+                <td><span class="status confirmed">Confirmed</span></td>
+            </tr>
+            <tr>
+                <td><img src="https://images.pexels.com/photos/5378700/pexels-photo-5378700.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Profile" class="profile-img"> MD:Lamim</td>
+                <td>Lamim345@email.com</td>
+                <td><span class="status not-checked">Not Checked</span></td>
+                <td><span class="status cancelled">Cancelled</span></td>
+            </tr>
+            <tr>
+                <td><img src="https://images.pexels.com/photos/6976943/pexels-photo-6976943.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Profile" class="profile-img">songita Rani</td>
+                <td>songita76@example.com</td>
+                <td><span class="status checked-in">Checked In</span></td>
+                <td><span class="status confirmed">Confirmed</span></td>
+            </tr>
+            <tr>
+                <td><img src="https://images.pexels.com/photos/5384445/pexels-photo-5384445.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Profile" class="profile-img">Arup dev</td>
+                <td>Arup6381@example.com</td>
+                <td><span class="status not-checked">Not Checked</span></td>
+                <td><span class="status pending">Pending</span></td>
+            </tr>
+            <tr>
+                <td><img src="https://images.pexels.com/photos/573299/pexels-photo-573299.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Profile" class="profile-img">Susmita das</td>
+                <td>Susmita84@example.com</td>
+                <td><span class="status not-checked">Not Checked</span></td>
+                <td><span class="status cancelled">Cancelled</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="summary">
+        <div class="header">Attendee Summary</div>
+        <div class="summary-item">
+            <div class="summary-value">200</div>
+            <div class="total-registered">Total Registered</div>
         </div>
-
-        <div id="badges" class="tab-content">
-            <h2>Name Badge Generator</h2>
-            <div class="dietary-form">
-                <div class="input-group">
-                    <label for="badgeName">Attendee Name</label>
-                    <input type="text" id="badgeName" placeholder="Enter full name">
-                </div>
-                <div class="input-group">
-                    <label for="badgeCompany">Company/Organization</label>
-                    <input type="text" id="badgeCompany" placeholder="Enter company name">
-                </div>
-                <div class="input-group">
-                    <label for="badgeTitle">Job Title</label>
-                    <input type="text" id="badgeTitle" placeholder="Enter job title">
-                </div>
-                <button>Generate Badge</button>
+        <div class="summary-item">
+            <div class="status-indicator">
+                <span class="status-dot warning"></span>
+                <span class="status-label">Warning</span>
             </div>
-            <div class="badge-preview" id="badgePreview">
-                <h3 id="previewName">Attendee Name</h3>
-                <p id="previewCompany">Company Name</p>
-                <p id="previewTitle">Job Title</p>
-            </div>
-            <button>Print Badge</button>
         </div>
-
-        <div id="dietary" class="tab-content">
-            <h2>Dietary Needs</h2>
-            <div class="dietary-form">
-                <div class="input-group">
-                    <label for="attendeeName">Attendee Name</label>
-                    <input type="text" id="attendeeName" placeholder="Enter attendee name">
-                </div>
-                <div class="input-group">
-                    <label for="dietaryRequirement">Dietary Requirement</label>
-                    <select id="dietaryRequirement">
-                        <option value="">Select Dietary Need</option>
-                        <option value="vegetarian">Vegetarian</option>
-                        <option value="vegan">Vegan</option>
-                        <option value="gluten-free">Gluten-Free</option>
-                        <option value="nut-allergy">Nut Allergy</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label for="otherDietary">Other Dietary Needs</label>
-                    <input type="text" id="otherDietary" placeholder="Specify if other" style="display: none;">
-                </div>
-                <button>Save Dietary Needs</button>
+        <div class="summary-item">
+            <div class="status-indicator">
+                <span class="status-dot error"></span>
+                <span class="status-label">Error</span>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Attendee Name</th>
-                        <th>Dietary Requirement</th>
-                        <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody id="dietaryTable">
-                    <tr>
-                        <td>John Doe</td>
-                        <td>Vegan</td>
-                        <td>No dairy or eggs</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 
-   <script src="../Asset/js/attendee-list.js"></script>
+    <script src="../Asset/js/attendee-list.js"></script>
 </body>
 </html>
