@@ -141,7 +141,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               <td>Zihan@gmail.com</td>
               <td>+91 1234567890</td>
               <td>Male</td>
-              <td><button class="unban-button">Unban</button></td>
+              <td><button class="unban-button" onclick="unbanUser('Zihan')">Unban</button></td>
             </tr>
             <tr>
               <td>007</td>
@@ -149,7 +149,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               <td>ayesha123@gmail.com</td>
               <td>+91 9876543210</td>
               <td>Female</td>
-              <td><button class="unban-button">Unban</button></td>
+              <td><button class="unban-button" onclick="unbanUser('Ayesha')">Unban</button></td>
             </tr>
             <tr>
               <td>071</td>
@@ -157,7 +157,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               <td>rahul.kumar@email.com</td>
               <td>+91 9988776655</td>
               <td>Male</td>
-              <td><button class="unban-button">Unban</button></td>
+              <td><button class="unban-button" onclick="unbanUser('Rahul')">Unban</button></td>
             </tr>
             <tr>
               <td>107</td>
@@ -165,7 +165,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               <td>sara.ali@domain.com</td>
               <td>+91 9123456789</td>
               <td>Female</td>
-              <td><button class="unban-button">Unban</button></td>
+              <td><button class="unban-button" onclick="unbanUser('Sara')">Unban</button></td>
             </tr>
             <tr>
               <td>257</td>
@@ -173,7 +173,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               <td>imran007@gmail.com</td>
               <td>+91 8899776655</td>
               <td>Male</td>
-              <td><button class="unban-button">Unban</button></td>
+              <td><button class="unban-button" onclick="unbanUser('Imran')">Unban</button></td>
             </tr>
             <tr>
               <td>684</td>
@@ -181,14 +181,15 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               <td>nisha.rani@webmail.com</td>
               <td>+91 7766554433</td>
               <td>Female</td>
-              <td><button class="unban-button">Unban</button></td>
+              <td><button class="unban-button" onclick="unbanUser('Nisha')">Unban</button></td>
             </tr>
           </tbody>
         </table>
+
       </div>
     </section>
   </main>
-  <script src="../Asset/js/AllBannedUser.js"></script>
+  <script src="../Asset/js/AllBannedUser.js?v5.0"></script>
 </body>
 
 </html>

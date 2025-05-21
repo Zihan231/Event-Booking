@@ -428,7 +428,7 @@ $result = mysqli_query($conn, $Sql);
       <p>&copy; 2025 Eventify. All rights reserved.</p>
     </div>
   </footer>
-  <script src="./Asset/js/LandingPage.js"></script>
+  <script src="./Asset/js/LandingPage.js?v6.05"></script>
 </body>
 
 </html>

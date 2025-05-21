@@ -156,7 +156,7 @@ $result = mysqli_query($conn, $sql);
   include("../View/Footer.php");
   ?>
 
-  <script src="../Asset/js/EventCalendar.js"></script>
+  <script src="../Asset/js/EventCalendar.js?v10.0"></script>
 </body>
 
 </html>

@@ -8,20 +8,16 @@ function isValid() {
     return true;
   }
 }
-// Function to handle the confirmation action
-function handleConfirmAction(button) {
-  // Get the selected option from the dropdown
-  const dropdown = button.previousElementSibling; // This gets the dropdown before the confirm button
+
+function handleConfirmAction(clickedElement) {
+  const dropdown = clickedElement.previousElementSibling;
   const selectedOption = dropdown.value;
 
-  // Check if a valid option has been selected
   if (selectedOption === "") {
     alert("Please select an option before confirming.");
   } else {
-    // Show a confirmation alert
     alert(
       `You have selected: ${selectedOption}. The user will be updated accordingly.`
     );
-    // Optionally, you can add logic to perform the action, like updating the user status
   }
 }

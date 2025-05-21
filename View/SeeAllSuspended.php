@@ -281,6 +281,6 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
         </div>
       </section>
     </main>
-    <script src="../Asset/js/AllSuspandedUser.js"></script>
+    <script src="../Asset/js/AllSuspandedUser.js?v2.0"></script>
   </body>
 </html>

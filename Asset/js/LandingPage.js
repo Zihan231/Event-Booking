@@ -10,25 +10,33 @@ function isValidSearch() {
 }
 function isValidEmail() {
   const email = document.getElementById("newsletter-input").value;
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const errorElement = document.getElementById("EmailError");
 
-  if (!emailPattern.test(email)) {
-    document.getElementById("EmailError").innerHTML =
-      "**Please enter a valid email address.**";
+  if (!email.includes("@") || !email.includes(".")) {
+    errorElement.innerHTML = "**Please enter a valid email address.**";
     return false;
-  } else {
-    return true;
   }
+
+  const parts = email.split("@");
+  if (parts.length !== 2) {
+    errorElement.innerHTML = "**Please enter a valid email address.**";
+    return false;
+  }
+
+  const username = parts[0];
+  const domain = parts[1];
+  if (local.length === 0 || domain.length < 3) {
+    errorElement.innerHTML = "**Please enter a valid email address.**";
+    return false;
+  }
+
+  const domainParts = domain.split(".");
+  if (domainParts.length < 2 || domainParts.some((part) => part.length === 0)) {
+    errorElement.innerHTML = "**Please enter a valid email address.**";
+    return false;
+  }
+
+  errorElement.innerHTML = "";
+  return true;
 }
-document.getElementById("BookNowBtn_1").addEventListener("click", function () {
-  window.location.href = "./View/EventDetails.html";
-});
-document.getElementById("BookNowBtn_2").addEventListener("click", function () {
-  window.location.href = "./View/EventDetails.html";
-});
-document.getElementById("BookNowBtn_3").addEventListener("click", function () {
-  window.location.href = "./View/EventDetails.html";
-});
-document.getElementById("BookNowBtn_4").addEventListener("click", function () {
-  window.location.href = "./View/EventDetails.html";
-});
+
