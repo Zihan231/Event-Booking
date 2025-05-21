@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    if ($email === $password) {
+    if ($email == $password) {
         $_SESSION['status'] = true;
         $_SESSION['email'] = $email;
 
