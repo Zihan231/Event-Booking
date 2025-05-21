@@ -26,8 +26,8 @@
 
         <h2>Verify Your Email Address</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+         <td> Please enter the 6 digit code sent to</td>
+         <td>Antu348@gmail.com</td>
         </p>
 
         <div id="otpError" class="error"></div>
