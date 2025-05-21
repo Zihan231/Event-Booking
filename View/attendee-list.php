@@ -42,42 +42,56 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
                 <th>Email</th>
                 <th>Check In</th>
                 <th>Status</th>
+                <th>Event Name</th>
+                <th>Event ID</th>
             </tr>
             <tr>
                 <td><img src="https://images.pexels.com/photos/4584461/pexels-photo-4584461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Profile" class="profile-img">Amelia</td>
                 <td>Amelia123@email.com</td>
                 <td><span class="status checked-in">Checked In</span></td>
                 <td><span class="status confirmed">Confirmed</span></td>
+                <td><span class="">Jazz Night Live</span></td>
+                <td><span class="">Startup Pitch Day</span></td>
             </tr>
             <tr>
                 <td><img src="https://images.pexels.com/photos/4420634/pexels-photo-4420634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Profile" class="profile-img">Raisha jarin</td>
                 <td>Raisha87@email.com</td>
                 <td><span class="status checked-in">Checked In</span></td>
                 <td><span class="status confirmed">Confirmed</span></td>
+                <td><span class="">Jazz Night Live</span></td>
+                <td><span class="">Startup Pitch Day</span></td>
             </tr>
             <tr>
                 <td><img src="https://images.pexels.com/photos/5378700/pexels-photo-5378700.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Profile" class="profile-img"> MD:Lamim</td>
                 <td>Lamim345@email.com</td>
                 <td><span class="status not-checked">Not Checked</span></td>
                 <td><span class="status cancelled">Cancelled</span></td>
+                <td><span class="">Jazz Night Live</span></td>
+                <td><span class="">Startup Pitch Day</span></td>
             </tr>
             <tr>
                 <td><img src="https://images.pexels.com/photos/6976943/pexels-photo-6976943.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Profile" class="profile-img">songita Rani</td>
                 <td>songita76@example.com</td>
                 <td><span class="status checked-in">Checked In</span></td>
                 <td><span class="status confirmed">Confirmed</span></td>
+                <td><span class="">Jazz Night Live</span></td>
+                <td><span class="">Startup Pitch Day</span></td>
             </tr>
             <tr>
                 <td><img src="https://images.pexels.com/photos/5384445/pexels-photo-5384445.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Profile" class="profile-img">Arup dev</td>
                 <td>Arup6381@example.com</td>
                 <td><span class="status not-checked">Not Checked</span></td>
                 <td><span class="status pending">Pending</span></td>
+                <td><span class="">Jazz Night Live</span></td>
+                <td><span class="">Startup Pitch Day</span></td>
             </tr>
             <tr>
                 <td><img src="https://images.pexels.com/photos/573299/pexels-photo-573299.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Profile" class="profile-img">Susmita das</td>
                 <td>Susmita84@example.com</td>
                 <td><span class="status not-checked">Not Checked</span></td>
                 <td><span class="status cancelled">Cancelled</span></td>
+                <td><span class="">Jazz Night Live</span></td>
+                <td><span class="">Startup Pitch Day</span></td>
             </tr>
         </table>
     </div>
