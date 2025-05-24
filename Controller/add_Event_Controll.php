@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+  header('location: login.php');
+  exit();
+}
 if (isset($_POST["AddEvent"]) && $_SESSION['status'] == true) {
 
     $EventName = "";

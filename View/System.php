@@ -105,7 +105,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
             <form
               id="venueForm"
               onsubmit="return VenueForm_Validation()"
-              method="POST"
+              method="POST" action="../controller/AddVenueControll.php"
             >
               <label for="venueName">Venue Name:</label>
               <input type="text" id="venueName" name="venueName" />
@@ -115,7 +115,9 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               <label for="location">Location:</label>
               <input type="text" id="location" name="location" />
 
-              <button type="submit">Add Venue</button>
+              <button type="submit" name="addVenueBtn">Add Venue</button>
+              <p style="color: red; text-align: center;"><?php if(isset($_GET['error'])){ echo "Venue could not be added."; } ?></p>
+              <p style="color: green; text-align: center;"><?php if(isset($_GET['success'])){ echo "Venue added successfully."; } ?></p>
             </form>
             <div
               id="venueErrorMessage"

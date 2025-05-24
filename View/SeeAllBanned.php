@@ -4,6 +4,17 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
   header('location: login.php');
   exit();
 }
+require_once '../Model/Users.php';
+
+if (isset($_GET['search'])) {
+  $searchTerm = $_GET['search'];
+  $searchResults = SearchbannedUser($searchTerm);
+  if (!empty($searchResults)) {
+    $users = $searchResults;
+  }
+} else {
+  $users = getAllBanned();
+}
 ?>
 
 <!DOCTYPE html>
@@ -98,12 +109,12 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
       </div>
 
       <div>
-        <form action="" onsubmit="return isValid()">
+        <form action="" method="GET" onsubmit="return isValid()">
           <div id="Search_bar_container">
             <input
               type="text"
               id="Search_bar"
-              placeholder="Search Users by ID or User Name" />
+              placeholder="Search Users by ID or User Name" name="search" />
             <button>Search <i class="ri-search-line"></i></button>
           </div>
           <p id="Search_bar_error" class="error_message"></p>
@@ -127,63 +138,33 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Username</th>
+              <th>First Name</th>
+              <th>Last Name</th>
               <th>Email</th>
-              <th>Phone</th>
-              <th>Gender</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>007</td>
-              <td>Zihan</td>
-              <td>Zihan@gmail.com</td>
-              <td>+91 1234567890</td>
-              <td>Male</td>
-              <td><button class="unban-button" onclick="unbanUser('Zihan')">Unban</button></td>
-            </tr>
-            <tr>
-              <td>007</td>
-              <td>Ayesha</td>
-              <td>ayesha123@gmail.com</td>
-              <td>+91 9876543210</td>
-              <td>Female</td>
-              <td><button class="unban-button" onclick="unbanUser('Ayesha')">Unban</button></td>
-            </tr>
-            <tr>
-              <td>071</td>
-              <td>Rahul</td>
-              <td>rahul.kumar@email.com</td>
-              <td>+91 9988776655</td>
-              <td>Male</td>
-              <td><button class="unban-button" onclick="unbanUser('Rahul')">Unban</button></td>
-            </tr>
-            <tr>
-              <td>107</td>
-              <td>Sara</td>
-              <td>sara.ali@domain.com</td>
-              <td>+91 9123456789</td>
-              <td>Female</td>
-              <td><button class="unban-button" onclick="unbanUser('Sara')">Unban</button></td>
-            </tr>
-            <tr>
-              <td>257</td>
-              <td>Imran</td>
-              <td>imran007@gmail.com</td>
-              <td>+91 8899776655</td>
-              <td>Male</td>
-              <td><button class="unban-button" onclick="unbanUser('Imran')">Unban</button></td>
-            </tr>
-            <tr>
-              <td>684</td>
-              <td>Nisha</td>
-              <td>nisha.rani@webmail.com</td>
-              <td>+91 7766554433</td>
-              <td>Female</td>
-              <td><button class="unban-button" onclick="unbanUser('Nisha')">Unban</button></td>
-            </tr>
+            <?php
+            if (!empty($users)) {
+              foreach ($users as $user) {
+                echo "<tr>";
+                echo "<td>" . $user['U_Id'] . "</td>";
+                echo "<td>" . $user['U_FirstName'] . "</td>";
+                echo "<td>" . $user['U_LastName'] . "</td>";
+                echo "<td>" . $user['U_Email'] . "</td>";
+                echo '<td><button class="unban-button" onclick="unbanUser(\'' . $user['U_Id'] . '\')">Unban</button></td>';
+                echo "</tr>";
+              }
+          } else {
+            echo "<tr><td colspan='5'>No banned users found.</td></tr>";
+          }
+            ?>
           </tbody>
+
+
+
+
         </table>
 
       </div>
