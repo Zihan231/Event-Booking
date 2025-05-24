@@ -4,7 +4,13 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
   header('location: login.php');
   exit();
 }
+else{
 require_once '../Model/Users.php';
+$TotalUsers = TotalCustomers();
+$TotalBanned = TotalBannedUsers();
+$TotalSuspended = TotalSuspendedUsers();
+
+}
 ?>
 
 
@@ -83,18 +89,18 @@ require_once '../Model/Users.php';
 
       <div id="UserStatsContainer">
         <div class="user-stats-card">
-          <h3 id="TotalUser">Total Users</h3>
-          <p id="lockedCount">5</p>
+          <h3 id="TotalUser">Active Users</h3>
+          <p id="lockedCount"><?php echo $TotalUsers; ?></p>
           <a href="#RecentUserTable" class="see-all-link">See All</a>
         </div>
         <div class="user-stats-card">
           <h3 id="Banned">Banned Users</h3>
-          <p id="bannedCount">12</p>
+          <p id="bannedCount"><?php echo $TotalBanned; ?></p>
           <a href="./SeeAllBanned.php" class="see-all-link">See All</a>
         </div>
         <div class="user-stats-card">
           <h3 id="Suspended">Suspended Users</h3>
-          <p id="suspendedCount">8</p>
+          <p id="suspendedCount"><?php echo $TotalSuspended; ?></p>
           <a href="./SeeAllSuspended.php" class="see-all-link">See All</a>
         </div>
       </div>
