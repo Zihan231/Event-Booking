@@ -22,7 +22,7 @@
 
       <form
         class="signup-form"
-        id="signupForm" method="POST" action="./emailVarifation.php"
+        id="signupForm" method="POST" action="../Controller/signUpController.php"
         onsubmit="return validationVerification()"
       >
         <div class="name-fields">
@@ -56,7 +56,7 @@
         </div>
         <div id="confirmPasswordError" class="error"></div>
 
-        <button class="signup-btn" type="submit">Sign up</button>
+        <button class="signup-btn" name="submit" type="submit">Sign up</button>
 
         <p class="terms">
           By clicking "Sign up", you agree to EventBookings

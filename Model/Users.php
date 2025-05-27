@@ -189,3 +189,49 @@ function TotalCustomers()
     }
     return 0;
 }
+
+
+
+      function loginUser($users){
+         //Only db
+         global $conn; //return conn
+         $Query = "SELECT * FROM users WHERE email = '{$users['email']}' AND password = '{$users['password']}'";
+         $result=mysqli_query($conn,$Query);
+         $count=mysqli_num_rows($result);
+         if($count>1){
+            return false;
+         }else{
+             return mysqli_fetch_assoc($result); //Asscociative Array
+         }
+     }
+ 
+function register($user) {
+    global $conn;
+
+    $fname = $user['firstname'];
+    $lname = $user['lastname'];
+    $email = $user['email'];
+    $pass  = $user['password'];
+    $conpass = $user['password']; // You can change this if needed
+
+    // Check if email already exists
+    $checkSql = "SELECT * FROM registration WHERE email = '$email'";
+    $checkResult = mysqli_query($conn, $checkSql);
+
+    if (mysqli_num_rows($checkResult) > 0) {
+        mysqli_close($conn);
+        return "exists";
+    }
+
+    // Insert user data
+    $sql1 = "INSERT INTO registration (First_Name, Lirst_Name, email, Password, Con_Password)
+             VALUES ('$fname', '$lname', '$email', '$pass', '$conpass')";
+
+    $success1 = mysqli_query($conn, $sql1);
+
+    mysqli_close($conn);
+
+    return ($success1) ? "success" : "fail";
+}
+
+?>
