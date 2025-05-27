@@ -4,6 +4,12 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
     header('location: login.php');
     exit();
 }
+else{
+  require_once '../Model/Events.php';
+  require_once '../Model/Users.php';
+  $TotalEvents = totalEvents();
+  $TotalUsers = TotalCustomers();
+}
 ?>
 
 <!DOCTYPE html>
@@ -96,8 +102,8 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
             <span id="Active_event_percent" class="Dashboard_cards_Percent">+12.5%
             </span>
           </div>
-          <h3>150</h3>
-          <p>Active Events</p>
+          <h3><?php echo $TotalEvents; ?></h3>
+          <p>Total Events</p>
         </div>
 
         <!-- Card 3 Revenue -->
@@ -118,7 +124,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
             <span id="Total_user_percent" class="Dashboard_cards_Percent">+12.5%
             </span>
           </div>
-          <h3>15,500</h3>
+          <h3><?php echo $TotalUsers; ?></h3>
           <p>Total User</p>
         </div>
       </div>

@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
     header('location: login.php');
     exit();
@@ -16,5 +18,18 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
         } else {
             return false;
         }
+    }
+    function getVenues()
+    {
+        global $conn;
+        $query = "SELECT * FROM `venues`";
+        $result = mysqli_query($conn, $query);
+        $venues = [];
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $venues[] = $row;
+            }
+        }
+        return $venues;
     }
 }

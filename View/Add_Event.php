@@ -1,9 +1,15 @@
 <?php
 // include ("../Controller/loginController.php");
-session_start();
+require_once '../Model/venue.php';
+require_once '../Model/Events.php';
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
   header('location: login.php');
   exit();
+} else {
+  $venues = getVenues();
 }
 ?>
 
@@ -18,7 +24,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
   <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet" />
-  <link rel="stylesheet" href="../Asset/CSS/Style_AddEvent.css" />
+  <link rel="stylesheet" href="../Asset/CSS/Style_AddEvent.css?v2.0" />
 </head>
 
 <body>
@@ -82,9 +88,10 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
       <!-- form Start -->
       <div id="AddEventFormContainer">
         <form
-          action="../Controller/add_Event_Controll.php"
+        action="../Controller/add_Event_Controll.php"
           method="post"
-          onsubmit="return AddEvent_Validation()">
+          enctype="multipart/form-data"
+          onsubmit="return Validation()">
           <div class="formGroup">
             <div>
               <span>
@@ -136,6 +143,17 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
           </div>
           <div class="formGroup">
             <div>
+              <span><i class="ri-file-text-line"></i></span>
+              <label for="ShortDescription">Short Description</label>
+            </div>
+
+            <textarea
+              id="ShortDescription"
+              name="ShortDescription"
+              rows="4"></textarea>
+          </div>
+          <div class="formGroup">
+            <div>
               <span>
                 <i class="ri-file-image-line"></i>
               </span>
@@ -155,6 +173,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               </span>
               <label for="eventCategory">Event Category</label>
             </div>
+            
 
             <select id="eventCategory" name="eventCategory">
               <option value="" disabled selected>Select a category</option>
@@ -184,22 +203,15 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               <span>
                 <i class="ri-map-pin-line"></i>
               </span>
-              <label for="eventVenue">Venue Details</label>
+              <label for="eventVenue">Venue</label>
             </div>
 
-            <input type="text" id="eventVenue" name="eventVenue" />
-          </div>
-          <div class="formGroup">
-            <div>
-              <span> <i class="ri-team-line"></i> </span>
-              <label for="eventCapacity">Event Capacity</label>
-            </div>
-
-            <input
-              type="number"
-              id="eventCapacity"
-              name="eventCapacity"
-              min="1" />
+            <select id="eventVenue" name="eventVenue">
+              <option value="" disabled selected>Select a venue</option>
+              <?php foreach ($venues as $venue): ?>
+                <option value="<?php echo $venue['V_Id']; ?>"><?php echo $venue['V_Name']; ?></option>
+              <?php endforeach; ?>
+            </select>
           </div>
 
           <button type="submit" id="submitBtn" name="AddEvent">Add Event</button>
@@ -210,7 +222,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
     </section>
   </main>
 
-  <script src="../Asset/js/AddEvent.js"></script>
+  <script src="../Asset/js/AddEvent.js?v4.0"></script>
 </body>
 
 </html>

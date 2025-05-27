@@ -175,6 +175,9 @@ main {
 #eventCategory option {
   font-weight: 550;
 }
+#eventVenue option {
+  font-weight: 550;
+}
 .formGroup textarea {
   resize: vertical;
   min-height: 100px;
