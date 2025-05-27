@@ -1,9 +1,12 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+include("../Model/Events.php");
 include("../Model/DataBase.php");
-$sql = "select * from events where E_ID='{$_GET["id"]}'";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_array($result);
-
+$eventDetails = getEventByID($_GET["id"]);
+$EventID = $eventDetails["E_ID"];
+$_SESSION['EventID'] = $EventID;  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,17 +31,17 @@ $row = mysqli_fetch_array($result);
   <main>
     <section id="EventDetails">
       <div id="EventDetailsHeader">
-        <h1><?php echo $row["E_Name"]; ?></h1>
+        <h1><?php echo $eventDetails["E_Name"]; ?></h1>
       </div>
       <div id="EventBannerAndDetails">
         <div id="EventBanner">
-          <img src="../Asset/Image/<?php echo $row['Thumbnail']; ?>" alt="Event Thumbnail">
+          <img src="../Asset/Image/<?php echo $eventDetails['Thumbnail']; ?>" alt="Event Thumbnail">
         </div>
         <div id="EventContentDetails">
           <h2>Event Details</h2>
           <p>
             <?php
-            echo $row["E_Description"];
+            echo $eventDetails["E_Description"];
 
 
             ?>
@@ -46,22 +49,22 @@ $row = mysqli_fetch_array($result);
           <h3>Event Information</h3>
           <ul>
             <li>
-              <strong><i class="ri-calendar-line"></i></strong> <?php echo $row["E_Date"]; ?>
+              <strong><i class="ri-calendar-line"></i></strong> <?php echo $eventDetails["E_Date"]; ?>
             </li>
             <li>
-              <strong><i class="ri-time-line"></i></strong> <?php echo date("h:i A", strtotime($row["E_Time"])); ?>
+              <strong><i class="ri-time-line"></i></strong> <?php echo date("h:i A", strtotime($eventDetails["E_Time"])); ?>
             </li>
             <li>
               <strong><i class="ri-ancient-pavilion-fill"></i></strong>
               <?php
-              echo $row["E_Location"];
+              echo $eventDetails["E_Location"];
 
               ?>
             </li>
             <li>
               <strong><i class="ri-price-tag-3-fill"></i></strong> Starting
               from
-              <strong>&nbsp;$<?php echo $row["E.Price"]; ?></strong>
+              <strong>&nbsp;$<?php echo $eventDetails["E.Price"]; ?></strong>
             </li>
             <li>
               <strong><i class="ri-ancient-gate-line"></i></strong><a id="VenueDetails" href="./veanu.html">See Venue Details.</a></strong>
@@ -82,7 +85,7 @@ $row = mysqli_fetch_array($result);
                             id="AddToCartBtn" href="">Add to Cart</a>
                     </div> -->
           <div id="CartAndBookNow_Btn_Container">
-            <a id="BookNowBTN" href="ticketType.php">Book Now</a>
+            <a id="BookNowBTN" href="../View/ticketType.php">Book Now</a>
           </div>
         </div>
       </div>

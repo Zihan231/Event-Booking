@@ -33,6 +33,7 @@ if (isset($_POST["AddEvent"]) && $_SESSION['status'] == true) {
         $TicketPrice = $_POST["eventPrice"] ?? "";
         $EventVenue = $_POST["eventVenue"] ?? "";
         $EventThumbnail = $_FILES["eventImage"]["name"] ?? "";
+        $PromoCode = $_POST["PromoCode"] ?? "";
         if (
             empty($EventName) || empty($EventDate) || empty($EventTime) || empty($EventLocation) ||
             empty($EventDescription) || empty($EventCategory) ||
@@ -45,9 +46,9 @@ if (isset($_POST["AddEvent"]) && $_SESSION['status'] == true) {
             $ThumbnailTmpName = $_FILES["eventImage"]["tmp_name"];
             $ThumbnailDestination = "../Asset/Image/" . $ThumbnailName; 
             move_uploaded_file($ThumbnailTmpName, $ThumbnailDestination);
-            $result = addEvent($EventName, $EventDate, $EventTime, $EventLocation, $EventDescription,$EventShortDescription, $ThumbnailName, $EventCategory, $TicketPrice, $EventVenue);
+            $result = addEvent($EventName, $EventDate, $EventTime, $EventLocation, $EventDescription,$EventShortDescription, $ThumbnailName, $EventCategory, $TicketPrice, $EventVenue, $PromoCode);
             if ($result) {
-                header('location: ../view/DashBoard.php');
+                header('location: ../view/Add_Event.php?success=1');
                 exit();
             } else {
                 echo "Error adding event. Please try again.";

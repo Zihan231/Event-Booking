@@ -2,6 +2,7 @@
 // include ("../Controller/loginController.php");
 require_once '../Model/venue.php';
 require_once '../Model/Events.php';
+require_once "../Model/Promocode.php";
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
@@ -10,6 +11,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
   exit();
 } else {
   $venues = getVenues();
+  $promoCodes = getPromoCodes();
 }
 ?>
 
@@ -24,7 +26,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
   <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet" />
-  <link rel="stylesheet" href="../Asset/CSS/Style_AddEvent.css?v2.0" />
+  <link rel="stylesheet" href="../Asset/CSS/Style_AddEvent.css?v2.1" />
 </head>
 
 <body>
@@ -212,11 +214,33 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
                 <option value="<?php echo $venue['V_Id']; ?>"><?php echo $venue['V_Name']; ?></option>
               <?php endforeach; ?>
             </select>
+            
           </div>
+          <div class="formGroup">
+            <div>
+              <span>
+                <i class="ri-map-pin-line"></i>
+              </span>
+              <label for="PromoCode">PromoCodeS(Optional)</label>
+            </div>
+
+            <select id="PromoCode" name="PromoCode">
+              <option value="" disabled selected>Select a promo code</option>
+              <?php foreach ($promoCodes as $code): ?>
+                <option value="<?php echo $code['Pro_Id']; ?>"><?php echo $code['Code']; ?></option>
+              <?php endforeach; ?>
+            </select>
+            
+          </div>
+
+          
 
           <button type="submit" id="submitBtn" name="AddEvent">Add Event</button>
         </form>
         <div id="errorMessage" class="errorMessage"></div>
+        <div id="SuccessMessage" class="errorMessage" style="color: green;text-align: center;font-weight: 600;"><?php if (isset($_GET['success']) && $_GET['success'] == 1) {
+          echo "Event added successfully";
+        } ?></div>
       </div>
       <!-- form ends -->
     </section>

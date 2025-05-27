@@ -3,6 +3,8 @@ session_start();
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
     header('location: login.php');
     exit();
+} else {
+  $EventID = $_SESSION["EventID"];
 }
 ?>
 

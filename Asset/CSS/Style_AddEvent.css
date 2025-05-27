@@ -178,6 +178,9 @@ main {
 #eventVenue option {
   font-weight: 550;
 }
+#PromoCode option {
+  font-weight: 550;
+}
 .formGroup textarea {
   resize: vertical;
   min-height: 100px;

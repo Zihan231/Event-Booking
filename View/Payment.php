@@ -1,10 +1,14 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
   header('location: login.php');
   exit();
+} else {
+  $EventID = $_SESSION['EventID'];
+  require_once '../Model/Events.php';
+  $eventDetails = geteventDetails($EventID);
 }
 ?>
 
@@ -17,10 +21,9 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Payment</title>
   <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-  <link rel="stylesheet" href="../Asset/CSS/Style_Payment.css" />
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../Asset/CSS/Style_Payment.css?v2.1" />
 </head>
 
 <body>
@@ -47,32 +50,50 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
       <div class="payment-summary">
         <h3>Order Summary</h3>
         <ul>
-          <li><span>Event:</span> Jazz & Wine Night</li>
-          <li><span>Date:</span> June 20, 2025</li>
-          <li><span>Tickets:</span> 2 × $100</li>
+          <li><span>Event:</span><?php echo $eventDetails["E_Name"]; ?></li>
+          <li><span>Date:</span> <?php echo $eventDetails["E_Date"]; ?></li>
+          <li><span>Tickets:</span>
+            <select id="ticketQuantity" name="ticketQuantity">
+              <option value="0">Select Quantity</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+            <div><span>× $</span><span id="ticketPriceDisplay"><?php echo $eventDetails["E.Price"]; ?></span></div>
+          </li>
 
           <hr class="Hr_Style" />
 
-          <li><span>Total:</span> $200.00</li>
+          <li><span>Total:</span> <span id="TotalAmount"></span> </li>
         </ul>
       </div>
 
       <!-- Coupon Code Section (inside .payment-summary container, after Total) -->
       <div class="coupon-section">
-        <label for="couponCode">Have a coupon?(Optional)</label>
+        <form action="../Controller/CheckPromoCode.php" method="Post"  id="couponForm">
+          <label for="couponCode">Have a coupon?(Optional)</label>
 
-        <div class="coupon-input-group">
-          <input
-            type="text"
-            id="couponCode"
-            placeholder="Enter coupon code" />
-          <button type="button" id="applyCouponBtn">Apply</button>
-        </div>
+          <div class="coupon-input-group">
+            <input
+              type="text"
+              id="couponCode"
+              placeholder="Enter coupon code" name="couponCode" />
+            <button type="submit" id="applyCouponBtn" name="applyCouponBtn" onclick="return confirmCouponCode()">Apply</button>
+          </div>
+        </form>
 
-        <p id="couponMessage" class="coupon-message">Coupon feedback</p>
 
-        <p class="updated-total" style="display: none">
-          <strong>Updated Total:</strong> $<span id="updatedTotal">200.00</span>
+        <p id="couponMessage" class="coupon-message"></p>
+
+        <p class="updated-total" style="display: <?php if(isset($_SESSION['ValidPromoCode']) || isset($_SESSION['InvalidPromoCode'])) echo 'block'; else echo 'none'; ?>">
+          <strong>Updated Total:</strong> $<span id="updatedTotal"><?php if(isset($_SESSION['ValidPromoCode'])) {
+            echo $_SESSION["ValidPromoCode"] . "<br>";
+            echo $_SESSION['EventPrice'];} else {
+            echo $_SESSION["InvalidPromoCode"];
+          } ?></span>
         </p>
       </div>
 
@@ -123,7 +144,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
       </div>
       <!-- Confirm Button -->
       <div class="confirm-button">
-        <button id="payNowBtn" class="pay-now-btn">Confirm & Pay</button>
+        <button id="payNowBtn" onclick="return confirmPayment()" class="pay-now-btn">Confirm & Pay</button>
       </div>
     </div>
   </main>
@@ -168,7 +189,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
     </div>
   </footer>
   <!-- Footer Section Ends -->
-  <script src="../Asset/js/Payment.js"></script>
+  <script src="../Asset/js/Payment.js?v2.1"></script>
 </body>
 
 </html>
