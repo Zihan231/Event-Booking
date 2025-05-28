@@ -6,7 +6,7 @@ require_once "../Model/Promocode.php";
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
-if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
   header('location: login.php');
   exit();
 } else {
@@ -90,7 +90,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
       <!-- form Start -->
       <div id="AddEventFormContainer">
         <form
-        action="../Controller/add_Event_Controll.php"
+          action="../Controller/add_Event_Controll.php"
           method="post"
           enctype="multipart/form-data"
           onsubmit="return Validation()">
@@ -175,7 +175,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
               </span>
               <label for="eventCategory">Event Category</label>
             </div>
-            
+
 
             <select id="eventCategory" name="eventCategory">
               <option value="" disabled selected>Select a category</option>
@@ -214,7 +214,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
                 <option value="<?php echo $venue['V_Id']; ?>"><?php echo $venue['V_Name']; ?></option>
               <?php endforeach; ?>
             </select>
-            
+
           </div>
           <div class="formGroup">
             <div>
@@ -230,17 +230,17 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
                 <option value="<?php echo $code['Pro_Id']; ?>"><?php echo $code['Code']; ?></option>
               <?php endforeach; ?>
             </select>
-            
+
           </div>
 
-          
+
 
           <button type="submit" id="submitBtn" name="AddEvent">Add Event</button>
         </form>
         <div id="errorMessage" class="errorMessage"></div>
         <div id="SuccessMessage" class="errorMessage" style="color: green;text-align: center;font-weight: 600;"><?php if (isset($_GET['success']) && $_GET['success'] == 1) {
-          echo "Event added successfully";
-        } ?></div>
+                                                                                                                  echo "Event added successfully";
+                                                                                                                } ?></div>
       </div>
       <!-- form ends -->
     </section>

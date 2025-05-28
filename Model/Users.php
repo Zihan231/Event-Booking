@@ -190,36 +190,47 @@ function TotalCustomers()
     return 0;
 }
 
-function InsertUser($firstName, $lastName, $pass, $email, $userType) {
+function InsertUser($firstName, $lastName, $pass, $email, $userType)
+{
     global $conn;
     $query = 'INSERT INTO users (U_FirstName, U_LastName, U_Password, U_Email, U_Type) 
               VALUES ($firstName, $lastName, $pass, $email, $userType)';
-              $result = mysqli_query($conn, $query);
-            if ($result) {
-            return true;
-        } else {
-            return false;
-        }
-
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        return true;
+    } else {
+        return false;
     }
-
-    //   function loginUser($users){
-    //      //Only db
-    //      global $conn; //return conn
-    //      $Query = "SELECT * FROM users WHERE email = '{$users['email']}' AND password = '{$users['password']}'";
-    //      $result=mysqli_query($conn,$Query);
-    //      $count=mysqli_num_rows($result);
-    //      if($count>1){
-    //         return false;
-    //      }else{
-    //          return mysqli_fetch_assoc($result); //Asscociative Array
-    //      }
-    //  }
-     
- 
+}
+function getUserByEmail($email)
+{
+    global $conn;
+    $query = "SELECT * FROM users WHERE U_Email = '$email'";
+    $result = mysqli_query($conn, $query);
+    if ($result && mysqli_num_rows($result) > 0) {
+        return mysqli_fetch_assoc($result);
+    }
+    return null;
+}
 
 
-     
+//   function loginUser($users){
+//      //Only db
+//      global $conn; //return conn
+//      $Query = "SELECT * FROM users WHERE email = '{$users['email']}' AND password = '{$users['password']}'";
+//      $result=mysqli_query($conn,$Query);
+//      $count=mysqli_num_rows($result);
+//      if($count>1){
+//         return false;
+//      }else{
+//          return mysqli_fetch_assoc($result); //Asscociative Array
+//      }
+//  }
+
+
+
+
+
 // function register($user) {
 //     global $conn;
 
@@ -248,5 +259,3 @@ function InsertUser($firstName, $lastName, $pass, $email, $userType) {
 
 //     return ($success1) ? "success" : "fail";
 // }
-
-?>

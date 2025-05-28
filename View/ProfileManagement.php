@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
-    header('location: login.php');
-    exit();
+if (!isset($_SESSION['CustomerLoginstatus']) || $_SESSION['CustomerLoginstatus'] !== true) {
+  header('location: login.php');
+  exit();
 }else{
   $userEmail= $_SESSION["email"];
 }

@@ -54,4 +54,63 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
             return null;
         }
     }
+    function getEventsByCategory($category)
+    {
+        global $conn;
+
+        $query = "SELECT * FROM events WHERE E_Category = '$category'";
+        $result = mysqli_query($conn, $query);
+        $events = [];
+
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $events[] = $row;
+            }
+        }
+
+        return $events;
+    }
+    function getAllEvents()
+    {
+        global $conn;
+        $query = "SELECT * FROM events";
+        $result = mysqli_query($conn, $query);
+        $events = [];
+
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $events[] = $row;
+            }
+        }
+
+        return $events;
+    }
+    function getTotalEventsCount()
+    {
+        global $conn;
+        $sql = "SELECT COUNT(*) AS total FROM events";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            $row = mysqli_fetch_assoc($result);
+            return (int)$row['total'];
+        }
+        return 0;
+    }
+
+    function getEventsByPage($page = 1, $eventsPerPage = 12)
+    {
+        global $conn;   
+        $offset = ($page - 1) * $eventsPerPage;
+        $sql = "SELECT * FROM events LIMIT $eventsPerPage OFFSET $offset";
+        $result = mysqli_query($conn, $sql);
+        $events = [];
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $events[] = $row;
+            }
+        }
+        return $events;
+    }
+
+    
 }

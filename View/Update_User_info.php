@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
-  header('location: login.php');
-  exit();
+if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
+    header('location: login.php');
+    exit();
 }
 require_once '../Model/Users.php';
 
@@ -10,7 +10,7 @@ $userInfo = null;
 
 if (isset($_GET['search'])) {
   $searchTerm = $_GET['search'];
-  $searchResults = searchUser($searchTerm);
+  $searchResults = searchUserById($searchTerm);
   if (!empty($searchResults)) {
     $userInfo = $searchResults[0];
     $UserId = $searchResults[0]['U_Id'];

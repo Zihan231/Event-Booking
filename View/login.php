@@ -1,5 +1,8 @@
-
-
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,13 +35,18 @@
         </div>
         <div id="passwordError" class="error"></div>
 
-        <div class="role-selection">
-          <label><input type="radio" name="role" value="admin" /> Admin</label>
-          <label
-            ><input type="radio" name="role" value="customer" /> Customer</label
-          >
+        
+        <div id="LoginError" class="error">
+          <?php
+          if (isset($_SESSION["LoginError"])) {
+              echo $_SESSION["LoginError"];
+              unset($_SESSION["LoginError"]);
+          }
+          ?>
+          
+
+
         </div>
-        <div id="roleError" class="error"></div>
 
         <div class="actions">
           <label><input type="checkbox" /> Remember me</label>

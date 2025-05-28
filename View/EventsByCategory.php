@@ -1,9 +1,8 @@
 <?php
-include("../Model/DataBase.php");
+include("../Model/Events.php");
 
-$sql = "select * from events where E_Category='{$_GET['Category']}'";
-
-$result = mysqli_query($conn, $sql);
+$Category = isset($_GET['Category']) ? $_GET['Category'] : '';
+$result = getEventsByCategory($Category);
 
 ?>
 
@@ -51,16 +50,16 @@ $result = mysqli_query($conn, $sql);
 
             <div id="Filter">
                 <form method="GET">
-                <label for="FilterEvents">Filter:</label>
-                <select name="Filter" id="FilterEvents">
-                    <option value="All">All Events</option>
-                    <option value="LowToHigh">Price Low to High</option>
-                    <option value="HighToLow">Price High to Low</option>
-                    <option value="Recent">Most Recent</option>
-                    <option value="Week">This Week</option>
-                    <option value="Month">This Month</option>
-                    <option value="Year">This Year</option>
-                </select>
+                    <label for="FilterEvents">Filter:</label>
+                    <select name="Filter" id="FilterEvents">
+                        <option value="All">All Events</option>
+                        <option value="LowToHigh">Price Low to High</option>
+                        <option value="HighToLow">Price High to Low</option>
+                        <option value="Recent">Most Recent</option>
+                        <option value="Week">This Week</option>
+                        <option value="Month">This Month</option>
+                        <option value="Year">This Year</option>
+                    </select>
                 </form>
             </div>
         </div>
@@ -69,43 +68,37 @@ $result = mysqli_query($conn, $sql);
         <div id="EventCardContainer">
 
             <?php
-            if (mysqli_num_rows($result) == 0) {
+            if (empty($result)) {
                 echo "<h2> No Events Found. </h2>";
             } else {
-
-
-                while ($row = mysqli_fetch_assoc($result)) {
-
+                foreach ($result as $event) {
             ?>
-
-                    <!-- Events -->
                     <div class="eventCards">
-                        <img src="../Asset/Image/<?php echo $row['Thumbnail']; ?>" alt="Event Thumbnail">
+                        <img src="../Asset/Image/<?php echo $event['Thumbnail']; ?>" alt="Event Thumbnail">
 
                         <div class="EventDescription">
                             <div id="EventTagContainer">
-                                <span class="EventTag" id="music-tag"><?php echo $row["E_Category"]; ?></span>
-                                <span class="price"><?php echo $row["E.Price"]; ?>$</span>
+                                <span class="EventTag" id="music-tag"><?php echo $event["E_Category"]; ?></span>
+                                <span class="price"><?php echo $event["E.Price"]; ?>$</span>
                             </div>
-                            <h2><?php echo $row["E_Name"]; ?></h2>
-                            <p><?php echo $row["short_description"]; ?></p>
+                            <h2><?php echo $event["E_Name"]; ?></h2>
+                            <p><?php echo $event["short_description"]; ?></p>
                             <p>
-                                <span><i class="ri-calendar-line"></i></span>Date: <?php echo $row["E_Date"]; ?>
+                                <span><i class="ri-calendar-line"></i></span>Date: <?php echo $event["E_Date"]; ?>
                             </p>
                             <p>
-                                <span><i class="ri-time-line"></i></span> <?php echo date("h:i A", strtotime($row["E_Time"])); ?>
-
+                                <span><i class="ri-time-line"></i></span> <?php echo date("h:i A", strtotime($event["E_Time"])); ?>
                             </p>
                             <p>
-                                <span><i class="ri-map-pin-line"></i></span><?php echo $row["E_Location"] ?>
+                                <span><i class="ri-map-pin-line"></i></span><?php echo $event["E_Location"] ?>
                             </p>
-                            <a href="EventDetails.php?id=<?php echo $row["E_ID"]; ?>">View Details</a>
+                            <a href="EventDetails.php?id=<?php echo $event["E_ID"]; ?>">View Details</a>
                         </div>
                     </div>
             <?php
-
                 }
             }
+
             ?>
 
             <!--1st Page's Events ends Here -->

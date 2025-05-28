@@ -1,20 +1,17 @@
 <?php
-include("../Model/DataBase.php");
 
-$sql = "SELECT COUNT(*) AS total FROM events";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
-$totalEvents = $row['total'];
+include("../Model/Events.php");
+
+
+$totalEvents = getTotalEventsCount();
 
 $eventsPerPage = 12;
-$totalPages = ceil($totalEvents / $eventsPerPage);
+$totalPages = (int)ceil($totalEvents / $eventsPerPage);
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-$offset = ($page - 1) * $eventsPerPage;
 
-$sql = "SELECT * FROM events LIMIT $eventsPerPage OFFSET $offset"; //if Offset=12 so 12 rows will be skiped and Limit = 12 so only 12 rows will be shown
-$result = mysqli_query($conn, $sql);
+$result = getEventsByPage($page, $eventsPerPage);
 
 ?>
 
@@ -25,7 +22,7 @@ $result = mysqli_query($conn, $sql);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eventify</title>
-  <link rel="stylesheet" href="../Asset/CSS/Style_EventCalender.css?v11.0" />
+  <link rel="stylesheet" href="../Asset/CSS/Style_EventCalender.css?v15.0" />
   <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet" />
@@ -48,18 +45,18 @@ $result = mysqli_query($conn, $sql);
     <!-- Search bar -->
     <div id="SrcBar_filters">
       <div id="SrcBar">
-                <form action="" onsubmit="return isValidSearch()">
-                    <div id="srcBar-container" class="srcbar-Div">
-                        <input
-                            type="text"
-                            placeholder="Search for events"
-                            id="search-input" />
-                        <button id="search-button">Search</button>
-                    </div>
-                    <p id="errorMessage" class="error-message"></p>
-                </form>
-            </div>
-            
+        <form action="" onsubmit="return isValidSearch()">
+          <div id="srcBar-container" class="srcbar-Div">
+            <input
+              type="text"
+              placeholder="Search for events"
+              id="search-input" />
+            <button id="search-button">Search</button>
+          </div>
+          <p id="errorMessage" class="error-message"></p>
+        </form>
+      </div>
+
       <div id="Filter">
         <label for="FilterEvents">Filter:</label>
         <select name="Filter" id="FilterEvents">
@@ -74,38 +71,34 @@ $result = mysqli_query($conn, $sql);
       </div>
     </div>
 
-    <!-- Events stars -->
+    <!-- Events start -->
     <div id="EventCardContainer">
 
       <?php
-      if (mysqli_num_rows($result) == 0) {
-        echo "No Events Found.";
+      if (empty($result)) {
+        echo "<h2>No Events Found.</h2>";
       } else {
-        while ($row = mysqli_fetch_assoc($result)) {
+        foreach ($result as $row) {
       ?>
-
-          <!-- Events -->
           <div class="eventCards">
-            <img src="../Asset/Image/<?php echo $row['Thumbnail']; ?>" alt="Event Thumbnail">
-
+            <img src="../Asset/Image/<?php echo htmlspecialchars($row['Thumbnail']); ?>" alt="Event Thumbnail">
             <div class="EventDescription">
               <div id="EventTagContainer">
-                <span class="EventTag" id="music-tag"><?php echo $row["E_Category"]; ?></span>
-                <span class="price"><?php echo $row["E.Price"]; ?>$</span>
+                <span class="EventTag" id="music-tag"><?php echo htmlspecialchars($row["E_Category"]); ?></span>
+                <span class="price"><?php echo htmlspecialchars($row["E.Price"]); ?>$</span>
               </div>
-              <h2><?php echo $row["E_Name"]; ?></h2>
-              <p><?php echo $row["short_description"]; ?></p>
+              <h2><?php echo htmlspecialchars($row["E_Name"]); ?></h2>
+              <p><?php echo htmlspecialchars($row["short_description"]); ?></p>
               <p>
-                <span><i class="ri-calendar-line"></i></span>Date: <?php echo $row["E_Date"]; ?>
+                <span><i class="ri-calendar-line"></i></span>Date: <?php echo htmlspecialchars($row["E_Date"]); ?>
               </p>
               <p>
                 <span><i class="ri-time-line"></i></span> <?php echo date("h:i A", strtotime($row["E_Time"])); ?>
-
               </p>
               <p>
-                <span><i class="ri-map-pin-line"></i></span><?php echo $row["E_Location"] ?>
+                <span><i class="ri-map-pin-line"></i></span><?php echo htmlspecialchars($row["E_Location"]); ?>
               </p>
-              <a href="EventDetails.php?id=<?php echo $row["E_ID"]; ?>">View Details</a>
+              <a href="EventDetails.php?id=<?php echo (int)$row["E_ID"]; ?>">View Details</a>
             </div>
           </div>
       <?php
@@ -114,11 +107,6 @@ $result = mysqli_query($conn, $sql);
       ?>
 
 
-
-
-
-
-      <!--1st Page's Events ends Here -->
     </div>
 
     <!-- Pagination -->

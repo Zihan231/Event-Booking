@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
-  header('location: login.php');
-  exit();
+if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
+    header('location: login.php');
+    exit();
 }
 ?>
 

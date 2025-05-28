@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
-if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+if (!isset($_SESSION['CustomerLoginstatus']) || $_SESSION['CustomerLoginstatus'] !== true) {
   header('location: login.php');
   exit();
 } else {
