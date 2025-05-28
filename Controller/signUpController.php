@@ -1,6 +1,14 @@
 <?php
-session_start();
-require_once '../Model/Users.php';
+require_once '../Model/users.php';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+    header('location: login.php');
+    exit();
+} else {
+
 
 if (isset($_POST['submit'])) {
     $fname  = trim($_POST['firstName']);
@@ -8,12 +16,14 @@ if (isset($_POST['submit'])) {
     $email  = trim($_POST['email']);
     $pass   = trim($_POST['password']);
     $cpass  = trim($_POST['confirmPassword']);
+    $UserType = "consumer";
 
     $user = [
         'firstname' => $fname,
         'lastname'  => $lname,
         'email'     => $email,
-        'password'  => $pass
+        'password'  => $pass,
+        'UserType'  => $UserType
     ];
 
     $result = register($user);
@@ -32,3 +42,5 @@ if (isset($_POST['submit'])) {
 
 header('Location: ../View/signUp.php?error=invalid');
 exit();
+}
+?>
