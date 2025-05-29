@@ -6,11 +6,11 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
   header('location: login.php');
   exit();
 } else {
-  require_once '../Model/Users.php';
-  if (isset($_POST["BanControlButton"])) {
-    unbanUser($_SESSION["selected_user_For_Action"]);
+  require_once('../Model/Users.php');
+  if (isset($_POST["SuspendControll_Btn"])) {
+    RemoveSuspension($_SESSION["selected_user_For_Action"]);
     header("Location: ../View/TakeAction.php");
-    $_SESSION["ReturnMsg"]="Unbanned Successfully";
+    $_SESSION["Suspention_Status"] = "Suspension removed successfully";
     exit();
   }
 }

@@ -7,7 +7,7 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
     exit();
 }
 require_once '../Model/Users.php';
-if (isset($_SESSION["status"]) && $_SESSION["status"] == true && isset($_POST["UpdateBtn"])) {
+if (isset($_SESSION["AdminLoginstatus"]) && $_SESSION["AdminLoginstatus"] == true && isset($_POST["UpdateBtn"])) {
     $Firstname = $_POST["firstname"] ?? "";
     $Lastname = $_POST["lastName"] ?? "";
     $EmailAddress = $_POST["email"] ?? "";

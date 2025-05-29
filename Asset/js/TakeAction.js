@@ -16,14 +16,7 @@ function banUser() {
     }
   }
   
-  function suspendUser() {
-    const duration = document.getElementById("suspendDuration").value;
-    const confirmed = confirm(`Are you sure you want to suspend this user for ${duration} days?`);
-    if (confirmed) {
-      console.log(`User suspended for ${duration} days.`);
-      alert(`User has been suspended for ${duration} days.`);
-    }
-  }
+  
   
   function deleteUser() {
     const confirmed = confirm("⚠️ Are you sure you want to permanently delete this user? This action cannot be undone.");

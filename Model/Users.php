@@ -66,7 +66,8 @@ function updateUserInfoNoPass($userId, $firstName, $lastName, $email)
     global $conn;
 
     $query = "UPDATE users SET U_FirstName='$firstName', U_LastName='$lastName', U_Email='$email' WHERE U_Id=$userId";
-    return mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query);
+    return $result;
 }
 
 function getCustomerById($userId)
@@ -74,13 +75,11 @@ function getCustomerById($userId)
     global $conn;
     $query = "SELECT * FROM users WHERE U_Id = $userId";
     $result = mysqli_query($conn, $query);
-    $users = [];
     if ($result && mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $users[] = $row;
-        }
+        $users = mysqli_fetch_assoc($result);
+        return $users;
     }
-    return $users;
+    return Null;
 }
 
 function searchUserById($searchTerm)
@@ -88,7 +87,7 @@ function searchUserById($searchTerm)
     global $conn;
     $searchTermEscaped = mysqli_real_escape_string($conn, $searchTerm);
     $query = "SELECT * FROM users 
-              WHERE U_Id LIKE '%$searchTermEscaped%' ";
+              WHERE U_Id LIKE '%$searchTermEscaped%' AND U_Type = 'customer'";
     $result = mysqli_query($conn, $query);
     $users = [];
     if ($result) {
@@ -240,4 +239,25 @@ function register($user)
     mysqli_close($conn);
 
     return ($success1) ? "success" : "fail";
+}
+function RemoveSuspension($userId)
+{
+    global $conn;
+    $query = "UPDATE users SET isSuspended = NULL WHERE U_Id = $userId";
+    $result = mysqli_query($conn, $query);
+    return $result;
+}
+function SuspendUser($userId, $date)
+{
+    global $conn;
+    $query = "UPDATE users SET isSuspended = '$date' WHERE U_Id = $userId;";
+    $result = mysqli_query($conn, $query);
+    return $result;
+}
+function DeleteUser($userId)
+{
+    global $conn;
+    $query = "DELETE FROM users WHERE U_Id = $userId;";
+    $result = mysqli_query($conn, $query);
+    return $result;
 }

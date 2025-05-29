@@ -1,23 +1,26 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
     header('location: login.php');
     exit();
 }
 require_once '../Model/Users.php';
-
-$userInfo = null;
+$_SESSION["selected_user_id"]=$_GET['id'];
 
 if (isset($_GET['search'])) {
   $searchTerm = $_GET['search'];
   $searchResults = searchUserById($searchTerm);
   if (!empty($searchResults)) {
     $userInfo = $searchResults[0];
-    $UserId = $searchResults[0]['U_Id'];
   }
-} elseif (isset($_GET['id'])) {
-  $UserId = $_GET['id'];
-  $userInfo = getCustomerById($UserId);
+}
+else if(empty($_GET['id'])){
+  header('location: Users.php');
+  exit();
+} else {
+  $userInfo = getCustomerById($_SESSION["selected_user_id"]);
 }
 ?>
 
@@ -94,9 +97,9 @@ if (isset($_GET['search'])) {
         <form action="" method="GET" onsubmit="return isValid()">
           <div id="Search_bar_container">
             <input
-              type="text"
+              type="number"
               id="Search_bar"
-              placeholder="Search Users by ID or User Name" name="search" />
+              placeholder="Search Users by ID" name="search" />
             <button>Search <i class="ri-search-line"></i></button>
           </div>
           <p id="Search_bar_error" class="error_message"></p>
@@ -108,7 +111,7 @@ if (isset($_GET['search'])) {
         <div class="user-info-card">
           <h2>User Information</h2>
 
-          <?php if ($userInfo): ?>
+          <?php if (!empty($userInfo)): ?>
             <div class="info-row">
               <span class="info-label">ID:</span>
               <span class="info-value"><?php echo $userInfo['U_Id']; ?></span>
@@ -143,7 +146,7 @@ if (isset($_GET['search'])) {
         <!-- Update Form -->
         <form action="../Controller/UpdateUserController.php" method="POST" class="update-profile-form" onsubmit="return isValidInput()">
           <h3>Edit Profile</h3>
-          <input type="hidden" name="user_id" value="<?php echo $UserId; ?>">
+          <input type="hidden" name="user_id" value="<?php echo $userInfo['U_Id']; ?>">
           <div class="form-group">
 
             <label for="name">First Name</label>

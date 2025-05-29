@@ -5,16 +5,11 @@ if (session_status() == PHP_SESSION_NONE) {
 if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
     header('location: login.php');
     exit();
-} else {
-    require_once '../Model/Users.php';
-    if (isset($_POST["BanBtn"])) {
-        $userId = $_POST["User_ID"];
-        banUser($userId);
-        header("Location: ../view/SeeAllBanned.php");
-        exit();
-    } else if (isset($_POST["UnbanBtn"])) {
-        $userId = $_POST["User_ID"];
-        unbanUser($userId);
-        header("Location: ../view/Users.php");
-    }
+}
+require_once '../Model/Users.php';
+if (isset($_POST["BanControlButton"])) {
+    banUser($_SESSION["selected_user_For_Action"]);
+    header("Location: ../View/TakeAction.php");
+    $_SESSION["ReturnMsg"]="Banned Successfully";
+    exit();
 }

@@ -1,21 +1,24 @@
 <?php
 session_start();
 if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
-    header('location: login.php');
-    exit();
-} else {
-  require_once '../Model/Users.php';
-  if (isset($_GET["search"])) {
-    $SearchTerm = $_GET['SearchedItem'];
-    $userInfo = searchUserById($SearchTerm);
-    if (empty($userInfo)) {
-      $userInfo = null;
-    }
-  } else {
-    $userID = $_GET['id'];
-    $userInfo = getCustomerById($userID);
-  }
+  header('location: login.php');
+  exit();
 }
+require_once '../Model/Users.php';
+if (isset($_GET["search"])) {
+  $searchTerm = $_GET['SearchedItem'];
+  $searchResults = searchUserById($searchTerm);
+  if (!empty($searchResults)) {
+    $userInfo = $searchResults[0];
+    $_SESSION["selected_user_For_Action"] = $userInfo['U_Id'];
+  }
+} else {
+  if (empty($_SESSION["selected_user_For_Action"])) {
+    $_SESSION["selected_user_For_Action"] = $_GET['id'];
+  }
+  $userInfo = getCustomerById($_SESSION["selected_user_For_Action"]);
+}
+
 ?>
 
 
@@ -108,87 +111,133 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
         <div class="user-info-card">
           <h2>User Information</h2>
           <?php
-          if ($userInfo) {
-            foreach ($userInfo as $user) {
-              echo '<div class="info-row">
+          if (!empty($userInfo)) {
+
+            echo '<div class="info-row">
             <span class="info-label">ID:</span>
-            <span class="info-value">' . $user['U_Id'] . '</span>
+            <span class="info-value">' . $userInfo['U_Id'] . '</span>
           </div>';
-              echo '<div class="info-row">
+            echo '<div class="info-row">
             <span class="info-label">First Name:</span>
-            <span class="info-value">' . $user['U_FirstName'] . '</span>
+            <span class="info-value">' . $userInfo['U_FirstName'] . '</span>
           </div>';
-              echo '<div class="info-row">
+            echo '<div class="info-row">
             <span class="info-label">Last Name:</span>
-            <span class="info-value">' . $user['U_LastName'] . '</span>
+            <span class="info-value">' . $userInfo['U_LastName'] . '</span>
           </div>';
-              echo '<div class="info-row">
+            echo '<div class="info-row">
             <span class="info-label">Email:</span>
-            <span class="info-value">' . $user['U_Email'] . '</span>
+            <span class="info-value">' . $userInfo['U_Email'] . '</span>
           </div>';
-              echo '<div class="info-row">
+            echo '<div class="info-row">
             <span class="info-label">Ban Status:</span>
-            <span class="info-value">' . ($user['isBanned'] ? 'Banned' : 'Active') . '</span>
+            <span class="info-value">' . ($userInfo['isBanned'] ? 'Banned' : 'Not Banned') . '</span>
           </div>';
-              echo '<div class="info-row">
+            echo '<div class="info-row">
             <span class="info-label">Suspension Status:</span>
-            <span class="info-value">' . ($user['isSuspended'] ? 'Suspended' : 'No Suspension') . '</span>
+            <span class="info-value">' . ($userInfo['isSuspended'] ? 'Suspended' : 'No Suspension') . '</span>
           </div>';
-            }
           } else {
             echo '<p class="error_message">User not found.</p>';
           }
           ?>
-
-
-
-
-
         </div>
-
         <!-- Action Grid Section -->
-        <div class="action-grid">
+        <div class="action-grid" style="visibility: <?php
+                                                    if (empty($userInfo)) {
+                                                      echo "hidden";
+                                                    }
+                                                    ?>">
           <!-- Ban User -->
           <div class="action-card">
-            <h4><?php if ($user['isBanned']) {
-                  echo 'Unban User';
+            <?php
+            if ($userInfo['isBanned'] == 0) {
+              echo '<h4>Ban User</h4>';
+              echo '<p>Immediately ban this user from accessing the platform.</p>';
+            } else {
+              echo '<h4>Unban User</h4>';
+              echo '<p>Immediately unban this user from accessing the platform.</p>';
+            }
+            ?>
+            <form action="../Controller/<?php if ($userInfo['isBanned'] == 0) {
+                                          echo "BannUserControll.php";
+                                        } else {
+                                          echo "UnBanControll.php";
+                                        } ?>" method="Post">
+              <button type="submit" name="BanControlButton" class="action-btn ban" style="Background-color:<?php
+                                                                                                            if ($userInfo['isBanned'] == 1) {
+                                                                                                              echo "Green";
+                                                                                                            }
+                                                                                                            ?>">
+                <?php
+                if ($userInfo['isBanned'] == 0) {
+                  echo "Ban User";
                 } else {
-                  echo 'Ban User';
-                } ?></h4>
-            <p><?php if ($user['isBanned']) {
-                  echo 'Immediately unban this user from accessing the platform.';
-                } else {
-                  echo 'Immediately ban this user from accessing the platform.';
-                } ?></p>
-            <form action="../Controller/BannUserControll.php" method="Post">
-              <button type="submit" name="<?php if ($user['isBanned']) {
-                                            echo 'UnbanBtn';
-                                          } else {
-                                            echo 'BanBtn';
-                                          } ?>" class="action-btn ban">
-                <?php if ($user['isBanned']) {
-                  echo 'Unban User';
-                } else {
-                  echo 'Ban User';
-                } ?>
+                  echo "Unban User";
+                }
+
+                ?>
+
               </button>
-              <input type="hidden" name="User_ID" value="<?php echo $user['U_Id']; ?>">
+              <p style="color: #4f46e5; padding: 5px 5px; font-weight:600;"><?php
+                                                                            if (isset($_SESSION["ReturnMsg"])) {
+                                                                              echo $_SESSION["ReturnMsg"];
+                                                                              $_SESSION["ReturnMsg"] = "";
+                                                                            }
+                                                                            ?></p>
             </form>
           </div>
 
           <!-- Suspend User -->
           <div class="action-card">
-            <h4>Suspend User</h4>
-            <p>Suspend account for a set period of time.</p>
-            <select id="suspendDuration">
-              <option value="3">3 days</option>
-              <option value="7">7 days</option>
-              <option value="30">30 days</option>
-              <option value="90">90 days</option>
-            </select>
-            <button class="action-btn suspend" onclick="suspendUser()">
-              Suspend
-            </button>
+
+            <form action="../Controller/<?php
+                                        if ($userInfo['isSuspended'] == null) {
+                                          echo "SuspendUserControll.php";
+                                        } else {
+                                          echo "RemoveSuspension.php";
+                                        }
+
+                                        ?>" method="POST">
+
+              <?php
+              if ($userInfo['isSuspended'] == null) {
+                echo '<h4>Suspend User</h4>';
+                echo '<p>Suspend account for a set period of time.</p>';
+              ?>
+                <p><strong>Select Expire Date</strong> <span><input
+                      style="padding: 2px 6px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; background-color: #f9f9f9; color: #333; cursor: pointer;"
+                      id="SUS"
+                      type="date"
+                      name="Suspend_Expire"
+                      min="<?php echo date('Y-m-d'); ?>">
+                  </span></p>
+
+              <?php
+              } else {
+                echo '<h4>Remove suspension</h4>';
+                echo '<p>Remove suspension which was set earlier.</p>';
+                echo '<p style="font-weight:600;">Expire Date: ' . $userInfo["isSuspended"] . '</p>';
+              }
+              ?>
+
+
+              <button type="submit" name="SuspendControll_Btn" class="action-btn suspend" onclick="suspendUser()">
+                <?php
+                if ($userInfo['isSuspended'] == null) {
+                  echo 'Suspend';
+                } else {
+                  echo 'Remove suspension';
+                }
+                ?>
+              </button>
+              <p style="color: #4f46e5; padding: 5px 5px; font-weight:600;"><?php
+                                                                            if (isset($_SESSION["Suspention_Status"])) {
+                                                                              echo $_SESSION["Suspention_Status"];
+                                                                              $_SESSION["Suspention_Status"] = "";
+                                                                            }
+                                                                            ?></p>
+            </form>
           </div>
 
           <!-- Delete Permanently -->
@@ -197,9 +246,17 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
             <p>
               Warning: This will remove the account and all data permanently.
             </p>
-            <button class="action-btn delete" onclick="deleteUser()">
-              Delete
-            </button>
+            <form action="../Controller/DeleteUser.php" method="POST">
+              <button type="submit" name="DeleteUser_Btn" class="action-btn delete">
+                Delete
+              </button>
+              <p style="color: #4f46e5; padding: 5px 5px; font-weight:600;"><?php
+                                                                            if (isset($_SESSION["Suspention_Status"])) {
+                                                                              echo $_SESSION["Suspention_Status"];
+                                                                              $_SESSION["Suspention_Status"] = "";
+                                                                            }
+                                                                            ?></p>
+            </form>
           </div>
 
           <!-- Change Role -->

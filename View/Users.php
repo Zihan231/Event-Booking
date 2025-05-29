@@ -1,15 +1,28 @@
 <?php
-session_start();
-if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
-    header('location: login.php');
-    exit();
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
 }
-else{
-require_once '../Model/Users.php';
-$TotalUsers = TotalCustomers();
-$TotalBanned = TotalBannedUsers();
-$TotalSuspended = TotalSuspendedUsers();
-
+if (isset($_SESSION['delete_success'])) {
+  echo "<script>alert('Deletion Successful');</script>";
+  unset($_SESSION['delete_success']);
+}
+if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
+  header('location: login.php');
+  exit();
+} else {
+  require_once '../Model/Users.php';
+  $TotalUsers = TotalCustomers();
+  $TotalBanned = TotalBannedUsers();
+  $TotalSuspended = TotalSuspendedUsers();
+  if (isset($_GET["SearchBtn"])) {
+    $SearchTerm = $_GET["Search_Input"];
+    echo $SearchTerm;
+    $users = searchUserById($SearchTerm);
+  }
+  else{
+    echo"Here";
+    $users = getAllCustomers();
+  }
 }
 ?>
 
@@ -106,13 +119,13 @@ $TotalSuspended = TotalSuspendedUsers();
       </div>
 
       <div>
-        <form action="" onsubmit="return isValid()">
+        <form method="GET" onsubmit="return isValid()">
           <div id="Search_bar_container">
             <input
-              type="text"
+              type="number"
               id="Search_bar"
-              placeholder="Search Users by ID or User Name" />
-            <button>Search <i class="ri-search-line"></i></button>
+              placeholder="Search Users by ID" name="Search_Input" />
+            <button type="submit" name="SearchBtn">Search<i class="ri-search-line"></i></button>
           </div>
           <p id="Search_bar_error" class="error_message"></p>
         </form>
@@ -144,8 +157,8 @@ $TotalSuspended = TotalSuspendedUsers();
           </thead>
           <tbody>
             <?php
-            $users = getAllCustomers(); // Fetch users from DB
-
+            
+          if(!empty($users)){
             foreach ($users as $user) {
               echo "<tr>";
               echo "<td>" . $user['U_Id'] . "</td>";
@@ -156,6 +169,10 @@ $TotalSuspended = TotalSuspendedUsers();
               echo '<td><a class="Action" href="./TakeAction.php?id=' . urlencode($user['U_Id']) . '">Action</a></td>';
               echo "</tr>";
             }
+          }
+          else{
+            echo '<p style="color:red; font-weight:600;">No User Found.</p>';
+          }
             ?>
           </tbody>
 
