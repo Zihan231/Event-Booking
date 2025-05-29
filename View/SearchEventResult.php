@@ -1,23 +1,20 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-  session_start();
+    session_start();
 }
 require_once("../Model/Events.php");
 
-if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
-  $SearchTerm = htmlspecialchars(trim($_GET['Search_Input']));
-  $totalEvents = getTotalSearchResults($SearchTerm);
-  $eventsPerPage = 12;
-  $totalPages = (int)ceil($totalEvents / $eventsPerPage);
-  $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-  $result = searchEventsByPage($SearchTerm, $page, $eventsPerPage);
-} else {
-  $totalEvents = getTotalEventsCount();
-  $eventsPerPage = 12;
-  $totalPages = (int)ceil($totalEvents / $eventsPerPage);
-  $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-  $result = getEventsByPage($page, $eventsPerPage);
-}
+
+$totalEvents = getTotalEventsCount();
+
+$eventsPerPage = 12;
+$totalPages = (int)ceil($totalEvents / $eventsPerPage);
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+
+$result = getEventsByPage($page, $eventsPerPage);
+
 ?>
 
 <!DOCTYPE html>
@@ -50,13 +47,13 @@ if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
     <!-- Search bar -->
     <div id="SrcBar_filters">
       <div id="SrcBar">
-        <form method="GET" onsubmit="return isValidSearch()">
+        <form action="" onsubmit="return isValidSearch()">
           <div id="srcBar-container" class="srcbar-Div">
             <input
               type="text"
               placeholder="Search for events"
-              id="search-input" name="Search_Input" />
-            <button id="search-button" name="Search_Btn" value="Search">Search</button>
+              id="search-input" />
+            <button id="search-button">Search</button>
           </div>
           <p id="errorMessage" class="error-message"></p>
         </form>
@@ -119,41 +116,23 @@ if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
       <div class="pagination">
         <!-- Previous Page Arrow -->
         <?php if ($page > 1): ?>
-          <a href="<?php
-                    echo '?';
-                    if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
-                      echo 'Search_Input=' . urlencode($SearchTerm) . '&Search_Btn=' . urlencode($_GET['Search_Btn']) . '&';
-                    }
-                    echo 'page=' . ($page - 1);
-                    ?>">&laquo;</a>
+          <a href="?page=<?php echo $page - 1; ?>">&laquo;</a>
         <?php else: ?>
-          <a href="" style="pointer-events: none; color: gray;">&laquo;</a>
+          <a href="#" style="pointer-events: none; color: gray;">&laquo;</a>
         <?php endif; ?>
 
         <!-- Page Numbers -->
         <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-          <a href="<?php
-                    echo '?';
-                    if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
-                      echo 'Search_Input=' . urlencode($SearchTerm) . '&Search_Btn=' . urlencode($_GET['Search_Btn']) . '&';
-                    }
-                    echo 'page=' . $i;
-                    ?>" <?php if ($i == $page) echo 'class="active"'; ?>>
+          <a href="?page=<?php echo $i; ?>" <?php if ($i == $page) echo 'class="active"'; ?>>
             <?php echo $i; ?>
           </a>
         <?php endfor; ?>
 
         <!-- Next Page Arrow -->
         <?php if ($page < $totalPages): ?>
-          <a href="<?php
-                    echo '?';
-                    if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
-                      echo 'Search_Input=' . urlencode($SearchTerm) . '&Search_Btn=' . urlencode($_GET['Search_Btn']) . '&';
-                    }
-                    echo 'page=' . ($page + 1);
-                    ?>">&raquo;</a>
+          <a href="?page=<?php echo $page + 1; ?>">&raquo;</a>
         <?php else: ?>
-          <a href="" style="pointer-events: none; color: gray;">&raquo;</a>
+          <a href="#" style="pointer-events: none; color: gray;">&raquo;</a>
         <?php endif; ?>
       </div>
     </div>

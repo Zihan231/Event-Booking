@@ -2,10 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
-    header('location: login.php');
-    exit();
-} else {
+
     require_once '../Model/DataBase.php';
     function addVenues($V_name, $V_Capacity, $V_Lo)
     {
@@ -32,4 +29,4 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
         }
         return $venues;
     }
-}
+

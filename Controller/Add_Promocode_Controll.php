@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
+if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
     header('location: login.php');
     exit();
 } else {
@@ -11,17 +11,14 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
         $code = $_POST["promoCode"];
         $discount = $_POST["discount"];
         $expiryDate = $_POST["expireDate"];
-        if(empty($code) || empty($discount) || empty($expiryDate)) {
+        if (empty($code) || empty($discount) || empty($expiryDate)) {
             header("Location: ../View/login.php?PromoError=1");
             exit();
         } else {
-           addPromocode($code, $discount, $expiryDate);
+            addPromocode($code, $discount, $expiryDate);
             header("Location: ../View/System.php?PromoSuccess=1");
         }
-
-    }
-    else{
+    } else {
         header("Location: ../View/System.php?PromoError=1");
-    } 
-
+    }
 }

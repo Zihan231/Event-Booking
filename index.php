@@ -2,9 +2,9 @@
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
-include("./Model//DataBase.php");
-$Sql = "SELECT * FROM events ORDER BY E_ID DESC LIMIT 4;";
-$result = mysqli_query($conn, $Sql);
+require_once('./Model/featureEvents.php');
+$result = getFeaturedEvents();
+
 
 ?>
 
@@ -29,18 +29,19 @@ $result = mysqli_query($conn, $Sql);
     </div>
     <nav>
       <ul>
+        <a href="./Model/Events.php"></a>
         <li><a class="ActivePage" href="./index.php">Home</a></li>
         <li><a href="./View/EventCalendar.php">Events</a></li>
         <li><a href="./View/contactUs.php">Contact Us</a></li>
       </ul>
     </nav>
-    <div id="LogSing" style="display: <?php if (isset($_SESSION["status"])) {
+    <div id="LogSing" style="display: <?php if (isset($_SESSION["CustomerLoginstatus"])) {
                                         echo "none";
                                       } ?>;">
       <a class="Blacktxt" href="./View/login.php">Login</a>
       <a href="./View/signUp.php" id="sgnUp">Sign Up</a>
     </div>
-    <div style="display: <?php if (!isset($_SESSION["status"])) {
+    <div style="display: <?php if (!isset($_SESSION["CustomerLoginstatus"])) {
                             echo "none";
                           } ?>;">
       <span><a href="./View/user_Profile.php">Profile</a></span>
@@ -69,11 +70,11 @@ $result = mysqli_query($conn, $Sql);
     <!-- Search Bar Section -->
     <section id="SrcBar">
       <div id="srcBar-container" class="srcbar-Div">
-        <form action="" onsubmit="return isValidSearch()">
+        <form action="./Controller/SearchEventsController.php" method="GET" onsubmit="return isValidSearch()">
           <div class="srcbar-Div">
             <input
               type="text"
-              placeholder="Search for events"
+              placeholder="Search for events by name"
               id="search-input"
               class="srcbar-element" />
           </div>
@@ -167,21 +168,21 @@ $result = mysqli_query($conn, $Sql);
       <div id="Featured-cards-container">
         <!-- Featured Events PHP -->
         <?php
-        while ($row = mysqli_fetch_assoc($result)) {
+        foreach ($result as $event) {
         ?>
 
 
           <div id="F1" class="Featured-cards">
             <div class="Featured-img-container">
               <img
-                src="./Asset/Image/<?php echo $row["Thumbnail"]; ?>"
+                src="./Asset/Image/<?php echo $event["Thumbnail"]; ?>"
                 class="Featured-img"
-                alt="<?php echo $row["Thumbnail"]; ?>" />
+                alt="<?php echo $event["Thumbnail"]; ?>" />
             </div>
             <div class="Featured-text-1">
               <div class="Featured-tag">
                 <?php
-                switch ($row["E_Category"]) {
+                switch ($event["E_Category"]) {
                   case "music":
                     $tagId = "music-tag";
                     break;
@@ -210,14 +211,14 @@ $result = mysqli_query($conn, $Sql);
                     $tagId = "";
                 }
                 ?>
-                <span class="Tag" id="<?php echo $tagId; ?>"><?php echo $row["E_Category"]; ?></span>
-                <span class="price"><?php echo $row["E.Price"]; ?>$</span>
+                <span class="Tag" id="<?php echo $tagId; ?>"><?php echo $event["E_Category"]; ?></span>
+                <span class="price"><?php echo $event["E.Price"]; ?>$</span>
               </div>
               <div class="Featured-below-tag">
-                <h3 class="Featured-h3"><?php echo $row["E_Name"]; ?></h3>
-                <span><i class="ri-map-pin-line"></i> <?php echo $row["E_Location"]; ?></span>
-                <span><i class="ri-calendar-line"></i> <?php echo $row["E_Date"]; ?> • <?php echo date("h:i A", strtotime($row["E_Time"])); ?></span>
-                <a href="./View/EventDetails.php?id=<?php echo $row["E_ID"]; ?>" id="BookNowBtn_1" class="Featured-button">
+                <h3 class="Featured-h3"><?php echo $event["E_Name"]; ?></h3>
+                <span><i class="ri-map-pin-line"></i> <?php echo $event["E_Location"]; ?></span>
+                <span><i class="ri-calendar-line"></i> <?php echo $event["E_Date"]; ?> • <?php echo date("h:i A", strtotime($event["E_Time"])); ?></span>
+                <a href="./View/EventDetails.php?id=<?php echo $event["E_ID"]; ?>" id="BookNowBtn_1" class="Featured-button">
                   View Details
                 </a>
               </div>

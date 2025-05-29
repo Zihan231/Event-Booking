@@ -20,11 +20,11 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
   
 
 
-  <div id="LogSing" style="display: <?php if (isset($_SESSION["status"])){ echo "none"; } ?>;">
+  <div id="LogSing" style="display: <?php if (isset($_SESSION["CustomerLoginstatus"])){ echo "none"; } ?>;">
     <a class="Blacktxt <?= $currentPage == 'login.php' ? 'ActivePage' : '' ?>" href="./login.php">Login</a>
     <a class="<?= $currentPage == 'signUp.php' ? 'ActivePage' : '' ?>" href="./signUp.php" id="sgnUp">Sign Up</a>
   </div>
-  <div style="display: <?php if (!isset($_SESSION["status"])){ echo "none"; } ?>;">
+  <div style="display: <?php if (!isset($_SESSION["CustomerLoginstatus"])){ echo "none"; } ?>;">
     <span><a href="./user_Profile.php">Profile</a></span>
     <span><a href="../Controller/logoutController.php">Logout</a></span>
   </div>

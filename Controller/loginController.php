@@ -1,10 +1,13 @@
 <?php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once "../Model/Users.php";
 
 $Email = $_POST['email'] ?? '';
 $Password = $_POST['password'] ?? '';
+
 
 if (empty($Email) || empty($Password)) {
     $_SESSION['status'] = false;
@@ -37,11 +40,6 @@ if (!empty($result)) {
         $_SESSION['AdminLoginstatus'] = true;
         $_SESSION['userID'] = $result['U_Id'];
         header('location: ../View/Dashboard.php');
-        exit();
-    } else {
-        $_SESSION['AdminLoginstatus'] = false;
-        $_SESSION["LoginError"] = "Invalid email or password, or your account is banned/suspended.";
-        header('location: ../View/login.php');
         exit();
     }
 } else {

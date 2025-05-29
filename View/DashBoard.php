@@ -1,10 +1,11 @@
 <?php
-session_start();
-if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
-    header('location: login.php');
-    exit();
+if(session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
-else{
+if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
+     header('location: login.php');
+     exit();
+} else {
   require_once '../Model/Events.php';
   require_once '../Model/Users.php';
   $TotalEvents = totalEvents();

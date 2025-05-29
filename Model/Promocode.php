@@ -2,10 +2,6 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
-    header('location: login.php');
-    exit();
-} else {
     require_once "../Model/DataBase.php";
     function addPromocode($code, $discount, $expiryDate)
     {
@@ -35,4 +31,3 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== true) {
         $result = mysqli_query($conn, $query);
         return mysqli_fetch_assoc($result);
     }
-}
