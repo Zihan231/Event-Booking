@@ -67,7 +67,7 @@ $_SESSION['EventID'] = $EventID;
               <strong>&nbsp;$<?php echo $eventDetails["E.Price"]; ?></strong>
             </li>
             <li>
-              <strong><i class="ri-ancient-gate-line"></i></strong><a id="VenueDetails" href="./veanu.html">See Venue Details.</a></strong>
+              <strong><i class="ri-ancient-gate-line"></i></strong><a id="VenueDetails" href="./veanu.php">See Venue Details.</a></strong>
             </li>
           </ul>
           <div id="Stars">
