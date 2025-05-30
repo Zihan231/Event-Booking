@@ -7,16 +7,17 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
     exit();
 } else {
     require_once('../Model/Users.php');
-    if (isset($_POST["SuspendControll_Btn"]) && !empty($_POST["Suspend_Expire"])) {
-        $Duration = $_POST["Suspend_Expire"];
-        // echo $Duration;
-        SuspendUser($_SESSION["selected_user_For_Action"], $Duration);
+    if (isset($_POST["cngRoleBtn"]) && !empty($_POST["newRole"])) {
+        $Role = $_POST["newRole"];
+        echo $Role;
+        ChangeRole($_SESSION["selected_user_For_Action"], $Role);
+        $_SESSION["CngRoleStatus"] = "Role Changed Successfully";
         header("Location: ../View/TakeAction.php");
-        $_SESSION["Suspention_Status"] = "Suspended successfully";
         exit();
-    } else {
+    }
+    else{
+        $_SESSION["CngRoleStatus"] = "Changing role was failed !";
         header("Location: ../View/TakeAction.php");
-        $_SESSION["Suspention_Status"] = "Suspended failed !";
         exit();
     }
 }

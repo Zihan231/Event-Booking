@@ -2,9 +2,13 @@
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
-if (isset($_SESSION['delete_success'])) {
+if (isset($_SESSION['delete_success']) && $_SESSION['delete_success'] == true) {
   echo "<script>alert('Deletion Successful');</script>";
   unset($_SESSION['delete_success']);
+  unset($_SESSION['selected_user_For_Action']);
+}
+if (!empty($_SESSION["selected_user_For_Action"])) {
+  unset($_SESSION["selected_user_For_Action"]);
 }
 if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
   header('location: login.php');
@@ -14,13 +18,11 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
   $TotalUsers = TotalCustomers();
   $TotalBanned = TotalBannedUsers();
   $TotalSuspended = TotalSuspendedUsers();
-  if (isset($_GET["SearchBtn"])) {
+  if (isset($_GET["SearchBtn"]) && !empty($_GET["Search_Input"])) {
     $SearchTerm = $_GET["Search_Input"];
     echo $SearchTerm;
     $users = searchUserById($SearchTerm);
-  }
-  else{
-    echo"Here";
+  } else {
     $users = getAllCustomers();
   }
 }
@@ -157,22 +159,21 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
           </thead>
           <tbody>
             <?php
-            
-          if(!empty($users)){
-            foreach ($users as $user) {
-              echo "<tr>";
-              echo "<td>" . $user['U_Id'] . "</td>";
-              echo "<td>" . $user['U_FirstName'] . "</td>";
-              echo "<td>" . $user['U_LastName'] . "</td>";
-              echo "<td>" . $user['U_Email'] . "</td>";
-              echo '<td><a href="./Update_User_info.php?id=' . urlencode($user['U_Id']) . '">Edit</a></td>';
-              echo '<td><a class="Action" href="./TakeAction.php?id=' . urlencode($user['U_Id']) . '">Action</a></td>';
-              echo "</tr>";
+
+            if (!empty($users)) {
+              foreach ($users as $user) {
+                echo "<tr>";
+                echo "<td>" . $user['U_Id'] . "</td>";
+                echo "<td>" . $user['U_FirstName'] . "</td>";
+                echo "<td>" . $user['U_LastName'] . "</td>";
+                echo "<td>" . $user['U_Email'] . "</td>";
+                echo '<td><a href="./Update_User_info.php?id=' . urlencode($user['U_Id']) . '">Edit</a></td>';
+                echo '<td><a class="Action" href="./TakeAction.php?id=' . urlencode($user['U_Id']) . '">Action</a></td>';
+                echo "</tr>";
+              }
+            } else {
+              echo '<p style="color:red; font-weight:600;">No User Found.</p>';
             }
-          }
-          else{
-            echo '<p style="color:red; font-weight:600;">No User Found.</p>';
-          }
             ?>
           </tbody>
 

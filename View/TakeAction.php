@@ -18,7 +18,6 @@ if (isset($_GET["search"])) {
   }
   $userInfo = getCustomerById($_SESSION["selected_user_For_Action"]);
 }
-
 ?>
 
 
@@ -33,7 +32,7 @@ if (isset($_GET["search"])) {
   <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet" />
-  <link rel="stylesheet" href="../Asset/CSS/Style_TakeAction.css" />
+  <link rel="stylesheet" href="../Asset/CSS/Style_TakeAction.css?v2.0" />
 </head>
 
 <body>
@@ -137,6 +136,10 @@ if (isset($_GET["search"])) {
             <span class="info-label">Suspension Status:</span>
             <span class="info-value">' . ($userInfo['isSuspended'] ? 'Suspended' : 'No Suspension') . '</span>
           </div>';
+          echo '<div class="info-row">
+            <span class="info-label">Role:</span>
+            <span class="info-value">' . ucfirst($userInfo['U_Type']) . '</span>
+          </div>';
           } else {
             echo '<p class="error_message">User not found.</p>';
           }
@@ -210,7 +213,7 @@ if (isset($_GET["search"])) {
                       id="SUS"
                       type="date"
                       name="Suspend_Expire"
-                      min="<?php echo date('Y-m-d'); ?>">
+                      min="<?php echo date('Y-m-d'); ?>" required>
                   </span></p>
 
               <?php
@@ -263,16 +266,24 @@ if (isset($_GET["search"])) {
           <div class="action-card">
             <h4>Change Role</h4>
             <p>Upgrade or downgrade the user's role.</p>
-            <select id="changeRole">
-              <option value="user">User</option>
+            <form action="../Controller/ChangeRoleControll.php" method="POST">
+            <select id="changeRole" name="newRole" require>
+              <option value="customer">Customer</option>
               <option value="admin">Admin</option>
             </select>
-            <button class="action-btn suspend" onclick="changeUserRole()">
+            <button class="action-btn suspend" type="submit" name="cngRoleBtn">
               Change Role
             </button>
+            <p style="color: #4f46e5; padding: 5px 5px; font-weight:600;"><?php
+                                                                            if (isset($_SESSION["Suspention_Status"])) {
+                                                                              echo $_SESSION["Suspention_Status"];
+                                                                              $_SESSION["Suspention_Status"] = "";
+                                                                            }
+                                                                            ?></p>
+            </form>
           </div>
-
-          <!-- Send Warning -->
+<!-- 
+          Send Warning
           <div class="action-card">
             <h4>Send Warning</h4>
             <p>Send an official warning message to the user.</p>
@@ -281,19 +292,19 @@ if (isset($_GET["search"])) {
             </button>
           </div>
 
-          <!-- Lock Account -->
+          Lock Account
           <div class="action-card">
             <h4>Lock Account</h4>
             <p>Lock the account until further verification is done.</p>
             <button class="action-btn suspend" onclick="lockAccount()">
               Lock Account
             </button>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
   </main>
-  <script src="../Asset/js/TakeAction.js"></script>
+  <script src="../Asset/js/TakeAction.js?v2.0"></script>
 </body>
 
 </html>

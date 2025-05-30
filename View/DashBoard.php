@@ -1,15 +1,26 @@
 <?php
-if(session_status() == PHP_SESSION_NONE) {
-    session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
 }
 if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
-     header('location: login.php');
-     exit();
+  header('location: login.php');
+  exit();
 } else {
   require_once '../Model/Events.php';
   require_once '../Model/Users.php';
   $TotalEvents = totalEvents();
   $TotalUsers = TotalCustomers();
+  if (isset($_GET["Search_Btn"]) && !empty($_GET["Search_Input"])) {
+   $SearchTerm = $_GET["Search_Input"];
+    echo $SearchTerm;
+    $users = searchUserById($SearchTerm);
+  }
+  else{
+    $users = GetRecentUsers();
+  }
+  if (!empty($_SESSION["selected_user_For_Action"])) {
+    unset($_SESSION["selected_user_For_Action"]);
+  }
 }
 ?>
 
@@ -186,13 +197,13 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
         </div>
         <!-- Search & Filter Starts -->
         <div>
-          <form action="" onsubmit="return isValid()">
+          <form method="GET" onsubmit="return isValid()">
             <div id="Search_bar_container">
               <input
                 type="text"
                 id="Search_bar"
-                placeholder="Search Users by ID or User Name" />
-              <button>Search <i class="ri-search-line"></i></button>
+                placeholder="Search Users by ID or User Name" name="Search_Input" />
+              <button type="submit" name="Search_Btn">Search <i class="ri-search-line"></i></button>
             </div>
             <p id="Search_bar_error" class="error_message"></p>
           </form>
@@ -225,56 +236,23 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>007</td>
-                <td>Zihan</td>
-                <td>Zihan@gmail.com</td>
-                <td>+91 1234567890</td>
-                <td>Male</td>
-                <td><a href="../View/Update_User_info.php">Edit</a></td>
-              </tr>
-              <tr>
-                <td>007</td>
-                <td>Ayesha</td>
-                <td>ayesha123@gmail.com</td>
-                <td>+91 9876543210</td>
-                <td>Female</td>
-                <td>
-                  <a href="../View/Update_User_info.php">Edit</a>
-                </td>
-              </tr>
-              <tr>
-                <td>071</td>
-                <td>Rahul</td>
-                <td>rahul.kumar@email.com</td>
-                <td>+91 9988776655</td>
-                <td>Male</td>
-                <td><a href="../View/Update_User_info.php">Edit</a></td>
-              </tr>
-              <tr>
-                <td>107</td>
-                <td>Sara</td>
-                <td>sara.ali@domain.com</td>
-                <td>+91 9123456789</td>
-                <td>Female</td>
-                <td><a href="../View/Update_User_info.php">Edit</a></td>
-              </tr>
-              <tr>
-                <td>257</td>
-                <td>Imran</td>
-                <td>imran007@gmail.com</td>
-                <td>+91 8899776655</td>
-                <td>Male</td>
-                <td><a href="../View/Update_User_info.php">Edit</a></td>
-              </tr>
-              <tr>
-                <td>684</td>
-                <td>Nisha</td>
-                <td>nisha.rani@webmail.com</td>
-                <td>+91 7766554433</td>
-                <td>Female</td>
-                <td><a href="../View/Update_User_info.php">Edit</a></td>
-              </tr>
+              <?php
+
+              if (!empty($users)) {
+                foreach ($users as $user) {
+                  echo "<tr>";
+                  echo "<td>" . $user['U_Id'] . "</td>";
+                  echo "<td>" . $user['U_FirstName'] . "</td>";
+                  echo "<td>" . $user['U_LastName'] . "</td>";
+                  echo "<td>" . $user['U_Email'] . "</td>";
+                  echo '<td><a href="./Update_User_info.php?id=' . urlencode($user['U_Id']) . '">Edit</a></td>';
+                  echo '<td><a class="Action" href="./TakeAction.php?id=' . urlencode($user['U_Id']) . '">Action</a></td>';
+                  echo "</tr>";
+                }
+              } else {
+                echo '<p style="color:red; font-weight:600;">No User Found.</p>';
+              }
+              ?>
             </tbody>
           </table>
           <!-- Recent User Table Ends -->

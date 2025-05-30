@@ -261,3 +261,22 @@ function DeleteUser($userId)
     $result = mysqli_query($conn, $query);
     return $result;
 }
+function GetRecentUsers()
+{
+    global $conn;
+    $query = "SELECT * FROM users ORDER BY U_Id DESC LIMIT 10;";
+    $result = mysqli_query($conn, $query);
+    $users = [];
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $users[] = $row;
+        }
+    }
+    return $users;
+}
+function ChangeRole($userId,$Role) {
+    global $conn;
+    $query = "UPDATE users SET U_Type='$Role' WHERE U_Id=$userId";
+    $result = mysqli_query($conn, $query);
+    return $result;
+}

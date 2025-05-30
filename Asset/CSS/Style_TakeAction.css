@@ -217,8 +217,11 @@ main {
 
 /* Action Grid Styles */
 .action-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-direction: c;
+  align-content: center;
+  justify-content: center;
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
   gap: 25px;
   margin-top: 30px;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -233,6 +236,8 @@ main {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease;
+  min-width: 200px;
+  min-height: 200px;
 }
 
 .action-card:hover {
