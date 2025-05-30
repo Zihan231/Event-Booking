@@ -1,5 +1,6 @@
 <?php
 require_once '../Model/users.php';
+require_once '../Controller/signUpvalidation.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
