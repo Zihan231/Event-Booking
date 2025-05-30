@@ -1,5 +1,4 @@
 
-        // Filter functionality for the table
         const filterSelect = document.querySelector('.filter');
         const rows = document.querySelectorAll('table tr:not(:first-child)');
 

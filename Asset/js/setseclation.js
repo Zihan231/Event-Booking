@@ -38,7 +38,7 @@ function confirmBooking() {
 
     if (selectedSeats.length === 0) {
         errorDiv.textContent = 'Please select at least one seat.';
-        errorDiv.style.display = 'block';
+        errorDiv.style.color = 'red';
         return;
     }
 

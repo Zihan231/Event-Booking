@@ -30,14 +30,14 @@
 
             if (!checkin) {
                 errorDiv.textContent = 'Please select a check-in date.';
-                errorDiv.style.display = 'block';
+                errorDiv.style.color = 'red';
                 return;
             }
 
             // Validate guests
             if (!guests || guests < 1) {
                 errorDiv.textContent = 'Please enter a valid number of guests (1 or more).';
-                errorDiv.style.display = 'block';
+                errorDiv.style.color = 'red';
                 return;
             }
 
