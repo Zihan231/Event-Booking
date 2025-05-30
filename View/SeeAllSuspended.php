@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== true) {
-    header('location: login.php');
-    exit();
+  header('location: login.php');
+  exit();
 } else {
   require_once '../Model/Users.php';
   $TotalUsers = TotalCustomers();
@@ -144,11 +144,17 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
-              <th>Expiry Date</th>
+              <th>Expiry Date <br><sub>(YYYY-MM-DD)</sub></th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
+            <p style="color: #4f46e5; padding: 5px 5px; font-weight:600; text-align:center;"><?php
+                                                                            if (isset($_SESSION["QuickSuspendStatus"])) {
+                                                                              echo $_SESSION["QuickSuspendStatus"];
+                                                                              $_SESSION["QuickSuspendStatus"] = "";
+                                                                            }
+                                                                            ?></p>
             <?php
             if (!empty($users)) {
               foreach ($users as $user) {
@@ -159,15 +165,18 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
                 echo "<td>" . $user['U_Email'] . "</td>";
                 echo "<td>" . $user['isSuspended'] . "</td>";
                 echo '<td>
-            <select class="suspension-action">
+                <form method="POST" action="../Controller/QuickSuspendOption.php">
+            <select name="Choosed_Value" class="suspension-action" required>
               <option value="">Select Action</option>
               <option value="remove">Remove Suspension</option>
-              <option value="1day">1 Day</option>
-              <option value="4days">4 Days</option>
-              <option value="7days">7 Days</option>
-              <option value="1month">1 Month</option>
+              <option value="Ex_1day">Extend: 1 Day </option>
+              <option value="Ex_3days">Extend: 3 Days</option>
+              <option value="Re_1day">Reduce: 1 Days</option>
+              <option value="Re_3days">Reduce: 3 Days</option>
             </select>
-            <button class="confirm-button" onclick="handleConfirmAction(this)">Confirm</button>
+            <input type="number" name="UserId" hidden value="' . $user['U_Id'] . '">
+            <button type="submit" name="QuickSuspendBtn" class="confirm-button" >Confirm</button>
+              </form>
           </td>';
                 echo "</tr>";
               }
@@ -176,7 +185,7 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
             }
             ?>
           </tbody>
-
+            
         </table>
       </div>
     </section>

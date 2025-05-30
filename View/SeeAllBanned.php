@@ -17,7 +17,7 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
     }
   } else {
     $users = getAllBanned();
-  }
+  } 
 }
 ?>
 
@@ -124,7 +124,13 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
           <p id="Search_bar_error" class="error_message"></p>
         </form>
       </div>
-
+      <!-- Retrun Message -->
+      <p style="color: #4f46e5; padding: 5px 5px; font-weight:600; text-align:center;"><?php
+                                                                            if (isset($_SESSION["CommanExecutionMsg"])) {
+                                                                              echo $_SESSION["CommanExecutionMsg"];
+                                                                              $_SESSION["CommanExecutionMsg"] = "";
+                                                                            }
+                                                                            ?></p>
       <div id="RecentUser">
         <div id="RecentUserHeader">
           <h1>All Banned Users</h1>
@@ -149,6 +155,7 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
             </tr>
           </thead>
           <tbody>
+            
             <?php
             if (!empty($users)) {
               foreach ($users as $user) {
@@ -157,20 +164,21 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
                 echo "<td>" . $user['U_FirstName'] . "</td>";
                 echo "<td>" . $user['U_LastName'] . "</td>";
                 echo "<td>" . $user['U_Email'] . "</td>";
-                echo '<td> <form action="../Controller/UnBanControll.php" method="POST">   <button class="unban-button" name="unbanBtn" value="' . $user['U_Id'] . '">Unban</button> </form> </td>';
+                echo '<td> <form action="../Controller/UnBanControll.php" method="POST">   <button class="unban-button" name="unbanBtn_SeeAllBannedPage" value="' . $user['U_Id'] . '">Unban</button> </form> </td>';
                 echo "</tr>";
               }
             } else {
               echo "<tr><td colspan='5'>No banned users found.</td></tr>";
             }
             ?>
+            
           </tbody>
 
 
 
 
         </table>
-
+            
       </div>
     </section>
   </main>

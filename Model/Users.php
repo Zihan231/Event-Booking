@@ -81,6 +81,17 @@ function getCustomerById($userId)
     }
     return Null;
 }
+function getSuspentionExpDateById($userId)
+{
+    global $conn;
+    $query = "SELECT isSuspended FROM users WHERE U_Id = $userId AND isSuspended IS NOT NULL";
+    $result = mysqli_query($conn, $query);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $users = mysqli_fetch_assoc($result);
+        return $users["isSuspended"];
+    }
+    return Null;
+}
 
 function searchUserById($searchTerm)
 {
@@ -274,9 +285,23 @@ function GetRecentUsers()
     }
     return $users;
 }
-function ChangeRole($userId,$Role) {
+function ChangeRole($userId, $Role)
+{
     global $conn;
     $query = "UPDATE users SET U_Type='$Role' WHERE U_Id=$userId";
     $result = mysqli_query($conn, $query);
     return $result;
 }
+function updateSuspensionDate($userId, $newDate)
+{
+    global $conn;
+    $query = "UPDATE users SET isSuspended = '$newDate' WHERE U_Id = $userId";
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        return true;  
+    } else {
+        return false; 
+    }
+}
+

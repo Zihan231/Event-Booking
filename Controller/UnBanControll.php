@@ -10,7 +10,15 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
   if (isset($_POST["BanControlButton"])) {
     unbanUser($_SESSION["selected_user_For_Action"]);
     header("Location: ../View/TakeAction.php");
-    $_SESSION["ReturnMsg"]="Unbanned Successfully";
+    $_SESSION["ReturnMsg"] = "Unbanned Successfully";
     exit();
+  } else if (isset($_POST["unbanBtn_SeeAllBannedPage"]) && !empty($_POST["unbanBtn_SeeAllBannedPage"])) {
+    unbanUser($_POST["unbanBtn_SeeAllBannedPage"]);
+    header("Location: ../View/SeeAllBanned.php");
+    $_SESSION["CommanExecutionMsg"] = "Unbanned Successfully";
+    exit();
+  }
+  else{
+    
   }
 }

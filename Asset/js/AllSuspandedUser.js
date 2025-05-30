@@ -9,15 +9,3 @@ function isValid() {
   }
 }
 
-function handleConfirmAction(clickedElement) {
-  const dropdown = clickedElement.previousElementSibling;
-  const selectedOption = dropdown.value;
-
-  if (selectedOption === "") {
-    alert("Please select an option before confirming.");
-  } else {
-    alert(
-      `You have selected: ${selectedOption}. The user will be updated accordingly.`
-    );
-  }
-}
