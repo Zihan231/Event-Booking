@@ -70,6 +70,6 @@
       </form>
     </div>
 
-    <script src="../Asset/js/signUp 2.js"></script>
+     <script src="../Asset/js/signUp 2.js"></script>
   </body>
 </html>
