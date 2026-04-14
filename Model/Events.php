@@ -131,3 +131,38 @@ function getTotalSearchResults($searchTerm)
     }
     return 0;
 }
+function FilterEvents($Choice, $page = 1, $eventsPerPage = 12)
+{
+    global $conn;
+    $offset = ($page - 1) * $eventsPerPage;
+
+    switch ($Choice) {
+        case "LowToHigh":
+            $query = "SELECT * FROM events ORDER BY `E.Price` ASC LIMIT $eventsPerPage OFFSET $offset";
+            break;
+
+        case "HighToLow":
+            $query = "SELECT * FROM events ORDER BY `E.Price` DESC LIMIT $eventsPerPage OFFSET $offset";
+            break;
+
+        case "Recent":
+            $query = "SELECT * FROM events ORDER BY `E_Date` ASC LIMIT $eventsPerPage OFFSET $offset";
+            break;
+        case "":
+        case "All":
+        default:
+            $query = "SELECT * FROM events ORDER BY `E_Date` DESC LIMIT $eventsPerPage OFFSET $offset";
+            break;
+    }
+
+    $result = mysqli_query($conn, $query);
+    $events = [];
+
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $events[] = $row;
+        }
+    }
+
+    return $events;
+}

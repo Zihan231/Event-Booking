@@ -15,6 +15,8 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']); // This gets the current page 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>user_Profile</title>
+      <link rel="shortcut icon" href="../Asset/Image/FavIcon.png" type="image/x-icon">
+
     <link rel="stylesheet" href="../Asset/CSS/user_Profile.css">
 </head>
 <body>

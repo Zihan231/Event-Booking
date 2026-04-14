@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendee List</title>
+    <link rel="shortcut icon" href="../Asset/Image/FavIcon.png" type="image/x-icon">
     <link rel="stylesheet" href="../Asset/CSS/attendee-list.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -40,7 +43,7 @@
         <h3>Add New Attendee</h3>
         <form action="../Controller/add_attendee.php" method="POST">
             <input type="text" id="name" name="a_name" placeholder="Name" required>
-            <input type="email" id="email"name="a_email" placeholder="Email" required>
+            <input type="email" id="email" name="a_email" placeholder="Email" required>
             <select name="a_Check" required>
                 <option value="Checked">Checked</option>
                 <option value="Unchecked">Unchecked</option>
@@ -82,7 +85,6 @@
     </div>
 
     <script>
-
         function getAttendees() {
             const filter = document.getElementById('filter').value;
             const search = document.getElementById('search-bar').value.trim();
@@ -90,7 +92,9 @@
             xhttp.open("POST", "../Controller/get_attendees.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-            const json = { request: filter };
+            const json = {
+                request: filter
+            };
             xhttp.send("json=" + JSON.stringify(json));
 
             xhttp.onreadystatechange = function() {
@@ -154,4 +158,5 @@
         getAttendees();
     </script>
 </body>
+
 </html>

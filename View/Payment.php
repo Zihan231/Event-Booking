@@ -20,6 +20,8 @@ if (!isset($_SESSION['CustomerLoginstatus']) || $_SESSION['CustomerLoginstatus']
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Payment</title>
+    <link rel="shortcut icon" href="../Asset/Image/FavIcon.png" type="image/x-icon">
+
   <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet" />

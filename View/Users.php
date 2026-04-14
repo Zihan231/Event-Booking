@@ -36,6 +36,7 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard</title>
+    <link rel="shortcut icon" href="../Asset/Image/FavIcon.png" type="image/x-icon">
 
   <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
@@ -136,14 +137,14 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
       <div id="RecentUser">
         <div id="RecentUserHeader">
           <h1>All Registered Users</h1>
-          <span>
+          <!-- <span>
             <label for="genderFilter">Filter by Gender: </label>
             <select id="genderFilter">
               <option value="">All</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
-          </span>
+          </span> -->
         </div>
 
         <table id="RecentUserTable" border="1">

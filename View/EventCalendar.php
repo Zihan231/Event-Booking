@@ -11,6 +11,13 @@ if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
   $totalPages = (int)ceil($totalEvents / $eventsPerPage);
   $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
   $result = searchEventsByPage($SearchTerm, $page, $eventsPerPage);
+} else if (!empty($_GET["Filter"])) {
+  $SelectedOption = $_GET["Filter"];
+  $totalEvents = getTotalEventsCount();
+  $eventsPerPage = 12;
+  $totalPages = (int)ceil($totalEvents / $eventsPerPage);
+  $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+  $result = FilterEvents($SelectedOption, $page, $eventsPerPage);
 } else {
   $totalEvents = getTotalEventsCount();
   $eventsPerPage = 12;
@@ -27,6 +34,8 @@ if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eventify</title>
+    <link rel="shortcut icon" href="../Asset/Image/FavIcon.png" type="image/x-icon">
+
   <link rel="stylesheet" href="../Asset/CSS/Style_EventCalender.css?v15.0" />
   <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
@@ -63,16 +72,15 @@ if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
       </div>
 
       <div id="Filter">
-        <label for="FilterEvents">Filter:</label>
-        <select name="Filter" id="FilterEvents">
-          <option value="All">All Events</option>
-          <option value="LowToHigh">Price Low to High</option>
-          <option value="HighToLow">Price High to Low</option>
-          <option value="Recent">Most Recent</option>
-          <option value="Week">This Week</option>
-          <option value="Month">This Month</option>
-          <option value="Year">This Year</option>
-        </select>
+        <form method="Get">
+          <label for="FilterEvents">Filter:</label>
+          <select name="Filter" id="FilterEvents" onchange="this.form.submit()">
+            <option value="All">All Events</option>
+            <option value="LowToHigh">Price Low to High</option>
+            <option value="HighToLow">Price High to Low</option>
+            <option value="Recent">Most Recent</option>
+          </select>
+        </form>
       </div>
     </div>
 
@@ -123,6 +131,8 @@ if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
                     echo '?';
                     if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
                       echo 'Search_Input=' . urlencode($SearchTerm) . '&Search_Btn=' . urlencode($_GET['Search_Btn']) . '&';
+                    } else if (!empty($_GET["Filter"])) {
+                      echo 'Filter=' . urlencode($_GET["Filter"]) . '&';
                     }
                     echo 'page=' . ($page - 1);
                     ?>">&laquo;</a>
@@ -136,6 +146,8 @@ if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
                     echo '?';
                     if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
                       echo 'Search_Input=' . urlencode($SearchTerm) . '&Search_Btn=' . urlencode($_GET['Search_Btn']) . '&';
+                    } else if (!empty($_GET["Filter"])) {
+                      echo 'Filter=' . urlencode($_GET["Filter"]) . '&';
                     }
                     echo 'page=' . $i;
                     ?>" <?php if ($i == $page) echo 'class="active"'; ?>>
@@ -149,6 +161,8 @@ if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
                     echo '?';
                     if (isset($_GET['Search_Btn']) && !empty($_GET['Search_Input'])) {
                       echo 'Search_Input=' . urlencode($SearchTerm) . '&Search_Btn=' . urlencode($_GET['Search_Btn']) . '&';
+                    } else if (!empty($_GET["Filter"])) {
+                      echo 'Filter=' . urlencode($_GET["Filter"]) . '&';
                     }
                     echo 'page=' . ($page + 1);
                     ?>">&raquo;</a>

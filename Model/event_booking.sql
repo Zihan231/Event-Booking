@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2025 at 03:05 PM
+-- Generation Time: Sep 19, 2025 at 09:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,87 @@ SET time_zone = "+00:00";
 --
 -- Database: `event_booking`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `attendance`
+--
+
+CREATE TABLE `attendance` (
+  `a_id` int(11) NOT NULL,
+  `a_name` varchar(100) NOT NULL,
+  `a_email` varchar(100) NOT NULL,
+  `a_Check` varchar(100) NOT NULL,
+  `a_Status` varchar(100) NOT NULL,
+  `a_Event_Name` varchar(100) NOT NULL,
+  `a_EventID` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`a_id`, `a_name`, `a_email`, `a_Check`, `a_Status`, `a_Event_Name`, `a_EventID`) VALUES
+(1, 'John Doe', 'john.doe1@example.com', 'Checked', 'Present', 'Tech Expo', 101),
+(2, 'Jane Smith', 'jane.smith2@example.com', 'Checked', 'Present', 'Tech Expo', 101),
+(3, 'Alice Brown', 'alice.brown3@example.com', 'Unchecked', 'Absent', 'Tech Expo', 101),
+(4, 'Bob Johnson', 'bob.johnson4@example.com', 'Checked', 'Present', 'Tech Expo', 101),
+(5, 'Carol Davis', 'carol.davis5@example.com', 'Unchecked', 'Absent', 'Tech Expo', 101),
+(6, 'Dave Wilson', 'dave.wilson6@example.com', 'Checked', 'Present', 'Tech Expo', 101),
+(7, 'Eve Miller', 'eve.miller7@example.com', 'Checked', 'Present', 'Tech Expo', 101),
+(8, 'Frank Moore', 'frank.moore8@example.com', 'Unchecked', 'Absent', 'Tech Expo', 101),
+(9, 'Grace Lee', 'grace.lee9@example.com', 'Checked', 'Present', 'Tech Expo', 101),
+(10, 'Hank Clark', 'hank.clark10@example.com', 'Unchecked', 'Absent', 'Tech Expo', 101),
+(11, 'Ivy Adams', 'ivy.adams11@example.com', 'Checked', 'Present', 'Science Fair', 102),
+(12, 'Jack Turner', 'jack.turner12@example.com', 'Unchecked', 'Absent', 'Science Fair', 102),
+(13, 'Karen Harris', 'karen.harris13@example.com', 'Checked', 'Present', 'Science Fair', 102),
+(14, 'Leo Baker', 'leo.baker14@example.com', 'Checked', 'Present', 'Science Fair', 102),
+(15, 'Mona Scott', 'mona.scott15@example.com', 'Unchecked', 'Absent', 'Science Fair', 102),
+(16, 'Nate Young', 'nate.young16@example.com', 'Checked', 'Present', 'Science Fair', 102),
+(17, 'Olivia Hill', 'olivia.hill17@example.com', 'Checked', 'Present', 'Science Fair', 102),
+(18, 'Paul King', 'paul.king18@example.com', 'Unchecked', 'Absent', 'Science Fair', 102),
+(19, 'Quinn Green', 'quinn.green19@example.com', 'Checked', 'Present', 'Science Fair', 102),
+(20, 'Rachel Wright', 'rachel.wright20@example.com', 'Unchecked', 'Absent', 'Science Fair', 102),
+(21, 'Sam White', 'sam.white21@example.com', 'Checked', 'Present', 'AI Summit', 103),
+(22, 'Tina Lewis', 'tina.lewis22@example.com', 'Unchecked', 'Absent', 'AI Summit', 103),
+(23, 'Umar Hall', 'umar.hall23@example.com', 'Checked', 'Present', 'AI Summit', 103),
+(24, 'Vera Allen', 'vera.allen24@example.com', 'Checked', 'Present', 'AI Summit', 103),
+(25, 'Will Harris', 'will.harris25@example.com', 'Unchecked', 'Absent', 'AI Summit', 103),
+(26, 'Xena Nelson', 'xena.nelson26@example.com', 'Checked', 'Present', 'AI Summit', 103),
+(27, 'Yasir Cox', 'yasir.cox27@example.com', 'Checked', 'Present', 'AI Summit', 103),
+(28, 'Zoe Ward', 'zoe.ward28@example.com', 'Unchecked', 'Absent', 'AI Summit', 103),
+(29, 'Alan Price', 'alan.price29@example.com', 'Checked', 'Present', 'AI Summit', 103),
+(30, 'Bella Ross', 'bella.ross30@example.com', 'Unchecked', 'Absent', 'AI Summit', 103),
+(31, 'Carl James', 'carl.james31@example.com', 'Checked', 'Present', 'Robotics Day', 104),
+(32, 'Dana Stone', 'dana.stone32@example.com', 'Unchecked', 'Absent', 'Robotics Day', 104),
+(33, 'Eli Grant', 'eli.grant33@example.com', 'Checked', 'Present', 'Robotics Day', 104),
+(34, 'Fiona Hunt', 'fiona.hunt34@example.com', 'Checked', 'Present', 'Robotics Day', 104),
+(35, 'George Ray', 'george.ray35@example.com', 'Unchecked', 'Absent', 'Robotics Day', 104),
+(36, 'Holly Lane', 'holly.lane36@example.com', 'Checked', 'Present', 'Robotics Day', 104),
+(37, 'Ian Reed', 'ian.reed37@example.com', 'Checked', 'Present', 'Robotics Day', 104),
+(38, 'Julia West', 'julia.west38@example.com', 'Unchecked', 'Absent', 'Robotics Day', 104),
+(39, 'Kyle Ross', 'kyle.ross39@example.com', 'Checked', 'Present', 'Robotics Day', 104),
+(40, 'Lily Ford', 'lily.ford40@example.com', 'Unchecked', 'Absent', 'Robotics Day', 104),
+(41, 'Mason Bell', 'mason.bell41@example.com', 'Checked', 'Present', 'Startup Meet', 105),
+(42, 'Nina Fox', 'nina.fox42@example.com', 'Unchecked', 'Absent', 'Startup Meet', 105),
+(43, 'Oscar Webb', 'oscar.webb43@example.com', 'Checked', 'Present', 'Startup Meet', 105),
+(44, 'Penny Dean', 'penny.dean44@example.com', 'Checked', 'Present', 'Startup Meet', 105),
+(45, 'Ray Kim', 'ray.kim45@example.com', 'Unchecked', 'Absent', 'Startup Meet', 105),
+(46, 'Sara Long', 'sara.long46@example.com', 'Checked', 'Present', 'Startup Meet', 105),
+(47, 'Tom Nash', 'tom.nash47@example.com', 'Checked', 'Present', 'Startup Meet', 105),
+(48, 'Una Shaw', 'una.shaw48@example.com', 'Unchecked', 'Absent', 'Startup Meet', 105),
+(49, 'Victor Snow', 'victor.snow49@example.com', 'Checked', 'Present', 'Startup Meet', 105),
+(50, 'Wendy Cole', 'wendy.cole50@example.com', 'Unchecked', 'Absent', 'Startup Meet', 105),
+(51, 'ZOZO', 'Zozo@gmail.com', 'Checked', 'Present', 'Tech Expo', 105),
+(52, 'ZOZO', 'Zozo@gmail.com', 'Checked', 'Present', 'Tech Expo', 105),
+(53, 'ZOZO', 'Zozo@gmail.com', 'Checked', 'Present', 'Tech Expo', 105),
+(54, 'ZOZO', 'Zozo@gmail.com', 'Unchecked', 'Present', 'Tech Expo', 1111),
+(55, 'antu', 'antu@gmail.com', 'Checked', 'Present', 'Tech Expo', 122),
+(56, 'rahul', 'rahul@gmail.com', 'Unchecked', 'Present', 'Tech Expo', 123),
+(57, 'zihan', 'zihan@gmail.com', 'Unchecked', 'Present', 'Tech Expo', 133),
+(58, 'zozo', 'zozo@gmail.com', 'Unchecked', 'Present', 'Tech Expo', 122),
+(59, 'Xz', 'sdfs@sdfsd.cd', 'Checked', 'asdaadsads', 'dsfsfsf', 5);
 
 -- --------------------------------------------------------
 
@@ -78,8 +159,7 @@ INSERT INTO `events` (`E_ID`, `E_Name`, `E_Location`, `E_Date`, `E_Time`, `E_Des
 (29, 'Startup Pitch Day', 'Dhaka, Bangladesh', '2025-08-28', '10:00:00.000000', 'Pitch to investors, win funding.', 'business', 40, 'Show your ideas.', 'business-template-design_23-2151119828.avif', 0, 0),
 (30, 'Youth Leadership Summit', 'Khulna, Bangladesh', '2025-09-01', '09:00:00.000000', 'Empowering the leaders of tomorrow.', 'education', 90, 'Lead the future.', 'gradient-international-youth.avif', 0, 0),
 (31, 'Drone Show', 'Cox’s Bazar, Bangladesh', '2025-09-05', '08:30:00.000000', 'Sky lights up with drone magic.', 'technology', 200, 'Drones in the sky.', 'generative-ai-drone-performs.avif', 0, 0),
-(32, 'ghjgh', 'ghg', '2025-05-09', '15:11:00.000000', 'asdsf', 'Networking', 5345, 'sdfsd', 'ROC_Curve.png', 3, 0),
-(33, 'ghjgh', 'sdfsds', '2025-05-01', '17:20:00.000000', 'wewewe', 'Art & Crafts', 13, 'wewewewwe', 'download (1).png', 5, 0);
+(50, 'Saturday Night Main ', 'Newyork, USA', '2025-05-31', '20:30:00.000000', 'It looks as if WWE will keep the tradition of Saturday Night’s Main Event alive.', 'Sports', 299, 'It looks as if WWE will keep the tradition of Saturday Night’s Main Event alive. Last month’s re-deb', '20250117.webp', 5, 4);
 
 -- --------------------------------------------------------
 
@@ -132,13 +212,33 @@ INSERT INTO `users` (`U_Id`, `U_FirstName`, `U_LastName`, `U_Email`, `U_Password
 (2, 'admin', 'admin', 'admin@gmail.com', 'admin', 'admin', NULL, NULL),
 (3, 'admin', 'admin', 'admin@fake.com', 'admin', 'admin', 0, NULL),
 (4, 'Zihan', 'Islam', 'Zihan@gmail.com', 'haha', 'admin', 0, NULL),
-(5, 'Aminaa', 'Akter', 'aminaa@gmail.com', 'ILUILU', 'customer', 1, NULL),
 (6, 'Rafi', 'Khan', 'rafi_khan@example.com', 'welcome', 'admin', 0, NULL),
-(7, 'Tanni', 'Akter', 'tania@example.com', 'abc123', 'customer', 1, NULL),
 (8, 'Hasan', 'Ali', 'hasan.ali@example.com', 'secure456', 'customer', 0, NULL),
 (9, 'Nadia', 'Sultana', 'nadia_s@example.com', 'testpass', 'admin', 0, NULL),
-(10, 'Niloy', 'Sneha', 'ns@kffsd.fd', 'sssss', 'customer', 0, '2025-05-30'),
-(11, 'dsfsdf', 'sfdsfs', 'sdfsf', 'sdfsfsd', 'customer', 0, NULL);
+(10, 'Niloy', 'Sneha', 'NiloySneha@gmail.com', 'sssss', 'customer', 0, NULL),
+(41, 'Jane', 'Smith', 'jane.smith@example.com', 'pass123', 'customer', 0, NULL),
+(44, 'Charlie', 'Davis', 'charlie.d@example.com', 'pass123', 'customer', 0, NULL),
+(45, 'Emily', 'Clark', 'emily.c@example.com', 'pass123', 'admin', 0, '2025-06-08'),
+(46, 'David', 'Lewis', 'david.l@example.com', 'pass123', 'customer', 0, NULL),
+(47, 'Grace', 'Hall', 'grace.h@example.com', 'pass123', 'customer', 0, NULL),
+(48, 'Henry', 'Allen', 'henry.a@example.com', 'pass123', 'customer', 0, NULL),
+(49, 'Isla', 'Young', 'isla.y@example.com', 'pass123', 'customer', 0, NULL),
+(50, 'Jack', 'King', 'jack.k@example.com', 'pass123', 'customer', 1, NULL),
+(51, 'Lily', 'Scott', 'lily.s@example.com', 'pass123', 'customer', 0, NULL),
+(52, 'Mason', 'Green', 'mason.g@example.com', 'pass123', 'customer', 0, NULL),
+(53, 'Nora', 'Adams', 'nora.a@example.com', 'pass123', 'customer', 0, NULL),
+(54, 'Oscar', 'Baker', 'oscar.b@example.com', 'pass123', 'customer', 0, NULL),
+(55, 'Penny', 'Campbell', 'penny.c@example.com', 'pass123', 'customer', 0, NULL),
+(56, 'Quinn', 'Mitchell', 'quinn.m@example.com', 'pass123', 'customer', 0, NULL),
+(57, 'Ryan', 'Perez', 'ryan.p@example.com', 'pass123', 'customer', 0, NULL),
+(58, 'Sophia', 'Roberts', 'sophia.r@example.com', 'pass123', 'customer', 0, NULL),
+(59, 'Thomas', 'Turner', 'thomas.t@example.com', 'pass123', 'customer', 0, '2025-06-07'),
+(60, 'Uma', 'Phillips', 'uma.p@example.com', 'pass123', 'customer', 1, NULL),
+(61, 'Victor', 'Evans', 'victor.e@example.com', 'pass123', 'customer', 1, NULL),
+(62, 'Wendy', 'Collins', 'wendy.c@example.com', 'pass123', 'customer', 0, NULL),
+(63, 'Xavier', 'Murphy', 'xavier.m@example.com', 'pass123', 'customer', 0, NULL),
+(64, 'Yara', 'Richardson', 'yara.r@example.com', 'pass123', 'customer', 0, NULL),
+(65, 'Antu', 'Chodu', 'Antu@gmail.com', '123456789', 'customer', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -167,6 +267,12 @@ INSERT INTO `venues` (`V_Id`, `V_Name`, `V_Capacity`, `V_Location`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `attendance`
+--
+ALTER TABLE `attendance`
+  ADD PRIMARY KEY (`a_id`);
 
 --
 -- Indexes for table `events`
@@ -198,10 +304,16 @@ ALTER TABLE `venues`
 --
 
 --
+-- AUTO_INCREMENT for table `attendance`
+--
+ALTER TABLE `attendance`
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+
+--
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `E_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `E_ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `promocodes`
@@ -213,7 +325,7 @@ ALTER TABLE `promocodes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `U_Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `U_Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `venues`

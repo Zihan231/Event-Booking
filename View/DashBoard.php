@@ -31,6 +31,8 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard</title>
+    <link rel="shortcut icon" href="../Asset/Image/FavIcon.png" type="image/x-icon">
+
   <link rel="stylesheet" href="../Asset/CSS/Style_DashBoard.css" />
   <!-- <link rel="stylesheet" href="../Asset/CSS/Style_Users.css" /> -->
   <link
@@ -114,7 +116,7 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
             <span id="Active_event_percent" class="Dashboard_cards_Percent">+12.5%
             </span>
           </div>
-          <h3><?php echo $TotalEvents; ?></h3>
+          <h3><?php echo htmlspecialchars($TotalEvents); ?></h3>
           <p>Total Events</p>
         </div>
 
@@ -136,7 +138,7 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
             <span id="Total_user_percent" class="Dashboard_cards_Percent">+12.5%
             </span>
           </div>
-          <h3><?php echo $TotalUsers; ?></h3>
+          <h3><?php echo htmlspecialchars($TotalUsers); ?></h3>
           <p>Total User</p>
         </div>
       </div>
@@ -145,7 +147,7 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
       <!-- Revenue stats & Sales Trend Starts -->
       <div id="RevenueStats_SalesTrend_Container">
         <!-- Revenue Stats Start -->
-        <div id="RevenueStatsContainer" class="RevenueStats_SalesTrendsCards">
+        <!-- <div id="RevenueStatsContainer" class="RevenueStats_SalesTrendsCards">
           <div id="RevenueStatsContainer_header">
             <h3><i class="ri-bar-chart-line"></i> Revenue Stats</h3>
             <span id="RevenueStatsContainer_header_links_Container">
@@ -161,11 +163,11 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
               alt=""
               id="RevenueStatsContainer_img" />
           </div>
-        </div>
+        </div> -->
         <!-- Revenue Stats Ends -->
 
         <!-- Sales Trends Start -->
-        <div id="Sale_Trends_Container" class="RevenueStats_SalesTrendsCards">
+        <!-- <div id="Sale_Trends_Container" class="RevenueStats_SalesTrendsCards">
           <div id="RevenueStatsContainer_header">
             <h3><i class="ri-line-chart-line"></i> Sales Trends</h3>
             <span id="RevenueStatsContainer_header_links_Container">
@@ -180,7 +182,7 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
               src="../Asset/Image/Sale_Trends.webp"
               alt=""
               id="RevenueStatsContainer_img" />
-          </div>
+          </div> -->
         </div>
         <!-- Sales Trends Ends -->
       </div>
@@ -212,14 +214,14 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
         <div id="RecentUser">
           <div id="RecentUserHeader">
             <h3>Recently Registered Users</h3>
-            <span>
-              <label for="genderFilter">Filter by Gender: </label>
+            <!-- <span>
+               <label for="genderFilter">Filter by Gender: </label>
               <select id="genderFilter">
                 <option value="">All</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
-            </span>
+            </span> -->
           </div>
           <!-- Search & FIlter Ends -->
 
@@ -228,11 +230,11 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
                 <th>Email</th>
-                <th>Phone</th>
-                <th>Gender</th>
                 <th>Update</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -241,10 +243,10 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
               if (!empty($users)) {
                 foreach ($users as $user) {
                   echo "<tr>";
-                  echo "<td>" . $user['U_Id'] . "</td>";
-                  echo "<td>" . $user['U_FirstName'] . "</td>";
-                  echo "<td>" . $user['U_LastName'] . "</td>";
-                  echo "<td>" . $user['U_Email'] . "</td>";
+                  echo "<td>" . htmlspecialchars($user['U_Id']) . "</td>";
+                  echo "<td>" . htmlspecialchars($user['U_FirstName']) . "</td>";
+                  echo "<td>" . htmlspecialchars($user['U_LastName']) . "</td>";
+                  echo "<td>" . htmlspecialchars($user['U_Email']) . "</td>";
                   echo '<td><a href="./Update_User_info.php?id=' . urlencode($user['U_Id']) . '">Edit</a></td>';
                   echo '<td><a class="Action" href="./TakeAction.php?id=' . urlencode($user['U_Id']) . '">Action</a></td>';
                   echo "</tr>";

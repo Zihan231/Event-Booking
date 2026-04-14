@@ -299,9 +299,9 @@ function updateSuspensionDate($userId, $newDate)
     $result = mysqli_query($conn, $query);
 
     if ($result) {
-        return true;  
+        return true;
     } else {
-        return false; 
+        return false;
     }
 }
 

@@ -5,7 +5,6 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once('./Model/featureEvents.php');
 $result = getFeaturedEvents();
 
-
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +14,7 @@ $result = getFeaturedEvents();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eventify</title>
+  <link rel="shortcut icon" href="./Asset/Image/FavIcon.png" type="image/x-icon">
   <link rel="stylesheet" href="./Asset/CSS/style_Index.css?v18.0" />
   <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
@@ -80,7 +80,7 @@ $result = getFeaturedEvents();
           </div>
 
           <div class="srcbar-Div">
-            <button class="srcbar-element" id="search-button">Search</button>
+            <button class="srcbar-element" id="search-button" >Search</button>
           </div>
         </form>
         <p id="errorMessage" class="error-message"></p>

@@ -13,6 +13,8 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard</title>
+    <link rel="shortcut icon" href="../Asset/Image/FavIcon.png" type="image/x-icon">
+
   <link rel="stylesheet" href="../Asset/CSS/Style_System.css?v10.0" />
   <!-- <link rel="stylesheet" href="../Asset/CSS/Style_Users.css" /> -->
   <link
@@ -130,13 +132,13 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
             id="venueErrorMessage"
             style="color: red; margin-top: 10px"></div>
         </div>
-
-        <!-- Waiting List Table -->
+<!-- 
+        Waiting List Table
         <div class="Systemcards" style="grid-column: 1 / -1">
           <div id="WaitinglisHeader">
             <h2>Waiting List</h2>
           </div>
-          <!-- Search & Filter Starts -->
+          Search & Filter Starts
           <div id="SrcFilContainer">
             <form method="POST" onsubmit="return isValid()">
               <div id="Search_bar_container">
@@ -176,7 +178,7 @@ if (!isset($_SESSION['AdminLoginstatus']) || $_SESSION['AdminLoginstatus'] !== t
               </tr>
             </tbody>
           </table>
-        </div>
+        </div> -->
       </div>
     </section>
   </main>
